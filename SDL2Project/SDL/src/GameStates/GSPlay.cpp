@@ -72,54 +72,97 @@ void GSPlay::HandleEvents()
 {
 }
 
+bool keyW = false;
+bool keyA = false;
+bool keyS = false;
+bool keyD = false;
+bool keyShift = false;
+
 void GSPlay::HandleKeyEvents(SDL_Event& e)
 {
-	//If a key was pressed
-	if (e.type == SDL_KEYDOWN )//&& e.key.repeat == 0) //For e.key.repeat it's because key repeat is enabled by default and if you press and hold a key it will report multiple key presses. That means we have to check if the key press is the first one because we only care when the key was first pressed.
-	{
-		//Adjust the velocity
-		switch (e.key.keysym.sym)                                                                                            
-		{                                                                                                                     
-		case SDLK_LEFT:
-			printf("MOVE LEFT");
-			m_KeyPress |= 1;
+	////Key Down
+	
+	switch (e.type) {
+	case SDL_KEYDOWN:
+		
+		switch (e.key.keysym.sym) {
+		case SDLK_w:
+			keyW = true;
 			break;
-		case SDLK_DOWN:
-			printf("MOVE BACK");
-			m_KeyPress |= 1 << 1;
+		case SDLK_a:
+			keyA = true;
 			break;
-		case SDLK_RIGHT:
-			m_KeyPress |= 1 << 2;
+		case SDLK_s:
+			keyS = true;
 			break;
-		case SDLK_UP:
-			m_KeyPress |= 1 << 3;
+		case SDLK_d:
+			keyD = true;
 			break;
-		default:
-			break;
-		}
-	}
-	////Key Up
-	else if (e.type == SDL_KEYUP )//&& e.key.repeat == 0)
-	{
-		//Adjust the velocity
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			m_KeyPress ^= 1;
-			break;
-		case SDLK_DOWN:
-			m_KeyPress ^= 1 << 1;
-			break;
-		case SDLK_RIGHT:
-			m_KeyPress ^= 1 << 2;
-			break;
-		case SDLK_UP:
-			m_KeyPress ^= 1 << 3;
+		case SDLK_LSHIFT:
+			keyShift = true;
 			break;
 		default:
 			break;
 		}
+		break;
+	case SDL_KEYUP:
+		switch (e.key.keysym.sym) {
+		case SDLK_w:
+			keyW = false;
+			break;
+		case SDLK_a:
+			keyA = false;
+			break;
+		case SDLK_s:
+			keyS = false;
+			break;
+		case SDLK_d:
+			keyD = false;
+			break;
+		case SDLK_LSHIFT:
+			keyShift = false;
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
 	}
+
+	if (keyW) {
+		if (keyShift) {
+			printf("RUN UP\n");
+		}
+		else {
+			printf("MOVE UP\n");
+		}
+	}
+	if (keyA) {
+		if (keyShift) {
+			printf("RUN LEFT\n");
+		}
+		else {
+			printf("MOVE LEFT\n");
+		}
+	}
+	if (keyS) {
+		if (keyShift) {
+			printf("RUN DOWN\n");
+		}
+		else {
+			printf("MOVE DOWN\n");
+		}
+	}
+	if (keyD) {
+		if (keyShift) {
+			printf("RUN RIGHT\n");
+		}
+		else {
+			printf("MOVE RIGHT\n");
+		}
+	}
+
 }
 
 void GSPlay::HandleTouchEvents(SDL_Event& e)
