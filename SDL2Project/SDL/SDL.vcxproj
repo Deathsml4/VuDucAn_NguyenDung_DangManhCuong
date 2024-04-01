@@ -166,10 +166,16 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObject\Animal.cpp" />
+    <ClCompile Include="src\GameObject\Character.cpp" />
+    <ClCompile Include="src\GameObject\Light.cpp" />
+    <ClCompile Include="src\GameObject\MapObject.cpp" />
+    <ClCompile Include="src\GameObject\Mob.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
     <ClCompile Include="src\GameObject\Camera.cpp" />
     <ClCompile Include="src\GameObject\CMath.cpp" />
+    <ClCompile Include="src\GameObject\Map.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\Renderer.cpp" />
     <ClCompile Include="src\GameObject\Sound.cpp" />
@@ -188,6 +194,11 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObject\Animal.h" />
+    <ClInclude Include="src\GameObject\Character.h" />
+    <ClInclude Include="src\GameObject\Light.h" />
+    <ClInclude Include="src\GameObject\MapObject.h" />
+    <ClInclude Include="src\GameObject\Mob.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameManager\ResourceManagers.h" />
     <ClInclude Include="src\GameManager\Singleton.h" />
@@ -196,6 +207,7 @@
     <ClInclude Include="src\GameObject\CMath.h" />
     <ClInclude Include="src\GameObject\Define.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />
+    <ClInclude Include="src\GameObject\Map.h" />
     <ClInclude Include="src\GameObject\MouseButton.h" />
     <ClInclude Include="src\GameObject\Renderer.h" />
     <ClInclude Include="src\GameObject\Sound.h" />

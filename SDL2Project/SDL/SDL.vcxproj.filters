@@ -78,6 +78,23 @@
     <ClCompile Include="src\GameStates\GSPlay.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObject\Character.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Map.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\MapObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Mob.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Light.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Animal.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     <ClCompile Include="src\GameStates\GSOptions.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
@@ -146,6 +163,23 @@
     <ClInclude Include="src\GameObject\KeyState.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameObject\Character.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Map.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\MapObject.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Mob.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Light.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Animal.h">
+      <Filter>Source Files\GameObjects</Filter>
     <ClInclude Include="src\GameStates\GSOptions.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
