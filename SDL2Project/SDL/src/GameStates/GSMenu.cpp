@@ -15,7 +15,7 @@ GSMenu::~GSMenu()
 void GSMenu::Init()
 {
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("imgpsh_fullsize_anim.jpeg");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("Site-background.jpg");
 
 	// background
 	//auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -45,7 +45,7 @@ void GSMenu::Init()
 		});
 	m_listButton.push_back(btnClose);
 
-	//Setting game
+	//Options game
 	texture = ResourceManagers::GetInstance()->GetTexture("btn-options.png");
 	std::shared_ptr<MouseButton> btnOption = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnOption->SetSize(366 / 2, 136 / 2);
@@ -56,14 +56,14 @@ void GSMenu::Init()
 	m_listButton.push_back(btnOption);
 
 	//CREDIT game
-	/*texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
 	btnCredit = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnCredit->Set2DPosition((SCREEN_WIDTH - btnCredit->GetWidth()) / 2, SCREEN_HEIDHT / 2 + 280);
-	btnCredit->SetSize(100, 100);
+	btnCredit->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10 - 60, 10);
+	btnCredit->SetSize(50, 50);
 	btnCredit->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
 		});
-	m_listButton.push_back(btnCredit);*/
+	m_listButton.push_back(btnCredit);
 
 	// game title
 	///Set Font
@@ -73,7 +73,7 @@ void GSMenu::Init()
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 300);
 	m_textGameName->LoadFromRenderText("Don't Starve");
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/Alarm01.wav");
+	m_Sound->LoadSound("Data/Sounds/menu.mp3");
 	m_Sound->PlaySound();
 
 }
