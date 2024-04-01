@@ -1,5 +1,6 @@
 #pragma once
 
+
 #define MAX_CREATURES 20
 #define MAX_ENTITIES 30
 
