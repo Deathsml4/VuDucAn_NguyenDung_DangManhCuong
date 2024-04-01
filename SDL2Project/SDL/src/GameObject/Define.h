@@ -1,7 +1,9 @@
 #pragma once
-#define SCREEN_WIDTH 480
-#define SCREEN_HEIDHT 800
-#define LIMIT_FPS 60
 
 #define MAX_CREATURES 20
 #define MAX_ENTITIES 30
+
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIDHT 760
+#define LIMIT_FPS 60
+

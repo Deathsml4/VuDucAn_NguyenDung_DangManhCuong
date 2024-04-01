@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -184,6 +184,8 @@
     <ClCompile Include="src\GameObject\Text.cpp" />
     <ClCompile Include="src\GameObject\TextureManager.cpp" />
     <ClCompile Include="src\GameObject\Timer.cpp" />
+    <ClCompile Include="src\GameStates\GSCredit.cpp" />
+    <ClCompile Include="src\GameStates\GSOptions.cpp" />
     <ClCompile Include="src\GameStates\GameStateBase.cpp" />
     <ClCompile Include="src\GameStates\GameStateMachine.cpp" />
     <ClCompile Include="src\GameStates\GSIntro.cpp" />
@@ -214,6 +216,8 @@
     <ClInclude Include="src\GameObject\Text.h" />
     <ClInclude Include="src\GameObject\TextureManager.h" />
     <ClInclude Include="src\GameObject\Timer.h" />
+    <ClInclude Include="src\GameStates\GSCredit.h" />
+    <ClInclude Include="src\GameStates\GSOptions.h" />
     <ClInclude Include="src\GameStates\GameStateBase.h" />
     <ClInclude Include="src\GameStates\GameStateMachine.h" />
     <ClInclude Include="src\GameStates\GSIntro.h" />
