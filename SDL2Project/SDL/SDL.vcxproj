@@ -176,7 +176,7 @@
     <ClCompile Include="src\GameObject\Camera.cpp" />
     <ClCompile Include="src\GameObject\CMath.cpp" />
     <ClCompile Include="src\GameObject\Map.cpp" />
-    <ClCompile Include="src\GameObject\GSSetting.cpp" />
+    <ClCompile Include="src\GameStates\GSSetting.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\Renderer.cpp" />
     <ClCompile Include="src\GameObject\Sound.cpp" />
@@ -207,7 +207,7 @@
     <ClInclude Include="src\GameObject\Camera.h" />
     <ClInclude Include="src\GameObject\CMath.h" />
     <ClInclude Include="src\GameObject\Define.h" />
-    <ClInclude Include="src\GameObject\GSSetting.h" />
+    <ClInclude Include="src\GameStates\GSSetting.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />
     <ClInclude Include="src\GameObject\Map.h" />
     <ClInclude Include="src\GameObject\MouseButton.h" />

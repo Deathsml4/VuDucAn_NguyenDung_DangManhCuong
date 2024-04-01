@@ -75,6 +75,9 @@
     <ClCompile Include="src\GameStates\GSMenu.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameStates\GSSetting.cpp">
+      <Filter>Source Files\GameState</Filter>
+    </ClCompile>
     <ClCompile Include="src\GameStates\GSPlay.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
@@ -95,6 +98,7 @@
     </ClCompile>
     <ClCompile Include="src\GameObject\Animal.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
     <ClCompile Include="src\GameStates\GSOptions.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
@@ -157,6 +161,9 @@
     <ClInclude Include="src\GameStates\GSMenu.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameStates\GSSetting.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
     <ClInclude Include="src\GameStates\GSPlay.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
@@ -180,6 +187,7 @@
     </ClInclude>
     <ClInclude Include="src\GameObject\Animal.h">
       <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
     <ClInclude Include="src\GameStates\GSOptions.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
