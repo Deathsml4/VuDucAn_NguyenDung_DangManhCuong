@@ -51,7 +51,7 @@ void GSSetting::Init()
 	btnMusicMute->Set2DPosition((SCREEN_WIDTH - btnMusicMute->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 200);
 	btnMusicMute->SetSize(100, 100);
 	btnMusicMute->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
+		
 		});
 	m_listButton.push_back(btnMusicMute);
 	///Set Font
@@ -67,7 +67,7 @@ void GSSetting::Init()
 	btnEffectMute->Set2DPosition((SCREEN_WIDTH - btnEffectMute->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 50);
 	btnEffectMute->SetSize(100, 100);
 	btnEffectMute->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
+		
 		});
 	m_listButton.push_back(btnEffectMute);
 }
@@ -101,16 +101,26 @@ void GSSetting::HandleKeyEvents(SDL_Event& e)
 
 void GSSetting::HandleTouchEvents(SDL_Event& e)
 {
-
+	for (auto button : m_listButton)
+	{
+		if (button->HandleTouchEvent(&e))
+		{
+			break;
+		}
+	}
 }
 
 void GSSetting::HandleMouseMoveEvents(int x, int y)
 {
+
 }
 
 void GSSetting::Update(float deltaTime)
 {
-	
+	for (auto it : m_listButton)
+	{
+		it->Update(deltaTime);
+	}
 }
 
 void GSSetting::Draw(SDL_Renderer* renderer)
