@@ -95,6 +95,8 @@
     </ClCompile>
     <ClCompile Include="src\GameObject\Animal.cpp">
       <Filter>Source Files\GameObjects</Filter>
+    <ClCompile Include="src\GameStates\GSOptions.cpp">
+      <Filter>Source Files\GameState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +180,8 @@
     </ClInclude>
     <ClInclude Include="src\GameObject\Animal.h">
       <Filter>Source Files\GameObjects</Filter>
+    <ClInclude Include="src\GameStates\GSOptions.h">
+      <Filter>Source Files\GameState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
