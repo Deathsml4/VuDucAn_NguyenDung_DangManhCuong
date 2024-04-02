@@ -20,7 +20,7 @@ void GSMenu::Init()
 	// background
 	//auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
 	m_background = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIDHT);
+	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_background->Set2DPosition(0, 0);
 
 	// play button
@@ -28,7 +28,7 @@ void GSMenu::Init()
 	std::shared_ptr<MouseButton> btnPlay = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 
 	btnPlay->SetSize(359 / 2, 130 / 2);
-	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth()) / 2, (SCREEN_HEIDHT - btnPlay->GetHeight()) / 2);
+	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth()) / 2, (SCREEN_HEIGHT - btnPlay->GetHeight()) / 2);
 	btnPlay->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
 		});
@@ -49,7 +49,7 @@ void GSMenu::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("btn-options.png");
 	std::shared_ptr<MouseButton> btnOption = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnOption->SetSize(366 / 2, 136 / 2);
-	btnOption->Set2DPosition((SCREEN_WIDTH - btnOption->GetWidth()) / 2, SCREEN_HEIDHT / 2 + 40);
+	btnOption->Set2DPosition((SCREEN_WIDTH - btnOption->GetWidth()) / 2, SCREEN_HEIGHT / 2 + 40);
 	btnOption->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_OPTION);
 		});
@@ -70,7 +70,7 @@ void GSMenu::Init()
 	m_textColor = { 255, 255, 0 };
 	m_textGameName = std::make_shared<Text>("Data/MonsterGame-EjB9.ttf", m_textColor);
 	m_textGameName->SetSize(400, 100);
-	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 300);
+	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 300);
 	m_textGameName->LoadFromRenderText("Don't Starve");
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/01_Main.wav");

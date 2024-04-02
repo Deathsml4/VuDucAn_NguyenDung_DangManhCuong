@@ -25,7 +25,7 @@ void GSOptions::Init()
 	// background
 
 	m_background = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIDHT);
+	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_background->Set2DPosition(0, 0);
 
 	// button close
@@ -41,7 +41,7 @@ void GSOptions::Init()
 	m_textColor = { 255, 255, 0 };
 	m_textStateName = std::make_shared<Text>("Data/MonsterGame-EjB9.ttf", m_textColor);
 	m_textStateName->SetSize(400, 100);
-	m_textStateName->Set2DPosition((SCREEN_WIDTH - m_textStateName->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 300);
+	m_textStateName->Set2DPosition((SCREEN_WIDTH - m_textStateName->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 300);
 	m_textStateName->LoadFromRenderText("State Options");
 
 	m_KeyPress = 0;

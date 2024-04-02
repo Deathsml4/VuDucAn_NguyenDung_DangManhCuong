@@ -1,7 +1,9 @@
 #pragma once
 #include "GameStateBase.h"
 #include "GameObject/MouseButton.h"
+#include "Map.h"
 #include "Sound.h"
+
 class Sprite2D;
 class SpriteAnimation;
 
@@ -33,6 +35,7 @@ private:
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
 	std::shared_ptr<SpriteAnimation> obj;
 	std::shared_ptr<MouseButton> button;
+	std::shared_ptr<Map> map;
 	
 	float time = 0.0f;
 	float m_Velocity = 10.0f;

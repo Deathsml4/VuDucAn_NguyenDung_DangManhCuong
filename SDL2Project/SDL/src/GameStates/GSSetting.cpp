@@ -24,7 +24,7 @@ void GSSetting::Init()
 	// background
 
 	m_background = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIDHT);
+	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_background->Set2DPosition(0, 0);
 
 	// button close
@@ -41,14 +41,14 @@ void GSSetting::Init()
 
 	m_musicText = std::make_shared<Text>("Data/sample.ttf", m_textColor);
 	m_musicText->SetSize(350, 40);
-	m_musicText->Set2DPosition((SCREEN_WIDTH - m_musicText->GetWidth()) / 5, SCREEN_HEIDHT / 2 - 175);
+	m_musicText->Set2DPosition((SCREEN_WIDTH - m_musicText->GetWidth()) / 5, SCREEN_HEIGHT / 2 - 175);
 	m_musicText->LoadFromRenderText("Game music: ");
 	m_listText.push_back(m_musicText);
 
 	//Mute
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
 	btnMusicMute = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnMusicMute->Set2DPosition((SCREEN_WIDTH - btnMusicMute->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 200);
+	btnMusicMute->Set2DPosition((SCREEN_WIDTH - btnMusicMute->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 200);
 	btnMusicMute->SetSize(100, 100);
 	btnMusicMute->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
@@ -57,14 +57,14 @@ void GSSetting::Init()
 	///Set Font
 	m_effectText = std::make_shared<Text>("Data/sample.ttf", m_textColor);
 	m_effectText->SetSize(350, 40);
-	m_effectText->Set2DPosition((SCREEN_WIDTH - m_effectText->GetWidth()) / 5, SCREEN_HEIDHT / 2 - 25);
+	m_effectText->Set2DPosition((SCREEN_WIDTH - m_effectText->GetWidth()) / 5, SCREEN_HEIGHT / 2 - 25);
 	m_effectText->LoadFromRenderText("Game effect: ");
 	m_listText.push_back(m_effectText);
 
 	//Mute
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
 	btnEffectMute = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnEffectMute->Set2DPosition((SCREEN_WIDTH - btnEffectMute->GetWidth()) / 2, SCREEN_HEIDHT / 2 - 50);
+	btnEffectMute->Set2DPosition((SCREEN_WIDTH - btnEffectMute->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 50);
 	btnEffectMute->SetSize(100, 100);
 	btnEffectMute->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
