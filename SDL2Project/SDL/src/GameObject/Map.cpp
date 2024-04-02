@@ -11,8 +11,8 @@
 std::string GenerateChunk() {
     std::string result;
     const int totalPercentage = 100;
-    const int zeroPercentage = 80;
-    const int onePercentage = 20;
+    const int zeroPercentage = 50;
+    const int onePercentage = 50;
 
     srand(time(nullptr));
 
@@ -78,18 +78,18 @@ std::string GenerateObject(std::string chunkData) {
 MapChunk::MapChunk()
 {
     auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
-    plainTerrain = std::make_shared<GridPoint>(texture);
-    plainTerrain->terrain = MTerrain::MTERRAIN_PLAIN;
+    plainTerrain = GridPoint(texture);
+    plainTerrain.terrain = MTerrain::MTERRAIN_PLAIN;
     texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
-    riverTerrain = std::make_shared<GridPoint>(texture);
-    riverTerrain->terrain = MTerrain::MTERRAIN_RIVER;
+    riverTerrain = GridPoint(texture);
+    riverTerrain.terrain = MTerrain::MTERRAIN_RIVER;
     std::string data = GenerateChunk();
     std::string objectData = GenerateObject(data);
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
         MObject O = MObject::MOBJECT_INVALID;
         std::shared_ptr<MapObject> newMObject;
-        std::shared_ptr<GridPoint> newGrid;
+        GridPoint newGrid = GridPoint();
         
         if (data[i] == '0') newGrid = plainTerrain;
         else if (data[i] == '1') newGrid = riverTerrain;
@@ -102,7 +102,7 @@ MapChunk::MapChunk()
         else if (objectData[i] == '5') O = MObject::MOBJECT_CHESS;
         else if (objectData[i] == '6') O = MObject::MOBJECT_ROCK;
        
-        newGrid->gridNumber = i;
+        newGrid.gridNumber = i;
         grids.push_back(newGrid);
     }
 }
@@ -111,14 +111,14 @@ void MapChunk::Draw(SDL_Renderer* renderer)
 {
     for (auto it : grids)
     {
-            it->Draw(renderer);
+            it.Draw(renderer);
     }
 }
 
 Map::Map() {
     h = 3;
     v = 3;
-    std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>();
+    MapChunk newMapChunk = MapChunk();
     chunks.push_back(newMapChunk);
 }
 
@@ -126,7 +126,7 @@ void Map::Draw(SDL_Renderer* renderer)
 {
     for (auto it : chunks)
     {
-        it->Draw(renderer);
+        it.Draw(renderer);
     }
 }
 

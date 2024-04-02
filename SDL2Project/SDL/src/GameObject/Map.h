@@ -30,10 +30,10 @@ public:
 
 class MapChunk : Sprite2D {
 public:
-	std::shared_ptr<GridPoint> plainTerrain;
-	std::shared_ptr<GridPoint> riverTerrain;
-	std::vector<std::shared_ptr<GridPoint>> grids; //list the map grid
-	std::vector< std::shared_ptr<MapObject>> objects; //list the objects that are here
+	GridPoint plainTerrain;
+	GridPoint riverTerrain;
+	std::vector<GridPoint> grids; //list the map grid
+	std::vector<MapObject> objects; //list the objects that are here
 	//std::vector<Mob> Mobs; // list the mobs
 
 	MapChunk();
@@ -45,7 +45,7 @@ class Map
 {
 public:
 	int h, v; //size of the map in chunk unit
-	std::vector<std::shared_ptr<MapChunk>> chunks;
+	std::vector<MapChunk> chunks;
 
 	Map();
 	//Map(char* data);
