@@ -11,8 +11,8 @@
 std::string GenerateChunk() {
     std::string result;
     const int totalPercentage = 100;
-    const int zeroPercentage = 50;
-    const int onePercentage = 50;
+    const int zeroPercentage = 92;
+    const int onePercentage = 8;
 
     srand(time(nullptr));
 
@@ -141,6 +141,8 @@ GridPoint::GridPoint(std::shared_ptr<TextureManager> texture)
 
 void GridPoint::Draw(SDL_Renderer* renderer)
 {
+    if(terrain == MTerrain::MTERRAIN_PLAIN) texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
+    else texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
     //Get2DPosition();
     if (texture != nullptr)
     {
