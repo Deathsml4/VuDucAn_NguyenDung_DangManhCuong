@@ -77,19 +77,23 @@ std::string GenerateObject(std::string chunkData) {
 
 MapChunk::MapChunk()
 {
-    auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
-    plainTerrain = GridPoint(texture);
-    plainTerrain.terrain = MTerrain::MTERRAIN_PLAIN;
-    texture = ResourceManagers::GetInstance()->GetTexture("Shallow_Ocean_Terrain_Texture.png");
     riverTerrain = GridPoint(texture);
-    riverTerrain.terrain = MTerrain::MTERRAIN_RIVER;
+    
+
     std::string data = GenerateChunk();
     std::string objectData = GenerateObject(data);
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
+        auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
+        plainTerrain = std::make_shared<GridPoint>(texture);
+        plainTerrain->terrain = MTerrain::MTERRAIN_PLAIN;
+        texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
+        riverTerrain = std::make_shared<GridPoint>(texture);
+        riverTerrain->terrain = MTerrain::MTERRAIN_RIVER;
+
         MObject O = MObject::MOBJECT_INVALID;
         std::shared_ptr<MapObject> newMObject;
-        GridPoint newGrid = GridPoint();
+        std::shared_ptr<GridPoint> newGrid;
         
         if (data[i] == '0') newGrid = plainTerrain;
         else if (data[i] == '1') newGrid = riverTerrain;
@@ -102,7 +106,7 @@ MapChunk::MapChunk()
         else if (objectData[i] == '5') O = MObject::MOBJECT_CHESS;
         else if (objectData[i] == '6') O = MObject::MOBJECT_ROCK;
        
-        newGrid.gridNumber = i;
+        newGrid->gridNumber = i;
         grids.push_back(newGrid);
     }
 }
@@ -111,14 +115,14 @@ void MapChunk::Draw(SDL_Renderer* renderer)
 {
     for (auto it : grids)
     {
-            it.Draw(renderer);
+            it->Draw(renderer);
     }
 }
 
 Map::Map() {
     h = 3;
     v = 3;
-    MapChunk newMapChunk = MapChunk();
+    std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>();
     chunks.push_back(newMapChunk);
 }
 
@@ -126,7 +130,7 @@ void Map::Draw(SDL_Renderer* renderer)
 {
     for (auto it : chunks)
     {
-        it.Draw(renderer);
+        it->Draw(renderer);
     }
 }
 
@@ -146,6 +150,6 @@ void GridPoint::Draw(SDL_Renderer* renderer)
     //Get2DPosition();
     if (texture != nullptr)
     {
-        texture->Render(50 * (gridNumber % 1024), 50 * (gridNumber / 1024), 50, 50, 0, m_flip);
+        texture->Render(50 * (gridNumber % CHUNK_UNITS), 50 * (gridNumber / CHUNK_UNITS), 50, 50, 0, m_flip);
     }
 }
