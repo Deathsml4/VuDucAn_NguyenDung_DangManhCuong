@@ -48,7 +48,7 @@ std::string GenerateObject(std::string chunkData) {
             if (randNum < zeroPercentage) {
                 result += '0';
             }
-            if (randNum < zeroPercentage + onePercentage) {
+            else if (randNum < zeroPercentage + onePercentage) {
                 result += '1';
             }
             else if (randNum < zeroPercentage + onePercentage + twoPercentage) {
@@ -73,7 +73,6 @@ std::string GenerateObject(std::string chunkData) {
         else {
             result += '0';
         }
-        
     }
     return result;
 }
