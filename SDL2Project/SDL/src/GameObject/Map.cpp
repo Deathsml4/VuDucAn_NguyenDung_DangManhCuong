@@ -32,35 +32,38 @@ std::string GenerateChunk() {
 std::string GenerateObject(std::string chunkData) {
     std::string result;
     const int totalPercentage = 100;
-    const int zeroPercentage = 60;
-    const int onePercentage = 9;
-    const int twoPercentage = 8;
+    const int zeroPercentage = 75;
+    const int onePercentage = 5;
+    const int twoPercentage = 5;
     const int threePercentage = 5;
     const int fourPercentage = 2;
-    const int fivePercentage = 5;
-    const int sixPercentage = 2;
-    const int sevenPercentage = 8;
+    const int fivePercentage = 2;
+    const int sixPercentage = 1;
+    const int sevenPercentage = 5;
 
     srand(time(nullptr));
     for (int i = 0; i < CHUNK_SIZE; ++i) {
-        if (chunkData[i] == 1) {
+        if (chunkData[i] == '0') {
             int randNum = rand() % totalPercentage;
-            if (randNum < onePercentage) {
+            if (randNum < zeroPercentage) {
+                result += '0';
+            }
+            if (randNum < zeroPercentage + onePercentage) {
                 result += '1';
             }
-            else if (randNum < onePercentage + twoPercentage) {
+            else if (randNum < zeroPercentage + onePercentage + twoPercentage) {
                 result += '2';
             }
-            else if (randNum < onePercentage + twoPercentage + threePercentage) {
+            else if (randNum < zeroPercentage + onePercentage + twoPercentage + threePercentage) {
                 result += '3';
             }
-            else if (randNum < onePercentage + twoPercentage + threePercentage + fourPercentage) {
+            else if (randNum < zeroPercentage + onePercentage + twoPercentage + threePercentage + fourPercentage) {
                 result += '4';
             }
-            else if (randNum < onePercentage + twoPercentage + threePercentage + fourPercentage + fivePercentage) {
+            else if (randNum < zeroPercentage + onePercentage + twoPercentage + threePercentage + fourPercentage + fivePercentage) {
                 result += '5';
             }
-            else if (randNum < onePercentage + twoPercentage + threePercentage + fourPercentage + fivePercentage + sixPercentage) {
+            else if (randNum < zeroPercentage + onePercentage + twoPercentage + threePercentage + fourPercentage + fivePercentage + sixPercentage) {
                 result += '6';
             }
             else {
@@ -86,27 +89,38 @@ MapChunk::MapChunk()
         auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
         plainTerrain = std::make_shared<GridPoint>(texture);
         plainTerrain->terrain = MTerrain::MTERRAIN_PLAIN;
+        
         texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
         riverTerrain = std::make_shared<GridPoint>(texture);
         riverTerrain->terrain = MTerrain::MTERRAIN_RIVER;
 
-        MObject O = MObject::MOBJECT_INVALID;
-        std::shared_ptr<MapObject> newMObject;
+        texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
+        mObject = std::make_shared<MapObject>(texture);
+        mObject->objectType = MObject::MOBJECT_INVALID;
+
+        std::shared_ptr<MapObject> newMObject = mObject;
         std::shared_ptr<GridPoint> newGrid;
         
         if (data[i] == '0') newGrid = plainTerrain;
         else if (data[i] == '1') newGrid = riverTerrain;
       
-        if (objectData[i] == '0') O = MObject::MOBJECT_INVALID;
-        else if (objectData[i] == '1') O = MObject::MOBJECT_TREE;
-        else if (objectData[i] == '2') O = MObject::MOBJECT_BUSH;
-        else if (objectData[i] == '3') O = MObject::MOBJECT_GRASS;
-        else if (objectData[i] == '4') O = MObject::MOBJECT_CROP;
-        else if (objectData[i] == '5') O = MObject::MOBJECT_CHESS;
-        else if (objectData[i] == '6') O = MObject::MOBJECT_ROCK;
+        if (objectData[i] == '0') newMObject->objectType = MObject::MOBJECT_INVALID;
+        else if (objectData[i] == '1') newMObject->objectType = MObject::MOBJECT_TREE;
+        else if (objectData[i] == '2') newMObject->objectType = MObject::MOBJECT_BUSH;
+        else if (objectData[i] == '3') newMObject->objectType = MObject::MOBJECT_GRASS;
+        else if (objectData[i] == '4') newMObject->objectType = MObject::MOBJECT_CROP;
+        else if (objectData[i] == '5') newMObject->objectType = MObject::MOBJECT_DEADBUSH;
+        else if (objectData[i] == '6') newMObject->objectType = MObject::MOBJECT_CHESS;
+        else if (objectData[i] == '7') newMObject->objectType = MObject::MOBJECT_ROCK;
        
         newGrid->gridNumber = i;
         grids.push_back(newGrid);
+
+        if (newMObject != NULL) {
+            newMObject->gridNumber = i;
+            objects.push_back(newMObject);
+        }
+        
     }
 }
 
@@ -114,7 +128,11 @@ void MapChunk::Draw(SDL_Renderer* renderer)
 {
     for (auto it : grids)
     {
-            it->Draw(renderer);
+        it->Draw(renderer);
+    }
+    for (auto it : objects) 
+    {
+        it->Draw(renderer);
     }
 }
 
@@ -149,6 +167,6 @@ void GridPoint::Draw(SDL_Renderer* renderer)
     //Get2DPosition();
     if (texture != nullptr)
     {
-        texture->Render(50 * (gridNumber % CHUNK_UNITS), 50 * (gridNumber / CHUNK_UNITS), 50, 50, 0, m_flip);
+        texture->Render(GRID_UNITS * (gridNumber % CHUNK_UNITS), GRID_UNITS * (gridNumber / CHUNK_UNITS), GRID_UNITS, GRID_UNITS, 0, m_flip);
     }
 }

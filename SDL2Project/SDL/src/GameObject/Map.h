@@ -32,6 +32,7 @@ class MapChunk : Sprite2D {
 public:
 	std::shared_ptr<GridPoint> plainTerrain;
 	std::shared_ptr<GridPoint> riverTerrain;
+	std::shared_ptr<MapObject> mObject;
 	std::vector<std::shared_ptr<GridPoint>> grids; //list the map grid
 	std::vector< std::shared_ptr<MapObject>> objects; //list the objects that are here
 	//std::vector<Mob> Mobs; // list the mobs
