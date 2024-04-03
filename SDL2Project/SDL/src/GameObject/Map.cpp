@@ -80,7 +80,7 @@ MapChunk::MapChunk()
     auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
     plainTerrain = GridPoint(texture);
     plainTerrain.terrain = MTerrain::MTERRAIN_PLAIN;
-    texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
+    texture = ResourceManagers::GetInstance()->GetTexture("Shallow_Ocean_Terrain_Texture.png");
     riverTerrain = GridPoint(texture);
     riverTerrain.terrain = MTerrain::MTERRAIN_RIVER;
     std::string data = GenerateChunk();
@@ -142,7 +142,7 @@ GridPoint::GridPoint(std::shared_ptr<TextureManager> texture)
 void GridPoint::Draw(SDL_Renderer* renderer)
 {
     if(terrain == MTerrain::MTERRAIN_PLAIN) texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
-    else texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
+    else texture = ResourceManagers::GetInstance()->GetTexture("Ship_Graveyard_Terrain_Texture.png");
     //Get2DPosition();
     if (texture != nullptr)
     {
