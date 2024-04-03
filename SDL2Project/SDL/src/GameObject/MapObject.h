@@ -8,13 +8,13 @@
 #include"define.h"
 #include"ResourceManagers.h"
 
-const float TREE_HEIGHT = 1.5;
-const float TREE_WIDTH = 1;
+const float TREE_HEIGHT = 3;
+const float TREE_WIDTH = 1.2;
 const float BUSH_HEIGHT = 0.7;
 const float BUSH_WIDTH = 1;
 const float ROCK_HEIGHT = 1;
 const float ROCK_WIDTH = 1;
-const float CHESS_HEIGHT = 0.5;
+const float CHESS_HEIGHT = 0.7;
 const float CHESS_WIDTH = 1;
 
 enum class MObject
