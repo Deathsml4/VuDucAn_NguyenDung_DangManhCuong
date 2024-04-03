@@ -77,7 +77,6 @@ std::string GenerateObject(std::string chunkData) {
 
 MapChunk::MapChunk()
 {
-    riverTerrain = GridPoint(texture);
     
 
     std::string data = GenerateChunk();
