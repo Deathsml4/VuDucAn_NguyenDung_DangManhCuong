@@ -7,6 +7,7 @@
 #include "GameObject/Sprite2D.h"
 #include "ResourceManagers.h"
 #include "Map.h"
+#include "PerlinNoise.h"
 
 std::string GenerateChunk() {
     std::string result;
@@ -28,6 +29,26 @@ std::string GenerateChunk() {
 
     return result;
 }
+
+// Adjust density for river length and threashold for water percentage
+std::string GenerateChunk(int width, int height, double density, double threshold) {
+    PerlinNoise perlinNoise;
+
+    std::string map;
+
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            double value = perlinNoise.noise(x / 10.0, y / 10.0); // Adjust the divisor to change the scale of the noise
+            if (value < threshold - density || (value > threshold && value < threshold + density))
+                map += '1'; // River
+            else
+                map += '0'; // Plain
+        }
+    }
+
+    return map;
+}
+
 
 std::string GenerateObject(std::string chunkData) {
     std::string result;
@@ -81,7 +102,7 @@ MapChunk::MapChunk()
 {
     
 
-    std::string data = GenerateChunk();
+    std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
     std::string objectData = GenerateObject(data);
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
