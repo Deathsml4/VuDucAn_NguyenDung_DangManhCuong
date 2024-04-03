@@ -5,7 +5,17 @@
 #include"BaseObject.h"
 #include"SpriteAnimation.h"
 #include"Sprite2D.h"
+#include"define.h"
+#include"ResourceManagers.h"
 
+const float TREE_HEIGHT = 1.5;
+const float TREE_WIDTH = 1;
+const float BUSH_HEIGHT = 0.7;
+const float BUSH_WIDTH = 1;
+const float ROCK_HEIGHT = 1;
+const float ROCK_WIDTH = 1;
+const float CHESS_HEIGHT = 0.5;
+const float CHESS_WIDTH = 1;
 
 enum class MObject
 {
@@ -25,11 +35,13 @@ public:
 	MObject objectType;
 	int gridNumber;
 	bool active;
-	//bool visible;
-	//int type;
-	//float light[3]; // R, G, B
+	Vector2 tl, br; // top-left and bottom-right coodinate
+
+	std::shared_ptr<TextureManager> texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
 
 	MapObject();
 	MapObject(std::shared_ptr<TextureManager> texture);
+
+	void Draw(SDL_Renderer* renderer) override;
 };
 
