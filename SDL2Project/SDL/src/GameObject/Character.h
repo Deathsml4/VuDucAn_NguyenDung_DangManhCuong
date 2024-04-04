@@ -4,6 +4,7 @@
 
 #include "CMath.h"
 #include "BaseObject.h"
+#include"SpriteAnimation.h"
 
 struct PlayerInput
 {
@@ -34,12 +35,9 @@ struct SavePoint
     CharacterInventory saveInventory;
 };
 
-class Character:BaseObject
+class Character : public SpriteAnimation
 {
 public:
-    PlayerInput& getInput();
-
-private:
     PlayerInput             m_input;
     std::map<int, char*>    m_nearbyEntity;
     SavePoint               m_playerLastSavePoint;
@@ -59,4 +57,10 @@ private:
     int                     m_currentAtk = 0;
     int                     m_currentInventorySpace = 0;
     int                     m_heldSlot = 0;
+
+    Character();
+    Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
+
+    PlayerInput& getInput();
+    void Init() override;  
 };
