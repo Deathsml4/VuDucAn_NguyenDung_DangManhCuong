@@ -20,6 +20,7 @@ protected:
 	//SDL_RendererFlip m_flip;
 	//std::shared_ptr<TextureManager> m_texture;
 public:
+	SpriteAnimation();
 	SpriteAnimation(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
 	~SpriteAnimation();
 
@@ -36,4 +37,11 @@ public:
 	int GetWidth();
 	int GetHeight();
 	void MoveLeft(float deltaTime);
+	void MoveRight(float deltaTime);
+	void MoveUp(float deltaTime);
+	void MoveDown(float deltaTime);
+	void RunLeft(float deltaTime);
+	void RunRight(float deltaTime);
+	void RunUp(float deltaTime);
+	void RunDown(float deltaTime);
 };

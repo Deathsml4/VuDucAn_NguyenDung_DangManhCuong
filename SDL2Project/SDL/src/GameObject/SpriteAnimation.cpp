@@ -1,5 +1,20 @@
 #include "SpriteAnimation.h"
 #include "TextureManager.h"
+#include "ResourceManagers.h"
+SpriteAnimation::SpriteAnimation()
+{
+	m_pTexture = ResourceManagers::GetInstance()->GetTexture("Actor1_2.tga");
+	m_spriteRow = 2;
+	m_frameCount = 9;
+	m_numAction = 6;
+	//m_animSpeed = animSpeed;
+	m_frameTime = 0.2f;
+	//m_flip = flip;
+	m_currentFrame = 0;
+	m_currentTicks = 0;
+	m_lastUpdate = SDL_GetTicks();
+	Init();
+}
 SpriteAnimation::SpriteAnimation(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime) : BaseObject(texture)
 {
 	m_pTexture = texture;
@@ -84,4 +99,19 @@ int SpriteAnimation::GetHeight()
 void SpriteAnimation::MoveLeft(float deltaTime)
 {
 	m_position.x += 20 * deltaTime;
+}
+
+void SpriteAnimation::MoveRight(float deltaTime)
+{
+	m_position.x -= 20 * deltaTime;
+}
+
+void SpriteAnimation::MoveUp(float deltaTime)
+{
+	m_position.y -= 20 * deltaTime;
+}
+
+void SpriteAnimation::MoveDown(float deltaTime)
+{
+	m_position.y += 20 * deltaTime;
 }
