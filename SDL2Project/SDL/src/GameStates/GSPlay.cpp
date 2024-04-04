@@ -19,7 +19,7 @@ GSPlay::~GSPlay()
 void GSPlay::Init()
 {
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play1.tga");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("Wood_panelling_texture.png");
 
 	// background
 	
@@ -168,7 +168,7 @@ void GSPlay::Update(float deltaTime)
 
 void GSPlay::Draw(SDL_Renderer* renderer)
 {
-	//m_background->Draw(renderer);
+	m_background->Draw(renderer);
 	//m_score->Draw();
 	map->Draw(renderer);
 	for (auto it : m_listButton)
