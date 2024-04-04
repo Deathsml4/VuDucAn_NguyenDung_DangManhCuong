@@ -30,7 +30,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->br.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS));
 		break;
 	case MObject::MOBJECT_GRASS:
-		texture = ResourceManagers::GetInstance()->GetTexture("Diseased_Grass_Tuft.png");
+		texture = ResourceManagers::GetInstance()->GetTexture("300px-Tall_Grass.png");
 		this->tl.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS) - BUSH_WIDTH);
 		this->tl.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS) - BUSH_HEIGHT);
 		this->br.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS));
