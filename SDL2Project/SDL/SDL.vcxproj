@@ -177,6 +177,7 @@
     <ClCompile Include="src\GameObject\CMath.cpp" />
     <ClCompile Include="src\GameObject\Map.cpp" />
     <ClCompile Include="src\GameObject\PerlinNoise.cpp" />
+    <ClCompile Include="src\GameObject\PlayerStatus.cpp" />
     <ClCompile Include="src\GameStates\GSSetting.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\Renderer.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="src\GameObject\CMath.h" />
     <ClInclude Include="src\GameObject\Define.h" />
     <ClInclude Include="src\GameObject\PerlinNoise.h" />
+    <ClInclude Include="src\GameObject\PlayerStatus.h" />
     <ClInclude Include="src\GameStates\GSSetting.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />
     <ClInclude Include="src\GameObject\Map.h" />

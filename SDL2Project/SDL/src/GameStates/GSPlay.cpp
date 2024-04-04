@@ -41,8 +41,8 @@ void GSPlay::Init()
 	m_listButton.push_back(button);
 
    // Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture("Actor1_2.tga");
-	character = std::make_shared<Character>(texture, 2, 9, 6, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Frog_Webber_loop.png");
+	character = std::make_shared<Character>(texture, 2, 15, 3, 0.2f);
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
 	character->Set2DPosition(240, 400);
