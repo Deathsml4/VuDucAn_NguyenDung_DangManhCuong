@@ -6,6 +6,7 @@
 #include "GameObject/Camera.h"
 #include "KeyState.h"
 
+
 GSPlay::GSPlay()
 {
 }
@@ -28,6 +29,7 @@ void GSPlay::Init()
 	m_background->Set2DPosition(0, 0);
 	// map
 	map = std::make_shared<Map>();
+	
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
 	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
@@ -40,12 +42,13 @@ void GSPlay::Init()
 
    // Animation 
 	texture = ResourceManagers::GetInstance()->GetTexture("Actor1_2.tga");
-	obj = std::make_shared<SpriteAnimation>( texture, 2, 9, 6, 0.2f);
-	obj->SetFlip(SDL_FLIP_HORIZONTAL);
-	obj->SetSize(40, 50);
-	obj->Set2DPosition(240, 400);
-	//Camera::GetInstance()->SetTarget(obj);
-	m_listAnimation.push_back(obj);
+	character = std::make_shared<Character>(texture, 2, 9, 6, 0.2f);
+	character->SetFlip(SDL_FLIP_HORIZONTAL);
+	character->SetSize(40, 50);
+	character->Set2DPosition(240, 400);
+	character->Set2DPosition(PLAYER_START, PLAYER_START);
+	//Camera::GetInstance()->SetTarget(character);
+	//m_listAnimation.push_back(character);
 
 	m_KeyPress = 0;
 	
@@ -212,8 +215,8 @@ void GSPlay::Update(float deltaTime)
 void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
-	//m_score->Draw();
 	map->Draw(renderer);
+	character->Draw(renderer);
 	for (auto it : m_listButton)
 	{
 		it->Draw(renderer);

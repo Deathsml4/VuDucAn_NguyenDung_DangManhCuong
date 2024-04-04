@@ -3,6 +3,7 @@
 #include "GameObject/MouseButton.h"
 #include "Map.h"
 #include "Sound.h"
+#include"Character.h"
 
 class Sprite2D;
 class SpriteAnimation;
@@ -33,7 +34,7 @@ private:
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
-	std::shared_ptr<SpriteAnimation> obj;
+	std::shared_ptr<Character> character;
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Map> map;
 	

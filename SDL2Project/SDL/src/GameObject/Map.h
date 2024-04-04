@@ -51,5 +51,6 @@ public:
 	Map();
 	//Map(char* data);
 	void Draw(SDL_Renderer* renderer);
+
 };
 

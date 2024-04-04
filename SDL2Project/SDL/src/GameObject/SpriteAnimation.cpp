@@ -115,3 +115,23 @@ void SpriteAnimation::MoveDown(float deltaTime)
 {
 	m_position.y += 20 * deltaTime;
 }
+
+void SpriteAnimation::RunLeft(float deltaTime)
+{
+	m_position.x += 30 * deltaTime;
+}
+
+void SpriteAnimation::RunRight(float deltaTime)
+{
+	m_position.x -= 30 * deltaTime;
+}
+
+void SpriteAnimation::RunUp(float deltaTime)
+{
+	m_position.y -= 30 * deltaTime;
+}
+
+void SpriteAnimation::RunDown(float deltaTime)
+{
+	m_position.y += 30 * deltaTime;
+}

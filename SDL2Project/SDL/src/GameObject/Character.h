@@ -35,7 +35,7 @@ struct SavePoint
     CharacterInventory saveInventory;
 };
 
-class Character:SpriteAnimation
+class Character : public SpriteAnimation
 {
 public:
     PlayerInput             m_input;
@@ -58,7 +58,9 @@ public:
     int                     m_currentInventorySpace = 0;
     int                     m_heldSlot = 0;
 
-    Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime);
     Character();
+    Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
+
     PlayerInput& getInput();
+    void Init() override;  
 };
