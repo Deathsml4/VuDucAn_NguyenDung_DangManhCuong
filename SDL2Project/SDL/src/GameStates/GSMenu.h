@@ -31,6 +31,8 @@ private:
 	TTF_Font*  m_Font;
 	std::shared_ptr<Sound>					m_Sound;
 	std::shared_ptr<MouseButton> btnCredit;
+	std::shared_ptr<MouseButton> btnMusicOn;
+	std::shared_ptr<MouseButton> btnMusicOff;
 	int score = 0;
-	
+	bool checkMusic = 0;
 };

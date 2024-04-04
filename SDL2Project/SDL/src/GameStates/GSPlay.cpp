@@ -29,10 +29,10 @@ void GSPlay::Init()
 	// map
 	map = std::make_shared<Map>();
 	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
-	button->SetSize(50, 50);
-	button->Set2DPosition(SCREEN_WIDTH - 50, 10);
+	button->SetSize(50, 40);
+	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
 		});

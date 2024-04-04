@@ -28,9 +28,9 @@ void GSSetting::Init()
 	m_background->Set2DPosition(0, 0);
 
 	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	btnClose = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnClose->SetSize(50, 50);
+	btnClose->SetSize(50, 40);
 	btnClose->Set2DPosition(SCREEN_WIDTH - 50, 10);
 	btnClose->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
@@ -46,12 +46,12 @@ void GSSetting::Init()
 	m_listText.push_back(m_musicText);
 
 	//Mute
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
 	btnMusicMute = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnMusicMute->Set2DPosition((SCREEN_WIDTH - btnMusicMute->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 200);
 	btnMusicMute->SetSize(100, 100);
 	btnMusicMute->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
+		//GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
 		});
 	m_listButton.push_back(btnMusicMute);
 	///Set Font
@@ -62,12 +62,12 @@ void GSSetting::Init()
 	m_listText.push_back(m_effectText);
 
 	//Mute
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
 	btnEffectMute = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnEffectMute->Set2DPosition((SCREEN_WIDTH - btnEffectMute->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 50);
 	btnEffectMute->SetSize(100, 100);
 	btnEffectMute->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
+		//GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
 		});
 	m_listButton.push_back(btnEffectMute);
 }

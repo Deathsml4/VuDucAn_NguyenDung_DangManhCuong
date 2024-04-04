@@ -29,7 +29,7 @@ void GSCredit::Init()
 	m_background->Set2DPosition(0, 0);
 
 	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	button->SetSize(50, 50);
 	button->Set2DPosition(SCREEN_WIDTH - 50, 10);

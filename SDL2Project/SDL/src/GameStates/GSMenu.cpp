@@ -35,10 +35,10 @@ void GSMenu::Init()
 	m_listButton.push_back(btnPlay);
 
 	// exit button
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	std::shared_ptr<MouseButton> btnClose = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	//btnClose = std::make_shared<MouseButton>(texture);
-	btnClose->SetSize(50, 50);
+	btnClose->SetSize(50, 40);
 	btnClose->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10, 10);
 	btnClose->SetOnClick([]() {
 		exit(0);
@@ -56,14 +56,38 @@ void GSMenu::Init()
 	m_listButton.push_back(btnOption);
 
 	//CREDIT game
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.png");
 	btnCredit = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnCredit->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10 - 60, 10);
-	btnCredit->SetSize(50, 50);
+	btnCredit->SetSize(50, 40);
 	btnCredit->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
 		});
 	m_listButton.push_back(btnCredit);
+
+	// Music On
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.png");
+	btnMusicOn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusicOn->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10 - 120, 10);
+	btnMusicOn->SetSize(50, 40);
+	btnMusicOn->SetOnClick([]() {
+		std::shared_ptr<Sound> i = std::make_shared<Sound>();
+		i->LoadSound("Data/Sounds/01_Main.wav");
+		i->PlaySound();
+		});
+	m_listButton.push_back(btnMusicOn);
+
+	// Music Off
+	/*texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");
+	btnMusicOff = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusicOff->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10 - 120, 10);
+	btnMusicOff->SetSize(50, 50);
+	btnMusicOff->SetOnClick([]() {
+		std::shared_ptr<Sound> i = std::make_shared<Sound>();
+		i->LoadSound("Data/Sounds/01_Main.wav");
+		i->PlaySound();
+		});
+	m_listButton.push_back(btnMusicOff);*/
 
 	// game title
 	///Set Font
