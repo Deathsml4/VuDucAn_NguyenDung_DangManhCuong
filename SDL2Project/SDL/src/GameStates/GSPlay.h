@@ -37,6 +37,7 @@ private:
 	std::shared_ptr<Character> character;
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Map> map;
+	std::shared_ptr<Sound>					m_Sound;
 	
 	float time = 0.0f;
 	float m_Velocity = 10.0f;

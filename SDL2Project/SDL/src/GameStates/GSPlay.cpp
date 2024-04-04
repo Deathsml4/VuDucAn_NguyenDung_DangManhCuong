@@ -50,6 +50,10 @@ void GSPlay::Init()
 	//Camera::GetInstance()->SetTarget(character);
 	//m_listAnimation.push_back(character);
 
+	m_Sound = std::make_shared<Sound>();
+	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
+	m_Sound->PlaySound();
+
 	m_KeyPress = 0;
 	
 }
