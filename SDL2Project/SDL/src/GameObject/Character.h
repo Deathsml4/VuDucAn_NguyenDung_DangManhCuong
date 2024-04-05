@@ -62,5 +62,6 @@ public:
     Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
 
     PlayerInput& getInput();
-    void Init() override;  
+    void Init() override; 
+    void Move(float deltaTime);
 };

@@ -48,9 +48,11 @@ void GSPlay::Init()
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
 	character->Set2DPosition(PLAYER_START, PLAYER_START);
+
 	//Camera::GetInstance()->SetTarget(character);
+	// 
 	//m_listAnimation.push_back(character);
-	m_listAnimation.push_back(character);
+	//m_listAnimation.push_back(character);
 
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
@@ -142,6 +144,7 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 
 	if (keyW) {
 		if (keyShift) {
+			
 			printf("RUN UP\n");
 		}
 		else {
@@ -172,7 +175,7 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 			printf("MOVE RIGHT\n");
 		}
 	}
-
+	
 }
 
 void GSPlay::HandleTouchEvents(SDL_Event& e)
@@ -194,6 +197,7 @@ void GSPlay::Update(float deltaTime)
 {
 	switch (m_KeyPress)//Handle Key event
 	{
+
 	default:
 		break;
 	}
@@ -212,6 +216,40 @@ void GSPlay::Update(float deltaTime)
 		}
 		it->Update(deltaTime);
 	}
+	if (keyW) {
+		if (keyShift) {
+
+			character->RunUp(deltaTime);
+		}
+		else {
+			character->MoveUp(deltaTime);
+		}
+	}
+	if (keyA) {
+		if (keyShift) {
+			character->RunLeft(deltaTime);
+		}
+		else {
+			character->MoveLeft(deltaTime);
+		}
+	}
+	if (keyS) {
+		if (keyShift) {
+			character->RunDown(deltaTime);
+		}
+		else {
+			character->MoveDown(deltaTime);
+		}
+	}
+	if (keyD) {
+		if (keyShift) {
+			character->RunRight(deltaTime);
+		}
+		else {
+			character->MoveRight(deltaTime);
+		}
+	}
+	character->Update(deltaTime);
 
 	//Update position of camera
 	//Camera::GetInstance()->Update(deltaTime);
