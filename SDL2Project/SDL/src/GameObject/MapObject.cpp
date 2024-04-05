@@ -65,13 +65,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->br.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS));
 		break;
 	}
-	if (this->gridNumber == CHUNK_SIZE / 2) {
-		this->tl.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS) - ROCK_WIDTH);
-		this->tl.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS) - ROCK_HEIGHT);
-		this->br.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS));
-		this->br.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS));
-		texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
-	}
 		
 	if (texture != nullptr)
 	{
