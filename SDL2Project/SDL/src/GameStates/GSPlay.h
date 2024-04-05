@@ -35,6 +35,8 @@ private:
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
 	std::shared_ptr<Character> character;
+	std::shared_ptr<SpriteAnimation> testChar;
+
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sound>					m_Sound;

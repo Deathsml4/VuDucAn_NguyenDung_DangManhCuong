@@ -45,10 +45,10 @@ void GSPlay::Init()
 	character = std::make_shared<Character>(texture, 2, 15, 3, 0.2f);
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
-	character->Set2DPosition(240, 400);
 	character->Set2DPosition(PLAYER_START, PLAYER_START);
 	//Camera::GetInstance()->SetTarget(character);
 	//m_listAnimation.push_back(character);
+	m_listAnimation.push_back(character);
 
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
@@ -221,6 +221,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	m_background->Draw(renderer);
 	map->Draw(renderer);
 	character->Draw(renderer);
+	//testChar->Draw(renderer);
 	for (auto it : m_listButton)
 	{
 		it->Draw(renderer);
