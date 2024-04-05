@@ -43,6 +43,8 @@ void GSPlay::Init()
    // Animation 
 	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Frog_Webber_loop.png");
 	character = std::make_shared<Character>(texture, 2, 15, 3, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+	character = std::make_shared<Character>(texture, 1, 16, 1, 0.2f);
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
 	character->Set2DPosition(PLAYER_START, PLAYER_START);
