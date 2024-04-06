@@ -33,7 +33,7 @@ void GSPlay::Init()
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
-	button->SetSize(50, 40);
+	button->SetSize(charWidth, charHeight);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
@@ -41,10 +41,9 @@ void GSPlay::Init()
 	m_listButton.push_back(button);
 
    // Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Frog_Webber_loop.png");
-	character = std::make_shared<Character>(texture, 2, 15, 3, 0.2f);
-	texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
-	character = std::make_shared<Character>(texture, 1, 16, 1, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
+	character = std::make_shared<Character>(texture, 1, 15, 1, 0.2f);
+	
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
 	character->Set2DPosition(PLAYER_START, PLAYER_START);
@@ -141,41 +140,6 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 	default:
 		break;
 	}
-
-	if (keyW) {
-		if (keyShift) {
-			
-			printf("RUN UP\n");
-		}
-		else {
-			printf("MOVE UP\n");
-		}
-	}
-	if (keyA) {
-		if (keyShift) {
-			printf("RUN LEFT\n");
-		}
-		else {
-			printf("MOVE LEFT\n");
-		}
-	}
-	if (keyS) {
-		if (keyShift) {
-			printf("RUN DOWN\n");
-		}
-		else {
-			printf("MOVE DOWN\n");
-		}
-	}
-	if (keyD) {
-		if (keyShift) {
-			printf("RUN RIGHT\n");
-		}
-		else {
-			printf("MOVE RIGHT\n");
-		}
-	}
-	
 }
 
 void GSPlay::HandleTouchEvents(SDL_Event& e)
@@ -217,6 +181,8 @@ void GSPlay::Update(float deltaTime)
 		it->Update(deltaTime);
 	}
 	if (keyW) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/342px-Frog_Webber_jump_up2.png");
+		character->SetTexture(texture);
 		if (keyShift) {
 
 			character->RunUp(deltaTime);
@@ -226,6 +192,9 @@ void GSPlay::Update(float deltaTime)
 		}
 	}
 	if (keyA) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		character->SetTexture(texture);
+		character->SetFlip(SDL_FLIP_HORIZONTAL);
 		if (keyShift) {
 			character->RunLeft(deltaTime);
 		}
@@ -234,6 +203,8 @@ void GSPlay::Update(float deltaTime)
 		}
 	}
 	if (keyS) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
+		character->SetTexture(texture);
 		if (keyShift) {
 			character->RunDown(deltaTime);
 		}
@@ -242,6 +213,9 @@ void GSPlay::Update(float deltaTime)
 		}
 	}
 	if (keyD) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		character->SetTexture(texture);		
+		character->SetFlip(SDL_FLIP_NONE);
 		if (keyShift) {
 			character->RunRight(deltaTime);
 		}

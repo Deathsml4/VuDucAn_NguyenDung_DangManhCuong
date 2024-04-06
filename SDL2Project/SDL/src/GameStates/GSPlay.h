@@ -28,7 +28,8 @@ public:
 	void	Update(float deltaTime) override;
 	void	Draw(SDL_Renderer* renderer) override;
 	int m_KeyPress;
-
+	int charHeight = 60;
+	int charWidth = 31;
 private:
 	std::shared_ptr<Sprite2D>	m_background;
 	//std::shared_ptr<Text>		m_score;
