@@ -43,15 +43,19 @@ void GSPlay::Init()
    // Animation 
 	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
 	character = std::make_shared<Character>(texture, 1, 15, 1, 0.2f);
-	
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 
 	Camera::GetInstance()->SetTarget(character);
+	for (int i = 0; i < MOB_DENSITY; i++) {
+		texture = ResourceManagers::GetInstance()->GetTexture("sprite/120px-Hound_Run.png");
+		mob = std::make_shared<Mob>(texture, 1, 7, 1, 0.2f);
+		mob->SetFlip(SDL_FLIP_HORIZONTAL);
 
-	// 
-	//m_listAnimation.push_back(character);
+		mobs.push_back(mob);
+	}
+	
 	//m_listAnimation.push_back(character);
 
 	m_Sound = std::make_shared<Sound>();
@@ -236,6 +240,11 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	m_background->Draw(renderer);
 	map->Draw(renderer);
 	character->Draw(renderer);
+	for (auto it : mobs) 
+	{
+		it->Init();
+		it->Draw(renderer);
+	}
 	//testChar->Draw(renderer);
 	for (auto it : m_listButton)
 	{

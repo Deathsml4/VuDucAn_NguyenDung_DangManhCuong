@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<vector>
+#include<list>
 
 #include"BaseObject.h"
 #include"Sprite2D.h"
@@ -30,12 +31,13 @@ public:
 
 class MapChunk : Sprite2D {
 public:
+	int mobCount = 0;
 	std::shared_ptr<GridPoint> plainTerrain;
 	std::shared_ptr<GridPoint> riverTerrain;
 	std::shared_ptr<MapObject> mObject;
 	std::vector<std::shared_ptr<GridPoint>> grids; //list the map grid
 	std::vector< std::shared_ptr<MapObject>> objects; //list the objects that are here
-	//std::vector<Mob> Mobs; // list the mobs
+	std::list < std::shared_ptr<Mob>> mobs; // list the mobs
 
 	MapChunk();
 	//MapChunk(char* data);

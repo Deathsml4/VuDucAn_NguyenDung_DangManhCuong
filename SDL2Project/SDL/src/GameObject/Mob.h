@@ -1,22 +1,42 @@
 #pragma once
 #include<iostream>
+#include <cstdlib>
+#include <ctime>
+#include<random>
 
-#include"BaseObject.h"
+#include"SpriteAnimation.h"
+#include"Define.h"
 
-class Mob : BaseObject
+const int LIVETIME = 600;
+const int MAX_MOB_WIDTH = 80;
+const int MAX_MOB_HEIGHT = 70;
+
+
+enum class MopType {
+	HOUND
+};
+
+class Mob : public SpriteAnimation
 {
 public:
-	float x1, y1, x2, y2;
-	float rotation;
-	float size;
+	int maxHP;
+	int currentHP;
+
+	Vector2 tl, br;
 	bool active; // dead or alive
-	int type;
-	int lifeTime; // disappear 
-	int spawnTime; // spawn
+	MopType type;
 	bool killed; 
 
 	float angleToPlayer;
 	float distanceToPlayer;
 	float MoveToX, MoveToY;
+
+	Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
+	void Spawn(SDL_Renderer* renderer);
+	void Init() override;
+	void AutoMove(float deltaTime);
+	void OnHit();
+	void OnDead();
+	
 };
 
