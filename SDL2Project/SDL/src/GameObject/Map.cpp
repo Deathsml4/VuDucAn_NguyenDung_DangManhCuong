@@ -49,7 +49,6 @@ std::string GenerateChunk(int width, int height, double density, double threshol
     return map;
 }
 
-
 std::string GenerateObject(std::string chunkData) {
     std::string result;
     const int totalPercentage = 100;
@@ -61,6 +60,8 @@ std::string GenerateObject(std::string chunkData) {
     const int fivePercentage = 2;
     const int sixPercentage = 1;
     const int sevenPercentage = 5;
+
+    bool gatePlaced;
 
     srand(time(nullptr));
     for (int i = 0; i < CHUNK_SIZE; ++i) {
@@ -89,12 +90,27 @@ std::string GenerateObject(std::string chunkData) {
             }
             else {
                 result += '7';
-            }
+            } 
         }
         else {
             result += '0';
         }
     }
+    //place the gate
+    int randNum = rand();
+    int range = CHUNK_SIZE/7;
+    int place;
+    
+    if (randNum % totalPercentage < 50) {
+        place = 0 + rand() % (range + 1);
+    }
+    else {
+        place = (CHUNK_SIZE - range - 1) + rand() % (CHUNK_SIZE - (CHUNK_SIZE - range - 1));
+    }
+    while (chunkData[place] != '0') {
+        place++;
+    }
+        result[place] = '8';
     return result;
 }
 
@@ -132,6 +148,7 @@ MapChunk::MapChunk()
         else if (objectData[i] == '5') newMObject->objectType = MObject::MOBJECT_DEADBUSH;
         else if (objectData[i] == '6') newMObject->objectType = MObject::MOBJECT_CHESS;
         else if (objectData[i] == '7') newMObject->objectType = MObject::MOBJECT_ROCK;
+        else if (objectData[i] == '8') newMObject->objectType = MObject::MOBJECT_GATE;
        
         newGrid->gridNumber = i;
         grids.push_back(newGrid);

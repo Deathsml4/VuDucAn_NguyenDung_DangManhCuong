@@ -64,6 +64,13 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->br.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS));
 		this->br.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS));
 		break;
+	case MObject::MOBJECT_GATE:
+		texture = ResourceManagers::GetInstance()->GetTexture("Icefishing_Hole_Map_Icon.png");
+		this->tl.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS) - CHESS_WIDTH);
+		this->tl.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS) - CHESS_HEIGHT);
+		this->br.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS));
+		this->br.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS));
+		break;
 	}
 		
 	if (texture != nullptr)

@@ -27,7 +27,8 @@ enum class MObject
 	MOBJECT_CROP,
 	MOBJECT_DEADBUSH,
 	MOBJECT_CHESS,
-	MOBJECT_ROCK
+	MOBJECT_ROCK,
+	MOBJECT_GATE
 };
 
 class MapObject : Sprite2D

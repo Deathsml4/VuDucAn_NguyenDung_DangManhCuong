@@ -46,9 +46,10 @@ void GSPlay::Init()
 	
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(40, 50);
-	character->Set2DPosition(PLAYER_START, PLAYER_START);
+	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 
-	//Camera::GetInstance()->SetTarget(character);
+	Camera::GetInstance()->SetTarget(character);
+
 	// 
 	//m_listAnimation.push_back(character);
 	//m_listAnimation.push_back(character);
@@ -226,7 +227,7 @@ void GSPlay::Update(float deltaTime)
 	character->Update(deltaTime);
 
 	//Update position of camera
-	//Camera::GetInstance()->Update(deltaTime);
+	Camera::GetInstance()->Update(deltaTime);
 	//obj->Update(deltaTime);
 }
 
