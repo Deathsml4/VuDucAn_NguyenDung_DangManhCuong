@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include<random>
+#include <chrono>
 
 #include"SpriteAnimation.h"
 #include"Define.h"

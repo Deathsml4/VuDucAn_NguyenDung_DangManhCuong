@@ -161,9 +161,9 @@ MapChunk::MapChunk()
         
     }
     for (int i = 0; i < MAX_CREATURES; i++) {
-        auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/120px-Hound_Run.png");
+        auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/DST_Steam_Animated_Sticker_Chester.png");
         std::shared_ptr<Mob> newMob;
-        newMob = std::make_shared<Mob>(texture, 1, 7, 1, 0.2f);
+        newMob = std::make_shared<Mob>(texture, 1, 10, 1, 0.2f);
 
         mobs.push_back(newMob);
     }
