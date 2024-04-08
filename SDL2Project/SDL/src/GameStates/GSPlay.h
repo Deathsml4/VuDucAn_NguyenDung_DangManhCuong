@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "Sound.h"
 #include"Character.h"
+#include "PlayerStatus.h"
 
 class Sprite2D;
 class SpriteAnimation;
@@ -38,7 +39,7 @@ private:
 	std::list<std::shared_ptr<Mob>> mobs; // list the mobs
 	std::shared_ptr<Character> character;
 	std::shared_ptr<SpriteAnimation> testChar;
-	
+	std::shared_ptr<PlayerStatus> playerStatus;
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sound>		m_Sound;

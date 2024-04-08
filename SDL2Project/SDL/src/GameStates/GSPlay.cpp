@@ -47,6 +47,8 @@ void GSPlay::Init()
 	character->SetSize(40, 50);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 
+	playerStatus = std::make_shared<PlayerStatus>(character);
+
 	Camera::GetInstance()->SetTarget(character);
 	for (int i = 0; i < MOB_DENSITY; i++) {
 		texture = ResourceManagers::GetInstance()->GetTexture("sprite/DST_Steam_Animated_Sticker_Chester.png");
@@ -272,7 +274,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	{
 		it->Draw(renderer);
 	}
-
+	
 	character->Draw(renderer);
 	
 	//testChar->Draw(renderer);
@@ -283,6 +285,10 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 //	obj->Draw(renderer);
 	for (auto it : m_listAnimation)
 	{
+		it->Draw(renderer);
+	}
+
+	for (auto it : playerStatus->drawables) {
 		it->Draw(renderer);
 	}
 }

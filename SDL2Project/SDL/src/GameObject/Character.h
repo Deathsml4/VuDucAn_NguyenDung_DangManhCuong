@@ -41,6 +41,7 @@ public:
     PlayerInput             m_input;
     std::map<int, char*>    m_nearbyEntity;
     SavePoint               m_playerLastSavePoint;
+    std::map<int, char*>    m_inventory;
 
     int                     m_maxHP = 0;
     int                     m_maxFood = 0;

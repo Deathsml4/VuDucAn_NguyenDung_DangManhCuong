@@ -102,11 +102,14 @@
     <ClCompile Include="src\GameStates\GSOptions.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameStates\GSCredit.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\GameObject\PlayerStatus.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObject\PerlinNoise.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStates\GSCredit.cpp">
+      <Filter>Source Files\GameState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,8 +203,11 @@
     <ClInclude Include="src\GameStates\GSCredit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameObject\PlayerStatus.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
     <ClInclude Include="src\GameObject\PerlinNoise.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
