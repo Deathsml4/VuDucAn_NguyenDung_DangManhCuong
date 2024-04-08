@@ -50,9 +50,9 @@ void GSPlay::Init()
 	Camera::GetInstance()->SetTarget(character);
 	for (int i = 0; i < MOB_DENSITY; i++) {
 		texture = ResourceManagers::GetInstance()->GetTexture("sprite/120px-Hound_Run.png");
-		mob = std::make_shared<Mob>(texture, 1, 7, 1, 0.2f);
+		mob = std::make_shared<Mob>(texture, 1, 7, 1, 0.05f);
 		mob->SetFlip(SDL_FLIP_HORIZONTAL);
-
+		mob->Init();
 		mobs.push_back(mob);
 	}
 	
@@ -229,6 +229,11 @@ void GSPlay::Update(float deltaTime)
 		}
 	}
 	character->Update(deltaTime);
+	for (auto it : mobs)
+	{
+
+		it->Update(deltaTime);
+	}
 
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
@@ -239,12 +244,14 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
 	map->Draw(renderer);
-	character->Draw(renderer);
-	for (auto it : mobs) 
+	for (auto it : mobs)
 	{
-		it->Init();
+
 		it->Draw(renderer);
 	}
+
+	character->Draw(renderer);
+	
 	//testChar->Draw(renderer);
 	for (auto it : m_listButton)
 	{
