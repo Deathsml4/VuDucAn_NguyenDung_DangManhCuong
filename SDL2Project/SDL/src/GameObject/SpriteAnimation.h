@@ -4,6 +4,8 @@
 class TextureManager;
 class SpriteAnimation : public BaseObject{
 protected:
+	const float RUN_SPEED = 50;
+	const float MOVE_SPEED = 20;
 	Vector2			m_Vec2DPos;
 	int			m_iHeight;
 	int			m_iWidth;

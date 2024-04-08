@@ -103,19 +103,32 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		
 		switch (e.key.keysym.sym) {
 		case SDLK_w:
+			if (e.key.keysym.mod & KMOD_LSHIFT) {
+				keyShift = true;
+			}
+
 			keyW = true;
 			break;
 		case SDLK_a:
+			if (e.key.keysym.mod & KMOD_LSHIFT) {
+				keyShift = true;
+			}
+
 			keyA = true;
 			break;
 		case SDLK_s:
+			if (e.key.keysym.mod & KMOD_LSHIFT) {
+				keyShift = true;
+			}
+
 			keyS = true;
 			break;
 		case SDLK_d:
+			if (e.key.keysym.mod & KMOD_LSHIFT) {
+				keyShift = true;
+			}
+
 			keyD = true;
-			break;
-		case SDLK_LSHIFT:
-			keyShift = true;
 			break;
 		default:
 			break;
