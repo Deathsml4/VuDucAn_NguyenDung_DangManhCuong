@@ -20,11 +20,26 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	inventoryBar->Set2DPosition(150, SCREEN_HEIGHT - 50);
 	drawables.push_back(inventoryBar);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Heath_Badge1.png");
-	healthBar = std::make_shared<SpriteAnimation>(texture, 1, 1, 24, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Heath_Badge.png");
+	//healthBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
+	healthBar = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	healthBar->SetSize(50, 50);
-	healthBar->Set2DPosition(SCREEN_WIDTH - 300, 150);
+	healthBar->Set2DPosition(SCREEN_WIDTH - 100, SCREEN_HEIGHT - 100);
 	drawables.push_back(healthBar);
+
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Hunger_Badge.png");
+	//hungerBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
+	hungerBar = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	hungerBar->SetSize(50, 50);
+	hungerBar->Set2DPosition(SCREEN_WIDTH - 125, SCREEN_HEIGHT - 52);
+	drawables.push_back(hungerBar);
+
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Hunger_Badge.png");
+	//thirstBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
+	thirstBar = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	thirstBar->SetSize(50, 50);
+	thirstBar->Set2DPosition(SCREEN_WIDTH - 75, SCREEN_HEIGHT - 52);
+	drawables.push_back(thirstBar);
 }
 
 PlayerStatus::~PlayerStatus()

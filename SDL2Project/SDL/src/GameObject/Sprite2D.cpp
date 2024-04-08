@@ -69,3 +69,19 @@ void Sprite2D::SetFlip(SDL_RendererFlip flip)
 	m_flip = flip;
 }
 
+SpriteSheet::SpriteSheet(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime)
+{
+	m_pTexture = texture;
+	m_spriteRow = spriteRow;
+	m_frameCount = frameCount;
+	m_numAction = numAction;
+	m_frameTime = frameTime;
+}
+
+void SpriteSheet::Draw(SDL_Renderer* renderer)
+{
+	if (m_pTexture != nullptr)
+	{
+		m_pTexture->RenderFrame(m_position.x, m_position.y, m_iWidth, m_iHeight, m_spriteRow, 0, m_frameCount, m_numAction, m_angle, m_flip);
+	}
+}

@@ -4,12 +4,12 @@
 #include<map>
 #include<list>
 
+#include "BaseObject.h"
 #include "Sprite2D.h"
 #include "SpriteAnimation.h"
 #include "Define.h"
 #include "Character.h"
 #include "ResourceManagers.h"
-
 
 class PlayerStatus
 {
@@ -18,9 +18,9 @@ public:
 
 	std::shared_ptr<Sprite2D> craftColumn;
 	std::shared_ptr<Sprite2D> inventoryBar;
-	std::shared_ptr<SpriteAnimation> healthBar;
-	std::shared_ptr<SpriteAnimation> hungerBar;
-	std::shared_ptr<SpriteAnimation> thirstBar;
+	std::shared_ptr<Sprite2D> healthBar;
+	std::shared_ptr<Sprite2D> hungerBar;
+	std::shared_ptr<Sprite2D> thirstBar;
 
 	std::vector< std::shared_ptr<Sprite2D> > craftableItem;
 	std::vector< std::shared_ptr<Sprite2D> > inventoryItem;

@@ -27,3 +27,15 @@ public:
 
 };
 
+class SpriteSheet : public Sprite2D
+{
+protected:
+	float			m_numFrames;
+	float		m_frameTime;
+	int			m_spriteRow; 
+	int		m_frameCount; 
+	int m_numAction;
+public:
+	SpriteSheet(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime);
+	void Draw(SDL_Renderer* renderer) override;
+};
