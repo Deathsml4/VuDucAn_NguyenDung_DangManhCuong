@@ -38,7 +38,7 @@ private:
 	std::list<std::shared_ptr<Mob>> mobs; // list the mobs
 	std::shared_ptr<Character> character;
 	std::shared_ptr<SpriteAnimation> testChar;
-	std::shared_ptr<Mob> mob;
+	
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sound>					m_Sound;
