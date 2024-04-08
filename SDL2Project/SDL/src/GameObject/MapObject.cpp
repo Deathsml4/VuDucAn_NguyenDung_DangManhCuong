@@ -11,7 +11,7 @@ MapObject::MapObject(std::shared_ptr<TextureManager> texture)
 	this->texture = texture;
 }
 
-void MapObject::Draw(SDL_Renderer* renderer)
+void MapObject::Init()
 {
 	switch (objectType) {
 	case MObject::MOBJECT_TREE: 
@@ -71,11 +71,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->br.x = GRID_UNITS * ((gridNumber % CHUNK_UNITS));
 		this->br.y = GRID_UNITS * ((gridNumber / CHUNK_UNITS));
 		break;
-	}
-		
-	if (texture != nullptr)
-	{
-		texture->Render(MAP_START_X + tl.x, MAP_START_Y + tl.y, br.x-tl.x, br.y - tl.y, 0, m_flip);
 	}
 	
 }

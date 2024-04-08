@@ -27,8 +27,10 @@ void GSPlay::Init()
 	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
 	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_background->Set2DPosition(0, 0);
+	m_background->SetType(DYNAMIC);
 	// map
 	map = std::make_shared<Map>();
+	
 	
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");

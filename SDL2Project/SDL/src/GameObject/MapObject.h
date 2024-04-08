@@ -31,7 +31,7 @@ enum class MObject
 	MOBJECT_GATE
 };
 
-class MapObject : Sprite2D
+class MapObject : public Sprite2D
 {
 public:
 	MObject objectType;
@@ -44,6 +44,6 @@ public:
 	MapObject();
 	MapObject(std::shared_ptr<TextureManager> texture);
 
-	void Draw(SDL_Renderer* renderer) override;
+	void Init() override;
 };
 
