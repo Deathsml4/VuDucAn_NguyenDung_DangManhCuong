@@ -24,7 +24,7 @@ void Camera::Update(float deltaTime)
 		m_ViewBox.y = (m_Target->Get2DPosition().y  - SCREEN_HEIGHT / 2) ;
 		
 		//Keep the camera in bounds
-		/*if (m_ViewBox.x < 0)
+		if (m_ViewBox.x < 0)
 		{
 			m_ViewBox.x = 0;
 		}
@@ -39,7 +39,7 @@ void Camera::Update(float deltaTime)
 		if (m_ViewBox.y > (2 * SCREEN_HEIGHT - m_ViewBox.h))
 		{
 			m_ViewBox.y = (SCREEN_HEIGHT - m_ViewBox.h);
-		}*/
+		}
 		m_Position = Vector2(m_ViewBox.x, m_ViewBox.y);
 	}
 }

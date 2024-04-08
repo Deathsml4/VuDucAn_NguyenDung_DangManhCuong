@@ -151,12 +151,10 @@ MapChunk::MapChunk()
         else if (objectData[i] == '8') newMObject->objectType = MObject::MOBJECT_GATE;
        
         newGrid->gridNumber = i;
-        newGrid->SetType(DYNAMIC);
         grids.push_back(newGrid);
 
         if (newMObject != NULL) {
             newMObject->gridNumber = i;
-            newMObject->SetType(DYNAMIC);
             objects.push_back(newMObject);
         }
         
@@ -174,12 +172,10 @@ void MapChunk::Draw(SDL_Renderer* renderer)
 {
     for (auto it : grids)
     {
-        it->Init();
         it->Draw(renderer);
     }
     for (auto it : objects) 
     {
-        it->Init();
         it->Draw(renderer);
     }
     for (auto it : mobs)
@@ -215,10 +211,14 @@ GridPoint::GridPoint(std::shared_ptr<TextureManager> texture)
 
 }
 
-void GridPoint::Init()
+void GridPoint::Draw(SDL_Renderer* renderer)
 {
     float x = MAP_START_X + GRID_UNITS * (gridNumber % CHUNK_UNITS - 1);
     float y = MAP_START_Y + GRID_UNITS * (gridNumber / CHUNK_UNITS - 1);
     if(terrain == MTerrain::MTERRAIN_PLAIN) texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
     else texture = ResourceManagers::GetInstance()->GetTexture("Ship_Graveyard_Terrain_Texture.png");
+    if (texture != nullptr)
+    {
+        texture->Render(x, y, GRID_UNITS, GRID_UNITS, 0, m_flip);
+    }
 }

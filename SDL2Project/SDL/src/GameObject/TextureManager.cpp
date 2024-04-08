@@ -83,18 +83,10 @@ void TextureManager::setColor(Uint8 red, Uint8 green, Uint8 blue)
 	SDL_SetTextureColorMod(m_Texture, red, green, blue);
 }
 
-void TextureManager::RenderRelativeCamere(int x, int y, int width, int height, double angle, SDL_RendererFlip flip)
-{
-	SDL_Rect srcRect = { 0 ,0 , width, height };
-	SDL_Rect dstRect = { x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y , width, height };
-	SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
-
-}
-
 void TextureManager::Render(int x, int y, int width, int height, double angle, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect = {0 ,0 , width, height };
-	SDL_Rect dstRect = { x, y, width, height };
+	SDL_Rect dstRect = { x , y , width, height };
 	SDL_RenderCopyEx(Renderer::GetInstance()->GetRenderer(), m_Texture, NULL, &dstRect, angle, nullptr, flip);
 	
 }

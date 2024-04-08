@@ -17,7 +17,7 @@ enum class MTerrain
 	MTERRAIN_RIVER
 };
 
-class GridPoint : public Sprite2D{
+class GridPoint : Sprite2D{
 public:
 	int gridNumber;
 	MTerrain terrain; //terrain type
@@ -26,10 +26,10 @@ public:
 	GridPoint();
 	GridPoint(std::shared_ptr<TextureManager> texture);
 
-	void Init() override;
+	void Draw(SDL_Renderer* renderer) override;
 };
 
-class MapChunk{
+class MapChunk : Sprite2D {
 public:
 	int mobCount = 0;
 	std::shared_ptr<GridPoint> plainTerrain;
@@ -41,7 +41,7 @@ public:
 
 	MapChunk();
 	//MapChunk(char* data);
-	void Draw(SDL_Renderer* renderer);
+	void Draw(SDL_Renderer* renderer) override;
 };
 
 class Map
