@@ -33,7 +33,7 @@ void GSPlay::Init()
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
-	button->SetSize(charWidth, charHeight);
+	button->SetSize(50, 40);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
@@ -55,6 +55,17 @@ void GSPlay::Init()
 		mob->Init();
 		mobs.push_back(mob);
 	}
+
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.png");
+	btnMusicOn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusicOn->Set2DPosition(SCREEN_WIDTH - button->GetWidth() - 10 - 60, 10);
+	btnMusicOn->SetSize(50, 40);
+	btnMusicOn->SetOnClick([]() {
+		std::shared_ptr<Sound> i = std::make_shared<Sound>();
+		i->LoadSound("Data/Sounds/01_Main.wav");
+		i->PlaySound();
+		});
+	m_listButton.push_back(btnMusicOn);
 	
 	//m_listAnimation.push_back(character);
 

@@ -41,7 +41,8 @@ private:
 	
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<Map> map;
-	std::shared_ptr<Sound>					m_Sound;
+	std::shared_ptr<Sound>		m_Sound;
+	std::shared_ptr<MouseButton> btnMusicOn;
 	
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
