@@ -1,4 +1,5 @@
 #include "MapObject.h"
+#include "Camera.h"
 
 MapObject::MapObject()
 {
@@ -75,7 +76,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		
 	if (texture != nullptr)
 	{
-		texture->Render(MAP_START_X + tl.x, MAP_START_Y + tl.y, br.x-tl.x, br.y - tl.y, 0, m_flip);
+		texture->Render(MAP_START_X + tl.x - Camera::GetInstance()->GetPosition().x, MAP_START_Y + tl.y - Camera::GetInstance()->GetPosition().y, br.x-tl.x, br.y - tl.y, 0, m_flip);
 	}
 	
 }

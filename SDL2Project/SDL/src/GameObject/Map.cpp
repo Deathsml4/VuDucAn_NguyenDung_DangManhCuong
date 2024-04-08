@@ -8,6 +8,7 @@
 #include "ResourceManagers.h"
 #include "Map.h"
 #include "PerlinNoise.h"
+#include "Camera.h"
 
 std::string GenerateChunk() {
     std::string result;
@@ -219,6 +220,6 @@ void GridPoint::Draw(SDL_Renderer* renderer)
     else texture = ResourceManagers::GetInstance()->GetTexture("Ship_Graveyard_Terrain_Texture.png");
     if (texture != nullptr)
     {
-        texture->Render(x, y, GRID_UNITS, GRID_UNITS, 0, m_flip);
+        texture->Render(x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, GRID_UNITS, GRID_UNITS, 0, m_flip);
     }
 }
