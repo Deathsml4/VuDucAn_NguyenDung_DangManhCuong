@@ -214,8 +214,8 @@ GridPoint::GridPoint(std::shared_ptr<TextureManager> texture)
 
 void GridPoint::Draw(SDL_Renderer* renderer)
 {
-    float x = MAP_START_X + GRID_UNITS * (gridNumber % CHUNK_UNITS - 1);
-    float y = MAP_START_Y + GRID_UNITS * (gridNumber / CHUNK_UNITS - 1);
+    float x = MAP_START_X + GRID_UNITS * (gridNumber % CHUNK_UNITS);
+    float y = MAP_START_Y + GRID_UNITS * (gridNumber / CHUNK_UNITS);
     if(terrain == MTerrain::MTERRAIN_PLAIN) texture = ResourceManagers::GetInstance()->GetTexture("Wild_Plains_Turf_Texture.png");
     else texture = ResourceManagers::GetInstance()->GetTexture("Ship_Graveyard_Terrain_Texture.png");
     if (texture != nullptr)
