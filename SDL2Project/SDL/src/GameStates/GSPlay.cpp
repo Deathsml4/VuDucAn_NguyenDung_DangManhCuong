@@ -44,7 +44,7 @@ void GSPlay::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
 	character = std::make_shared<Character>(texture, 1, 15, 1, 0.2f);
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
-	character->SetSize(40, 50);
+	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 
 	playerStatus = std::make_shared<PlayerStatus>(character);
@@ -177,27 +177,17 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-	switch (m_KeyPress)//Handle Key event
-	{
-
-	default:
-		break;
-	}
-	// Key State event
-
+	//Sprite update
 	for (auto it : m_listButton)
 	{
 		it->Update(deltaTime);
 	}
 	for (auto it : m_listAnimation)
 	{
-		if (m_KeyPress == 1)
-		{
-			
-		//	it->MoveLeft(deltaTime);
-		}
 		it->Update(deltaTime);
 	}
+
+	//Keystate
 	if (keyW) {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/342px-Frog_Webber_jump_up2.png");
 		character->SetTexture(texture);
@@ -250,7 +240,16 @@ void GSPlay::Update(float deltaTime)
 
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
-	//obj->Update(deltaTime);
+
+	//Collide check
+	if (character->Get2DPosition().x <= MAP_START_X - 10)
+		character->Set2DPosition(MAP_START_X - 10, character->Get2DPosition().y);
+	if (character->Get2DPosition().y <= MAP_START_Y - 20)
+		character->Set2DPosition(character->Get2DPosition().x, MAP_START_Y - 20);
+	if (character->Get2DPosition().x >= MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W)
+		character->Set2DPosition(MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W - 1, character->Get2DPosition().y);
+	if (character->Get2DPosition().y >= MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H)
+		character->Set2DPosition(character->Get2DPosition().x, MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H - 1);
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
