@@ -6,6 +6,9 @@
 #include "GameObject/Camera.h"
 #include "KeyState.h"
 
+float GetDistance(float x1, float y1, float x2, float y2) {
+	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+}
 
 GSPlay::GSPlay()
 {
@@ -240,6 +243,30 @@ void GSPlay::Update(float deltaTime)
 
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
+
+	//Get nearby entities
+	Vector2 charPos = character->Get2DPosition();
+	std::list<std::shared_ptr<MapObject>> newObjList;
+	std::list<std::shared_ptr<Mob>> newMobList;
+
+	for (auto mChunk : map->chunks) {	
+		for (auto mObj : mChunk->objects) {
+			if (mObj->objectType != MObject::MOBJECT_INVALID);
+			float distanceO = GetDistance(charPos.x + CHAR_W/2, charPos.y + CHAR_H/2, (mObj->tl.x + mObj->br.x)/2, (mObj->tl.y + mObj->br.y) / 2 );
+			if (distanceO < GRID_UNITS) {
+				newObjList.push_back(mObj);
+				
+			}
+		}
+		for (auto mMob : mChunk->mobs) {
+			float distanceM = GetDistance(charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2, (mMob->tl.x + mMob->br.x) / 2, (mMob->tl.y + mMob->br.y) / 2);
+			if (distanceM < GRID_UNITS) {
+				newMobList.push_back(mMob);
+			}
+		}
+	}
+	character->m_nearbyObjects = newObjList;
+	character->m_nearbyMobs = newMobList;
 
 	//Collide check
 	if (character->Get2DPosition().x <= MAP_START_X - 10)

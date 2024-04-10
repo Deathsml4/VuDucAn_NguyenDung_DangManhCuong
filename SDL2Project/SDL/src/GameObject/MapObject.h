@@ -8,14 +8,14 @@
 #include"define.h"
 #include"ResourceManagers.h"
 
-const float TREE_HEIGHT = 3.2;
-const float TREE_WIDTH = 2.1;
-const float BUSH_HEIGHT = 1.2;
-const float BUSH_WIDTH = 1.4;
-const float ROCK_HEIGHT = 0.8;
-const float ROCK_WIDTH = 1;
-const float CHESS_HEIGHT = 0.6;
-const float CHESS_WIDTH = 0.7;
+const float TREE_HEIGHT =	3.2	*	 GRID_UNITS;
+const float TREE_WIDTH =	2.1	*	 GRID_UNITS;
+const float BUSH_HEIGHT =	1.2	*	 GRID_UNITS;
+const float BUSH_WIDTH =	1.4	*	 GRID_UNITS;
+const float ROCK_HEIGHT =	0.8	*	 GRID_UNITS;
+const float ROCK_WIDTH =	1	*	 GRID_UNITS;
+const float CHESS_HEIGHT =	0.6	*	 GRID_UNITS;
+const float CHESS_WIDTH =	0.7	*	 GRID_UNITS;
 const double densities[] = { 0.45, 0.25, 0.09, 0.08, 0.05, 0.07, 0.01, 0.15 };
 
 enum class MObject
@@ -37,6 +37,7 @@ public:
 	MObject objectType;
 	int gridNumber;
 	bool active;
+	Vector2 hitbox[2] = { Vector2(0,0), Vector2(0,0) };
 	Vector2 tl, br; // top-left and bottom-right coodinate
 
 	std::shared_ptr<TextureManager> texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");

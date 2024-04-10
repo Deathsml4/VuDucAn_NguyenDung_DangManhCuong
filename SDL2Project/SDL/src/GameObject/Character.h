@@ -1,10 +1,13 @@
 #pragma once
 #include<iostream>
 #include<map>
+#include<list>
 
 #include "CMath.h"
 #include "BaseObject.h"
 #include"SpriteAnimation.h"
+#include "MapObject.h"
+#include "Mob.h"
 
 struct PlayerInput
 {
@@ -42,6 +45,9 @@ public:
     std::map<int, char*>    m_nearbyEntity;
     SavePoint               m_playerLastSavePoint;
     std::map<int, char*>    m_inventory;
+
+    std::list<std::shared_ptr<MapObject> >    m_nearbyObjects;
+    std::list<std::shared_ptr<Mob> >          m_nearbyMobs;
 
     int                     m_maxHP = 0;
     int                     m_maxFood = 0;
