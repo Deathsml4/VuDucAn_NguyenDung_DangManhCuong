@@ -119,7 +119,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		int sizeW = br.x - tl.x;
 		int sizeH = br.y - tl.y;
 		texture->Render(posX, posY, sizeW, sizeH, 0, m_flip);
-		if(this->objectType != MObject::MOBJECT_INVALID) printf("size: %f x %f\n", br.x - tl.x, br.y - tl.y);
+		//if(this->objectType != MObject::MOBJECT_INVALID) printf("size: %f x %f\n", br.x - tl.x, br.y - tl.y);
 	}
 	
 }
