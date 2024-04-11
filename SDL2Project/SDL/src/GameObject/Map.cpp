@@ -228,6 +228,26 @@ void Map::DisplayHitboxs(SDL_Renderer* renderer)
     }
 }
 
+void Map::UpdateCollies()
+{
+    std::shared_ptr< std::list<std::pair<Vector2, Vector2>> > newCollies;
+    for (auto mChunk : this->chunks) {
+        for (auto mObj : mChunk->objects) {
+            if (mObj->objectType == MObject::MOBJECT_ROCK || mObj->objectType == MObject::MOBJECT_TREE) {
+                if (mObj->active && mObj->target.x != 0 && mObj->target.y != 0) {
+                    std::pair <Vector2, Vector2> newPair(mObj->hitbox[0], mObj->hitbox[1]);
+                    std::cout << mObj->hitbox[0].x << " " << mObj->hitbox[0].y << std::endl;
+                    if (newCollies)
+                        newCollies->push_back(newPair);
+                }
+            }
+        }
+        for (auto mMob : mChunk->mobs) {
+
+        }
+    }
+}
+
 GridPoint::GridPoint()
 {
  }

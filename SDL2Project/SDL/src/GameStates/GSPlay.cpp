@@ -10,6 +10,40 @@ float GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 
+void preventCollision(Vector2& point, const std::shared_ptr<std::vector<std::pair<Vector2, Vector2>>>& obstacles) {
+	for (const auto& obstacle : *obstacles) {
+		const Vector2& tl = obstacle.first;
+		const Vector2& br = obstacle.second;
+
+		// If one rectangle is on left side of the other
+		if (point.x > br.x || tl.x > point.x)
+			continue;
+
+		// If one rectangle is above the other
+		if (point.y < br.y || tl.y < point.y)
+			continue;
+
+		// Adjust the position of point to prevent collision
+		int dx = std::max(point.x, tl.x) - std::min(point.x, br.x);
+		int dy = std::max(point.y, tl.y) - std::min(point.y, br.y);
+
+		if (dx < dy) {
+			// Adjust horizontally
+			if (point.x < tl.x)
+				point.x -= dx;
+			else
+				point.x += dx;
+		}
+		else {
+			// Adjust vertically
+			if (point.y < tl.y)
+				point.y -= dy;
+			else
+				point.y += dy;
+		}
+	}
+}
+
 GSPlay::GSPlay()
 {
 }
@@ -280,6 +314,8 @@ void GSPlay::Update(float deltaTime)
 			
 		}
 	}
+	map->UpdateCollies();
+
 	character->m_nearbyObjects = newObjList;
 	character->m_nearbyMobs = newMobList;
 
