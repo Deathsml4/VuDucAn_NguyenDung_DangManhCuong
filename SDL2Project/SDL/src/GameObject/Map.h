@@ -49,10 +49,11 @@ class Map
 public:
 	int h, v; //size of the map in chunk unit
 	std::vector<std::shared_ptr<MapChunk>> chunks;
-
+	std::map <std::shared_ptr<MapObject>, Vector2*> objectHitboxs;
 	Map();
 	//Map(char* data);
 	void Draw(SDL_Renderer* renderer);
-
+	void DisplayHitboxs(SDL_Renderer* renderer);
+	void Setup();
 };
 

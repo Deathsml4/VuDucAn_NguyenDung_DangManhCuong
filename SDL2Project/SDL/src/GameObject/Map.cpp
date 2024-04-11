@@ -203,6 +203,27 @@ void Map::Draw(SDL_Renderer* renderer)
     }
 }
 
+void Map::DisplayHitboxs(SDL_Renderer* renderer)
+{
+    for (auto mChunk : this->chunks) {
+        for (auto mObj : mChunk->objects) {
+            if (mObj->objectType != MObject::MOBJECT_INVALID) {
+                float dimension = 30;
+                float x1 = mObj->hitbox[0].x;
+                float y1 = mObj->hitbox[0].y;
+                float x2 = mObj->hitbox[1].x;
+                float y2 = mObj->hitbox[1].y;
+                auto texture = ResourceManagers::GetInstance()->GetTexture("l.png");
+                texture->Render(x1 - Camera::GetInstance()->GetPosition().x, y1 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
+                texture->Render(x2 - dimension - Camera::GetInstance()->GetPosition().x, y2 - dimension - Camera::GetInstance()->GetPosition().y, dimension, dimension, 180, SDL_FLIP_NONE);
+            }
+        }
+        for (auto mMob : mChunk->mobs) {
+
+        }
+    }
+}
+
 GridPoint::GridPoint()
 {
  }
