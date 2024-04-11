@@ -109,6 +109,9 @@ bool keyA = false;
 bool keyS = false;
 bool keyD = false;
 bool keyShift = false;
+bool keyE = false;
+bool keyBackspace = false;
+bool keyEnter = false;
 
 void GSPlay::HandleKeyEvents(SDL_Event& e)
 {
@@ -133,6 +136,15 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_LSHIFT:
 			keyShift = true;
 			break;
+		case SDLK_e:
+			keyE = true;
+			break;
+		case SDLK_BACKSPACE:
+			keyBackspace = true;
+			break;
+		case SDLK_KP_ENTER:
+			keyEnter = true;
+			break;
 		default:
 			break;
 		}
@@ -153,6 +165,15 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 			break;
 		case SDLK_LSHIFT:
 			keyShift = false;
+			break;
+		case SDLK_e:
+			keyE = false;
+			break;
+		case SDLK_BACKSPACE:
+			keyBackspace = false;
+			break;
+		case SDLK_KP_ENTER:
+			keyEnter = false;
 			break;
 		default:
 			break;

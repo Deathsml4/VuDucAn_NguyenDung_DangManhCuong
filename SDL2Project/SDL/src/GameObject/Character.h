@@ -15,6 +15,9 @@ struct PlayerInput
     bool onA = false;
     bool onS = false;
     bool onD = false;
+    bool onE = false;
+    bool onBackspace = false;
+    bool onEnter = false;
     bool onCtrl = false;
     bool onShift = false;
     bool onRightClick = false;
