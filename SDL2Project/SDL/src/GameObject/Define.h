@@ -11,7 +11,7 @@
 #define CHAR_W 40
 #define CHAR_H 50
 
-#define GRID_UNITS 40
+#define GRID_UNITS 50
 
 #define CHUNK_UNITS 12
 #define CHUNK_HEIGHT CHUNK_UNITS*GRID_UNITS

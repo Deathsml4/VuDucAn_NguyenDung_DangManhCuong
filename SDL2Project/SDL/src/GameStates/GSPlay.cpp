@@ -251,18 +251,12 @@ void GSPlay::Update(float deltaTime)
 
 	for (auto mChunk : map->chunks) {	
 		for (auto mObj : mChunk->objects) {
-			if (mObj->objectType != MObject::MOBJECT_INVALID);
-			float distanceO = GetDistance(charPos.x + CHAR_W/2, charPos.y + CHAR_H/2, (mObj->tl.x + mObj->br.x)/2, (mObj->tl.y + mObj->br.y) / 2 );
-			if (distanceO < GRID_UNITS) {
-				newObjList.push_back(mObj);
-				
+			if (mObj->objectType != MObject::MOBJECT_INVALID) {
+
 			}
 		}
 		for (auto mMob : mChunk->mobs) {
-			float distanceM = GetDistance(charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2, (mMob->tl.x + mMob->br.x) / 2, (mMob->tl.y + mMob->br.y) / 2);
-			if (distanceM < GRID_UNITS) {
-				newMobList.push_back(mMob);
-			}
+			
 		}
 	}
 	character->m_nearbyObjects = newObjList;
@@ -304,4 +298,5 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	for (auto it : playerStatus->drawables) {
 		it->Draw(renderer);
 	}
+	map->DisplayHitboxs(renderer);
 }
