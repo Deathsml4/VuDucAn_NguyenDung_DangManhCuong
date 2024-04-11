@@ -38,7 +38,7 @@ public:
 	int gridNumber;
 	bool active;
 	Vector2 hitbox[2];
-	Vector2 tl, br; // top-left and bottom-right coodinate
+	Vector2 tl, br, target; // top-left and bottom-right coodinate
 
 	std::shared_ptr<TextureManager> texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
 
