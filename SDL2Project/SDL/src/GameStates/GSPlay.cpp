@@ -298,21 +298,36 @@ void GSPlay::Update(float deltaTime)
 	for (auto obstacle : map->collieBoxs) {
 		Vector2 tl = obstacle.first;
 		Vector2 br = obstacle.second;
-		if ((charPos.x <= br.x && charPos.x >= tl.x) ||
-			(charPos.x + CHAR_W <= br.x && charPos.x + CHAR_W >= tl.x)) {
-			if (charPos.y <= br.y && charPos.y + CHAR_H > br.y)
-				character->Set2DPosition(charPos.x, br.y);
-			else if (charPos.y + CHAR_H >= tl.y && charPos.y < tl.y)
-				character->Set2DPosition(charPos.x, tl.y - CHAR_H);
-		} 
-		else if ( (charPos.y <= br.y && charPos.y >= tl.y) ||
-				  (charPos.y + CHAR_H <= br.y && charPos.y + CHAR_H >= tl.y) ){
-			if (charPos.x <= br.x && charPos.x + CHAR_W > br.x) 
-				character->Set2DPosition(br.x, charPos.y);
-			else if (charPos.x + CHAR_W >= tl.x && charPos.x < tl.x)
-				character->Set2DPosition(tl.x - CHAR_W, charPos.y);
+
+		// Check for collision on the x-axis
+		if (charPos.x + CHAR_W > tl.x && charPos.x < br.x) {
+			// Check if character is above or below the obstacle
+			if (charPos.y + CHAR_H > tl.y && charPos.y < br.y) {
+				// Adjust character's y position based on collision
+				if (charPos.y < br.y && charPos.y + CHAR_H > br.y) {
+					character->Set2DPosition(charPos.x, br.y);
+				}
+				else if (charPos.y + CHAR_H > tl.y && charPos.y < tl.y) {
+					character->Set2DPosition(charPos.x, tl.y - CHAR_H);
+				}
+			}
+		}
+
+		// Check for collision on the y-axis
+		if (charPos.y + CHAR_H > tl.y && charPos.y < br.y) {
+			// Check if character is to the left or right of the obstacle
+			if (charPos.x + CHAR_W > tl.x && charPos.x < br.x) {
+				// Adjust character's x position based on collision
+				if (charPos.x < br.x && charPos.x + CHAR_W > br.x) {
+					character->Set2DPosition(br.x, charPos.y);
+				}
+				else if (charPos.x + CHAR_W > tl.x && charPos.x < tl.x) {
+					character->Set2DPosition(tl.x - CHAR_W, charPos.y);
+				}
+			}
 		}
 	}
+
 
 
 }
