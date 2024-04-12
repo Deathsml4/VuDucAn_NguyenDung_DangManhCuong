@@ -10,40 +10,6 @@ float GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 
-void preventCollision(Vector2& point, const std::shared_ptr<std::vector<std::pair<Vector2, Vector2>>>& obstacles) {
-	for (const auto& obstacle : *obstacles) {
-		const Vector2& tl = obstacle.first;
-		const Vector2& br = obstacle.second;
-
-		// If one rectangle is on left side of the other
-		if (point.x > br.x || tl.x > point.x)
-			continue;
-
-		// If one rectangle is above the other
-		if (point.y < br.y || tl.y < point.y)
-			continue;
-
-		// Adjust the position of point to prevent collision
-		int dx = std::max(point.x, tl.x) - std::min(point.x, br.x);
-		int dy = std::max(point.y, tl.y) - std::min(point.y, br.y);
-
-		if (dx < dy) {
-			// Adjust horizontally
-			if (point.x < tl.x)
-				point.x -= dx;
-			else
-				point.x += dx;
-		}
-		else {
-			// Adjust vertically
-			if (point.y < tl.y)
-				point.y -= dy;
-			else
-				point.y += dy;
-		}
-	}
-}
-
 GSPlay::GSPlay()
 {
 }
@@ -314,7 +280,6 @@ void GSPlay::Update(float deltaTime)
 			
 		}
 	}
-	map->UpdateCollies();
 
 	character->m_nearbyObjects = newObjList;
 	character->m_nearbyMobs = newMobList;
@@ -328,6 +293,22 @@ void GSPlay::Update(float deltaTime)
 		character->Set2DPosition(MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W - 1, character->Get2DPosition().y);
 	if (character->Get2DPosition().y >= MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H)
 		character->Set2DPosition(character->Get2DPosition().x, MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H - 1);
+	// Object collision
+	map->UpdateCollies();
+	for (auto obstacle : map->collieBoxs) {
+		Vector2 tl = obstacle.first;
+		Vector2 br = obstacle.second;
+		//std::cout << tl.x << " " << tl.y << std::endl;
+		//if (charPos.x <= br.x && charPos.x >= tl.x && charPos.y <= tl.y && charPos.y >= br.y) std::cout << " Collied " << std::endl;
+		if ( (charPos.x <= br.x && charPos.x >= tl.x) ||
+			 (charPos.x + CHAR_W <= br.x && charPos.x +CHAR_W >= tl.x))
+			if ( charPos.y <= br.y && charPos.y + CHAR_H > br.y) 
+				character->Set2DPosition(charPos.x, br.y);
+			else if ( charPos.y + CHAR_H >= tl.y && charPos.y < tl.y)
+				character->Set2DPosition(charPos.x, tl.y - CHAR_H);
+	}
+
+
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)

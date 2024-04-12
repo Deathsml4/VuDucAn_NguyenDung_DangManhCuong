@@ -51,7 +51,7 @@ public:
 	int h, v; //size of the map in chunk unit
 	std::vector<std::shared_ptr<MapChunk>> chunks;
 	std::map <std::shared_ptr<MapObject>, Vector2*> objectHitboxs;
-	std::shared_ptr< std::vector<std::pair<Vector2, Vector2>> > collieBoxs;
+	std::vector<std::pair<Vector2, Vector2>> collieBoxs;
 	Map();
 	//Map(char* data);
 	void Draw(SDL_Renderer* renderer);
