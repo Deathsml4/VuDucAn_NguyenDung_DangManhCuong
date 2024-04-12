@@ -298,14 +298,20 @@ void GSPlay::Update(float deltaTime)
 	for (auto obstacle : map->collieBoxs) {
 		Vector2 tl = obstacle.first;
 		Vector2 br = obstacle.second;
-		//std::cout << tl.x << " " << tl.y << std::endl;
-		//if (charPos.x <= br.x && charPos.x >= tl.x && charPos.y <= tl.y && charPos.y >= br.y) std::cout << " Collied " << std::endl;
-		if ( (charPos.x <= br.x && charPos.x >= tl.x) ||
-			 (charPos.x + CHAR_W <= br.x && charPos.x +CHAR_W >= tl.x))
-			if ( charPos.y <= br.y && charPos.y + CHAR_H > br.y) 
+		if ((charPos.x <= br.x && charPos.x >= tl.x) ||
+			(charPos.x + CHAR_W <= br.x && charPos.x + CHAR_W >= tl.x)) {
+			if (charPos.y <= br.y && charPos.y + CHAR_H > br.y)
 				character->Set2DPosition(charPos.x, br.y);
-			else if ( charPos.y + CHAR_H >= tl.y && charPos.y < tl.y)
+			else if (charPos.y + CHAR_H >= tl.y && charPos.y < tl.y)
 				character->Set2DPosition(charPos.x, tl.y - CHAR_H);
+		} 
+		else if ( (charPos.y <= br.y && charPos.y >= tl.y) ||
+				  (charPos.y + CHAR_H <= br.y && charPos.y + CHAR_H >= tl.y) ){
+			if (charPos.x <= br.x && charPos.x + CHAR_W > br.x) 
+				character->Set2DPosition(br.x, charPos.y);
+			else if (charPos.x + CHAR_W >= tl.x && charPos.x < tl.x)
+				character->Set2DPosition(tl.x - CHAR_W, charPos.y);
+		}
 	}
 
 
