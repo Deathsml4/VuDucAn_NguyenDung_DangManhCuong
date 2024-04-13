@@ -255,6 +255,9 @@ void GSPlay::Update(float deltaTime)
 			character->MoveRight(deltaTime);
 		}
 	}
+	if (keyEnter) {
+
+	}
 	character->Update(deltaTime);
 	for (auto it : mobs)
 	{
