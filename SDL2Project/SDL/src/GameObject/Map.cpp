@@ -241,12 +241,27 @@ void Map::UpdateCollies()
                     newCollies.push_back(newPair);
                 }
             }
+            else if (mObj->objectType == MObject::MOBJECT_GATE) {
+                checkPoint.first = mObj->hitbox[0];
+                checkPoint.second = mObj->hitbox[1];
+            }
         }
         for (auto mMob : mChunk->mobs) {
 
         }
     }
     collieBoxs = newCollies;
+}
+
+bool Map::isOnTheCheckPoint(Vector2 playerPos)
+{
+    if (((playerPos.x <= checkPoint.second.x && playerPos.x >= checkPoint.first.x) ||
+        (playerPos.x + CHAR_W <= checkPoint.second.x && playerPos.x + CHAR_W >= checkPoint.first.x)) &&
+        ((playerPos.y <= checkPoint.second.y && playerPos.y >= checkPoint.first.y) ||
+        (playerPos.y + CHAR_H <= checkPoint.second.y && playerPos.y + CHAR_H >= checkPoint.first.y)))
+        return true;
+    else 
+    return false;
 }
 
 GridPoint::GridPoint()

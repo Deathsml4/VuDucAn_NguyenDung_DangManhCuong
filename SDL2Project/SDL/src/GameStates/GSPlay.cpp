@@ -201,6 +201,7 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
+	Vector2 charPos = character->Get2DPosition();
 	//Sprite update
 	for (auto it : m_listButton)
 	{
@@ -246,7 +247,7 @@ void GSPlay::Update(float deltaTime)
 	}
 	if (keyD) {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
-		character->SetTexture(texture);		
+		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_NONE);
 		if (keyShift) {
 			character->RunRight(deltaTime);
@@ -257,6 +258,8 @@ void GSPlay::Update(float deltaTime)
 	}
 	if (keyEnter) {
 
+		if (map->isOnTheCheckPoint(charPos)) std::cout << "true" << std::endl;
+		else 		std::cout << "false" << std::endl;
 	}
 	character->Update(deltaTime);
 	for (auto it : mobs)
@@ -269,34 +272,34 @@ void GSPlay::Update(float deltaTime)
 	Camera::GetInstance()->Update(deltaTime);
 
 	//Get nearby entities
-	Vector2 charPos = character->Get2DPosition();
-	std::list<std::shared_ptr<MapObject>> newObjList;
+	/*std::list<std::shared_ptr<MapObject>> newObjList;
 	std::list<std::shared_ptr<Mob>> newMobList;
 
-	for (auto mChunk : map->chunks) {	
+	for (auto mChunk : map->chunks) {
 		for (auto mObj : mChunk->objects) {
 			if (mObj->objectType != MObject::MOBJECT_INVALID) {
 
 			}
 		}
 		for (auto mMob : mChunk->mobs) {
-			
+
 		}
 	}
 
 	character->m_nearbyObjects = newObjList;
-	character->m_nearbyMobs = newMobList;
+	character->m_nearbyMobs = newMobList;*/
 
-	//Collide check
-	if (character->Get2DPosition().x <= MAP_START_X - 10)
-		character->Set2DPosition(MAP_START_X - 10, character->Get2DPosition().y);
-	if (character->Get2DPosition().y <= MAP_START_Y - 20)
-		character->Set2DPosition(character->Get2DPosition().x, MAP_START_Y - 20);
-	if (character->Get2DPosition().x >= MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W)
-		character->Set2DPosition(MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W - 1, character->Get2DPosition().y);
-	if (character->Get2DPosition().y >= MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H)
-		character->Set2DPosition(character->Get2DPosition().x, MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H - 1);
-	// Object collision
+	//Prevent player fall out of the map
+	if (charPos.x <= MAP_START_X - 10)
+		character->Set2DPosition(MAP_START_X - 10, charPos.y);
+	if (charPos.y <= MAP_START_Y - 20)
+		character->Set2DPosition(charPos.x, MAP_START_Y - 20);
+	if (charPos.x >= MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W)
+		character->Set2DPosition(MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W - 1, charPos.y);
+	if (charPos.y >= MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H)
+		character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H - 1);
+
+	// Obstacles
 	map->UpdateCollies();
 	for (auto obstacle : map->collieBoxs) {
 		Vector2 tl = obstacle.first;

@@ -47,6 +47,8 @@ public:
 
 class Map
 {
+private:
+	std::pair<Vector2, Vector2> checkPoint;
 public:
 	int h, v; //size of the map in chunk unit
 	std::vector<std::shared_ptr<MapChunk>> chunks;
@@ -57,5 +59,6 @@ public:
 	void Draw(SDL_Renderer* renderer);
 	void DisplayHitboxs(SDL_Renderer* renderer);
 	void UpdateCollies();
+	bool isOnTheCheckPoint(Vector2 playerPos);
 };
 
