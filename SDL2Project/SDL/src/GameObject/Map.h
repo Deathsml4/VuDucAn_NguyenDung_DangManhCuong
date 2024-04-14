@@ -55,6 +55,7 @@ public:
 	std::map <std::shared_ptr<MapObject>, Vector2*> objectHitboxs;
 	std::vector<std::pair<Vector2, Vector2>> collieBoxs;
 	Map();
+	void Init();
 	//Map(char* data);
 	void Draw(SDL_Renderer* renderer);
 	void DisplayHitboxs(SDL_Renderer* renderer);

@@ -195,6 +195,11 @@ Map::Map() {
     chunks.push_back(newMapChunk);
 }
 
+void Map::Init() {
+    std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>();
+    chunks.push_back(newMapChunk);
+}
+
 void Map::Draw(SDL_Renderer* renderer)
 {
     for (auto it : chunks)

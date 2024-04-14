@@ -258,7 +258,10 @@ void GSPlay::Update(float deltaTime)
 	}
 	if (keyEnter) {
 
-		if (map->isOnTheCheckPoint(charPos)) std::cout << "true" << std::endl;
+		if (map->isOnTheCheckPoint(charPos)) {
+			std::cout << "true" << std::endl;
+			map->Init();
+		}
 		else 		std::cout << "false" << std::endl;
 	}
 	character->Update(deltaTime);
