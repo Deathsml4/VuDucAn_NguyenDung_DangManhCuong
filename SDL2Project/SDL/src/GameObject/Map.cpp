@@ -235,6 +235,8 @@ void Map::DisplayHitboxs(SDL_Renderer* renderer)
 
 void Map::UpdateCollies()
 {
+    //std::cout << collieBoxs.size() << std::endl;
+    //
     std::vector<std::pair<Vector2, Vector2>> newCollies;
     for (auto mChunk : this->chunks) {
         for (auto mObj : mChunk->objects) {

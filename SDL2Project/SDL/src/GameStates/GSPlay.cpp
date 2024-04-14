@@ -259,10 +259,9 @@ void GSPlay::Update(float deltaTime)
 	if (keyEnter) {
 
 		if (map->isOnTheCheckPoint(charPos)) {
-			std::cout << "true" << std::endl;
+			map->chunks.clear();
 			map->Init();
 		}
-		else 		std::cout << "false" << std::endl;
 	}
 	character->Update(deltaTime);
 	for (auto it : mobs)
