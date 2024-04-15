@@ -7,6 +7,7 @@
 #include"Sprite2D.h"
 #include"define.h"
 #include"ResourceManagers.h"
+#include"Character.h"
 
 const float TREE_HEIGHT =	3.2	*	 GRID_UNITS;
 const float TREE_WIDTH =	2.1	*	 GRID_UNITS;
@@ -46,5 +47,7 @@ public:
 	MapObject(std::shared_ptr<TextureManager> texture);
 
 	void Draw(SDL_Renderer* renderer) override;
+	bool CanTouch(std::shared_ptr<Character> character);
+	void Interact(std::shared_ptr<Character> character);
 };
 
