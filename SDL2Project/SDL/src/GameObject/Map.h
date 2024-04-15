@@ -11,6 +11,13 @@
 #include"CMath.h"
 #include"Define.h"
 
+enum class MapMode
+{
+	MAP_INVALID = 0,
+	MAP_VALLILA,
+	MAP_MAZE
+};
+
 enum class MTerrain
 {
 	MTERRAIN_INVALID = 0,
@@ -40,7 +47,7 @@ public:
 	std::vector< std::shared_ptr<MapObject>> objects; //list the objects that are here
 	std::list < std::shared_ptr<Mob>> mobs; // list the mobs
 
-	MapChunk();
+	MapChunk(MapMode mode);
 	//MapChunk(char* data);
 	void Draw(SDL_Renderer* renderer) override;
 };
@@ -54,8 +61,8 @@ public:
 	std::vector<std::shared_ptr<MapChunk>> chunks;
 	std::map <std::shared_ptr<MapObject>, Vector2*> objectHitboxs;
 	std::vector<std::pair<Vector2, Vector2>> collieBoxs;
-	Map();
-	void Init();
+	Map(MapMode mode);
+	void Init(MapMode mode);
 	//Map(char* data);
 	void Draw(SDL_Renderer* renderer);
 	void DisplayHitboxs(SDL_Renderer* renderer);

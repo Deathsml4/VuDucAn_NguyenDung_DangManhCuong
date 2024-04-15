@@ -9,6 +9,7 @@
 #include "Map.h"
 #include "PerlinNoise.h"
 #include "Camera.h"
+#include "Tessellation.h"
 
 std::string GenerateChunk() {
     std::string result;
@@ -115,12 +116,17 @@ std::string GenerateObject(std::string chunkData) {
     return result;
 }
 
-MapChunk::MapChunk()
+MapChunk::MapChunk(MapMode mode)
 {
-    
-
     std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
-    std::string objectData = GenerateObject(data);
+    std::string objectData;
+    if (mode == MapMode::MAP_VALLILA) {
+       objectData = GenerateObject(data);
+    }
+    else {
+        MazeGenerator mazeGenerator(CHUNK_UNITS, CHUNK_UNITS);
+        objectData = mazeGenerator.generateMaze();
+    }
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
         auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
@@ -188,15 +194,22 @@ void MapChunk::Draw(SDL_Renderer* renderer)
     }
 }
 
-Map::Map() {
+Map::Map(MapMode mode) {
     h = 3;
     v = 3;
-    std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>();
-    chunks.push_back(newMapChunk);
+    if (mode == MapMode::MAP_VALLILA) {
+        std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>(mode);
+        chunks.push_back(newMapChunk);
+    }
+    else {
+        std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>(mode);
+        chunks.push_back(newMapChunk);
+    }
+    
 }
 
-void Map::Init() {
-    std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>();
+void Map::Init(MapMode mode) {
+    std::shared_ptr<MapChunk> newMapChunk = std::make_shared<MapChunk>(mode);
     chunks.push_back(newMapChunk);
 }
 
