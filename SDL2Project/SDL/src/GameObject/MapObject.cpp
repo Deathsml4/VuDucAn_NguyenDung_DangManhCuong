@@ -97,36 +97,3 @@ void MapObject::Draw(SDL_Renderer* renderer)
 	}
 	
 }
-
-bool MapObject::CanTouch(std::shared_ptr<Character> character)
-{
-	Vector2 charPos = character->Get2DPosition();
-	if ((tl.x <= charPos.x && br.x >= charPos.x) 
-		|| (tl.x <= charPos.x + CHAR_W && br.x >= charPos.x + CHAR_W) 
-		|| (tl.x >= charPos.x && br.x <= charPos.x + CHAR_W)) {
-		if ((tl.y <= charPos.y && br.y >= charPos.y)
-			|| (tl.y <= charPos.y + CHAR_H && br.y >= charPos.y + CHAR_H)
-			|| (tl.y >= charPos.y && br.y <= charPos.y + CHAR_H)) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-// In progress ...
-void MapObject::Interact(std::shared_ptr<Character> character)
-{
-	if (!CanTouch(character)) return;
-	switch (objectType)
-	{
-	case MObject::MOBJECT_TREE:
-		break;
-	case MObject::MOBJECT_BUSH:
-		objectType = MObject::MOBJECT_DEADBUSH;
-		break;
-	case MObject::MOBJECT_GRASS:
-	case MObject::MOBJECT_CROP:
-	}
-	active = false;
-}

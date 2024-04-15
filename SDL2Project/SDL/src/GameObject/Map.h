@@ -10,7 +10,6 @@
 #include"Mob.h"
 #include"CMath.h"
 #include"Define.h"
-#include"Character.h"
 
 enum class MapMode
 {
@@ -51,7 +50,6 @@ public:
 	MapChunk(MapMode mode);
 	//MapChunk(char* data);
 	void Draw(SDL_Renderer* renderer) override;
-	Vector2 Get2DPosition() { return Vector2(m_position.x, m_position.y); };
 };
 
 class Map
@@ -70,6 +68,5 @@ public:
 	void DisplayHitboxs(SDL_Renderer* renderer);
 	void UpdateCollies();
 	bool isOnTheCheckPoint(Vector2 playerPos);
-	std::vector<std::shared_ptr<MapChunk>> relatedMapChunk(std::shared_ptr<Character> character);
 };
 
