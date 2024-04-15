@@ -223,6 +223,10 @@ void GSPlay::Update(float deltaTime)
 		else {
 			character->MoveUp(deltaTime);
 		}
+
+		//Prevent player fall out of the map
+		if (charPos.y <= MAP_START_Y - 20)
+			character->Set2DPosition(charPos.x, MAP_START_Y - 20);
 	}
 	if (keyA) {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
@@ -234,6 +238,10 @@ void GSPlay::Update(float deltaTime)
 		else {
 			character->MoveLeft(deltaTime);
 		}
+
+		//Prevent player fall out of the map
+		if (charPos.x <= MAP_START_X - 10)
+			character->Set2DPosition(MAP_START_X - 10, charPos.y);
 	}
 	if (keyS) {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
@@ -244,6 +252,10 @@ void GSPlay::Update(float deltaTime)
 		else {
 			character->MoveDown(deltaTime);
 		}
+
+		//Prevent player fall out of the map
+		if (charPos.y >= MAP_START_Y + CHUNK_HEIGHT - CHAR_H)
+			character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_HEIGHT - CHAR_H - 1);
 	}
 	if (keyD) {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
@@ -255,6 +267,10 @@ void GSPlay::Update(float deltaTime)
 		else {
 			character->MoveRight(deltaTime);
 		}
+
+		//Prevent player fall out of the map
+		if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
+			character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
 	}
 	if (keyEnter) {
 
@@ -292,14 +308,14 @@ void GSPlay::Update(float deltaTime)
 	character->m_nearbyMobs = newMobList;*/
 
 	//Prevent player fall out of the map
-	if (charPos.x <= MAP_START_X - 10)
+	/*if (charPos.x <= MAP_START_X - 10)
 		character->Set2DPosition(MAP_START_X - 10, charPos.y);
 	if (charPos.y <= MAP_START_Y - 20)
 		character->Set2DPosition(charPos.x, MAP_START_Y - 20);
-	if (charPos.x >= MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W)
-		character->Set2DPosition(MAP_START_X + CHUNK_UNITS * GRID_UNITS - CHAR_W - 1, charPos.y);
-	if (charPos.y >= MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H)
-		character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_UNITS * GRID_UNITS - CHAR_H - 1);
+	if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
+		character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
+	if (charPos.y >= MAP_START_Y + CHUNK_HEIGHT - CHAR_H)
+		character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_HEIGHT - CHAR_H - 1);*/
 
 	// Obstacles
 	map->UpdateCollies();
