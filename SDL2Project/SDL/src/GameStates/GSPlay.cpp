@@ -31,7 +31,7 @@ void GSPlay::Init()
 	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_background->Set2DPosition(0, 0);
 	// map
-	map = std::make_shared<Map>(MapMode::MAP_MAZE);
+	map = std::make_shared<Map>(MapMode::MAP_VALLILA);
 	
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
