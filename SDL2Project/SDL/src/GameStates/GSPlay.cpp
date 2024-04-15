@@ -279,6 +279,14 @@ void GSPlay::Update(float deltaTime)
 			map->Init();
 		}
 	}
+	if (keyBackspace) {
+		// Interact with mapObject
+		for (auto chunk : map->relatedMapChunk(character)) {
+			for (auto object : chunk->objects) {
+				object->Interact(character);
+			}
+		}
+	}
 	character->Update(deltaTime);
 	for (auto it : mobs)
 	{

@@ -120,6 +120,8 @@ MapChunk::MapChunk()
     
 
     std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
+    this->m_iWidth = CHUNK_UNITS;
+    this->m_iHeight = CHUNK_UNITS;
     std::string objectData = GenerateObject(data);
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
@@ -167,6 +169,8 @@ MapChunk::MapChunk()
 
         mobs.push_back(newMob);
     }
+    this->Set2DPosition(MAP_START_X + GRID_UNITS * (grids[0]->gridNumber % CHUNK_UNITS), 
+        MAP_START_Y + GRID_UNITS * (grids[0]->gridNumber / CHUNK_UNITS));
 }
 
 void MapChunk::Draw(SDL_Renderer* renderer)
@@ -290,4 +294,22 @@ void GridPoint::Draw(SDL_Renderer* renderer)
     {
         texture->Render(x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, GRID_UNITS, GRID_UNITS, 0, m_flip);
     }
+}
+
+std::vector<std::shared_ptr<MapChunk>> Map::relatedMapChunk(std::shared_ptr<Character> character)
+{
+    Vector2 charPos = character->Get2DPosition();
+    std::vector<std::shared_ptr<MapChunk>> relatedMC;
+    for (auto chunk : chunks)
+    {
+        Vector2 tl = chunk->Get2DPosition(); //Top left of the chunk
+        if ((tl.x <= charPos.x && tl.x + CHUNK_UNITS >= charPos.x) 
+            || (tl.x <= charPos.x + CHAR_W && tl.x + CHUNK_UNITS >= charPos.x + CHAR_W)) {
+            if ((tl.y <= charPos.y && tl.y + CHUNK_UNITS >= charPos.y) 
+                || (tl.y <= charPos.y + CHAR_H && tl.y + CHUNK_UNITS >= charPos.y + CHAR_H)) {
+                relatedMC.push_back(chunk);
+            }
+        }
+    }
+    return relatedMC;
 }
