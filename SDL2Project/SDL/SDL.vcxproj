@@ -178,6 +178,7 @@
     <ClCompile Include="src\GameObject\Map.cpp" />
     <ClCompile Include="src\GameObject\PerlinNoise.cpp" />
     <ClCompile Include="src\GameObject\PlayerStatus.cpp" />
+    <ClCompile Include="src\GameObject\Tessellation.cpp" />
     <ClCompile Include="src\GameStates\GSSetting.cpp" />
     <ClCompile Include="src\GameObject\MouseButton.cpp" />
     <ClCompile Include="src\GameObject\Renderer.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="src\GameStates\GSIntro.cpp" />
     <ClCompile Include="src\GameStates\GSMenu.cpp" />
     <ClCompile Include="src\GameStates\GSPlay.cpp" />
+    <ClCompile Include="src\GameStates\GSMaze.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +213,7 @@
     <ClInclude Include="src\GameObject\Define.h" />
     <ClInclude Include="src\GameObject\PerlinNoise.h" />
     <ClInclude Include="src\GameObject\PlayerStatus.h" />
+    <ClInclude Include="src\GameObject\Tessellation.h" />
     <ClInclude Include="src\GameStates\GSSetting.h" />
     <ClInclude Include="src\GameObject\KeyState.h" />
     <ClInclude Include="src\GameObject\Map.h" />
@@ -229,6 +232,7 @@
     <ClInclude Include="src\GameStates\GSIntro.h" />
     <ClInclude Include="src\GameStates\GSMenu.h" />
     <ClInclude Include="src\GameStates\GSPlay.h" />
+    <ClInclude Include="src\GameStates\GSMaze.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

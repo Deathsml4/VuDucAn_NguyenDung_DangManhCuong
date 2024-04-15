@@ -111,6 +111,12 @@
     <ClCompile Include="src\GameStates\GSCredit.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObject\Tessellation.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStates\GSMaze.cpp">
+      <Filter>Source Files\GameState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameObject\BaseObject.h">
@@ -200,14 +206,20 @@
     <ClInclude Include="src\GameStates\GSOptions.h">
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameStates\GSCredit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameObject\PlayerStatus.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObject\PerlinNoise.h">
       <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Tessellation.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameStates\GSMaze.h">
+      <Filter>Source Files\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameStates\GSCredit.h">
+      <Filter>Source Files\GameState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
