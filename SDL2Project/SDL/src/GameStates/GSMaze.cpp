@@ -41,8 +41,8 @@ void GSMaze::Init()
 	m_listButton.push_back(button);
 
 	// Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
-	character = std::make_shared<Character>(texture, 1, 15, 1, 0.2f);
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/375px-Player_Sneaky.png");
+	character = std::make_shared<Character>(texture, 1, 15, 3, 0.2f);
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
@@ -202,8 +202,9 @@ void GSMaze::Update(float deltaTime)
 
 	//Keystate
 	if (keyW) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/342px-Frog_Webber_jump_up2.png");
-		character->SetTexture(texture);
+		/*auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/375px-Player_Sneaky.png");
+		character = std::make_shared<Character>(texture, 3, 15, 3, 0.2f);
+		character->SetTexture(texture);*/
 		if (keyShift) {
 
 			character->RunUp(deltaTime);
@@ -213,9 +214,10 @@ void GSMaze::Update(float deltaTime)
 		}
 	}
 	if (keyA) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		/*auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/375px-Player_Sneaky.png");
+		character = std::make_shared<Character>(texture, 2, 15, 3, 0.2f);
 		character->SetTexture(texture);
-		character->SetFlip(SDL_FLIP_HORIZONTAL);
+		character->SetFlip(SDL_FLIP_HORIZONTAL);*/
 		if (keyShift) {
 			character->RunLeft(deltaTime);
 		}
@@ -224,8 +226,9 @@ void GSMaze::Update(float deltaTime)
 		}
 	}
 	if (keyS) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
-		character->SetTexture(texture);
+		/*auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/375px-Player_Sneaky.png");
+		character = std::make_shared<Character>(texture, 3, 15, 3, 0.2f);
+		character->SetTexture(texture);*/
 		if (keyShift) {
 			character->RunDown(deltaTime);
 		}
@@ -234,9 +237,10 @@ void GSMaze::Update(float deltaTime)
 		}
 	}
 	if (keyD) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		/*auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/375px-Player_Sneaky.png");
+		character = std::make_shared<Character>(texture, 2, 15, 3, 0.2f);
 		character->SetTexture(texture);
-		character->SetFlip(SDL_FLIP_NONE);
+		character->SetFlip(SDL_FLIP_NONE);*/
 		if (keyShift) {
 			character->RunRight(deltaTime);
 		}
