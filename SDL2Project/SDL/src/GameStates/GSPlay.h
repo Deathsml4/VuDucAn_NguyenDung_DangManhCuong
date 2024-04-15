@@ -32,6 +32,16 @@ public:
 	int charHeight = 60;
 	int charWidth = 31;
 private:
+
+	bool keyW = false;
+	bool keyA = false;
+	bool keyS = false;
+	bool keyD = false;
+	bool keyShift = false;
+	bool keyE = false;
+	bool keyBackspace = false;
+	bool keyEnter = false;
+
 	std::shared_ptr<Sprite2D>	m_background;
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;

@@ -31,7 +31,7 @@ void GSPlay::Init()
 	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	m_background->Set2DPosition(0, 0);
 	// map
-	map = std::make_shared<Map>();
+	map = std::make_shared<Map>(MapMode::MAP_VALLILA);
 	
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
@@ -103,15 +103,6 @@ void GSPlay::Resume()
 void GSPlay::HandleEvents()
 {
 }
-
-bool keyW = false;
-bool keyA = false;
-bool keyS = false;
-bool keyD = false;
-bool keyShift = false;
-bool keyE = false;
-bool keyBackspace = false;
-bool keyEnter = false;
 
 void GSPlay::HandleKeyEvents(SDL_Event& e)
 {
@@ -260,7 +251,7 @@ void GSPlay::Update(float deltaTime)
 
 		if (map->isOnTheCheckPoint(charPos)) {
 			map->chunks.clear();
-			map->Init();
+			map->Init(MapMode::MAP_VALLILA);
 		}
 	}
 	character->Update(deltaTime);
