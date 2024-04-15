@@ -28,11 +28,22 @@ void GSMenu::Init()
 	std::shared_ptr<MouseButton> btnPlay = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 
 	btnPlay->SetSize(359 / 2, 130 / 2);
-	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth()) / 2, (SCREEN_HEIGHT - btnPlay->GetHeight()) / 2);
+	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth()) / 2, (SCREEN_HEIGHT - btnPlay->GetHeight() - 140) / 2);
 	btnPlay->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
 		});
 	m_listButton.push_back(btnPlay);
+
+	// play button
+	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
+	std::shared_ptr<MouseButton> btnMaze = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+
+	btnMaze->SetSize(359 / 2, 130 / 2);
+	btnMaze->Set2DPosition((SCREEN_WIDTH - btnMaze->GetWidth()) / 2, (SCREEN_HEIGHT - btnMaze->GetHeight()) / 2);
+	btnMaze->SetOnClick([]() {
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MAZE);
+		});
+	m_listButton.push_back(btnMaze);
 
 	// exit button
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
