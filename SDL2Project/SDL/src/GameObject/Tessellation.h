@@ -79,11 +79,16 @@ public:
             }
         }
 
+        // Choose a random position for the goal
+        int goalX = std::uniform_int_distribution<int>(1, width - 2)(gen);
+        int goalY = std::uniform_int_distribution<int>(1, height - 2)(gen);
+        maze[goalY][goalX] = 2; // Set goal position
+
         // Convert maze to string
         std::string mazeString;
         for (const auto& row : maze) {
             for (int cell : row) {
-                mazeString += (cell == 1) ? '8' : '0';
+                mazeString += (cell == 1) ? '7' : (cell == 2) ? '8' : '0'; // Walls, Goal, Empty Space
             }
         }
 
