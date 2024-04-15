@@ -320,9 +320,11 @@ void GSPlay::Update(float deltaTime)
 			if (charPos.y + CHAR_H > tl.y && charPos.y < br.y) {
 				// Adjust character's y position based on collision
 				if (charPos.y < br.y && charPos.y + CHAR_H > br.y) {
+					if (keyW)
 					character->Set2DPosition(charPos.x, br.y);
 				}
 				else if (charPos.y + CHAR_H > tl.y && charPos.y < tl.y) {
+					if (keyS)
 					character->Set2DPosition(charPos.x, tl.y - CHAR_H);
 				}
 			}
@@ -334,9 +336,11 @@ void GSPlay::Update(float deltaTime)
 			if (charPos.x + CHAR_W > tl.x && charPos.x < br.x) {
 				// Adjust character's x position based on collision
 				if (charPos.x < br.x && charPos.x + CHAR_W > br.x) {
+					if (keyA)
 					character->Set2DPosition(br.x, charPos.y);
 				}
 				else if (charPos.x + CHAR_W > tl.x && charPos.x < tl.x) {
+					if (keyD)
 					character->Set2DPosition(tl.x - CHAR_W, charPos.y);
 				}
 			}
