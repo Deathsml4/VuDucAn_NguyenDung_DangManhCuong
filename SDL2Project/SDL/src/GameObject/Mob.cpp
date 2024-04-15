@@ -40,7 +40,7 @@ void Mob::Spawn(SDL_Renderer* renderer)
 	//br.x = getRand(0, CHUNK_UNITS)*GRID_UNITS;
 	//br.x = getRand(0, CHUNK_UNITS)*GRID_UNITS;
 	//
-	//// random size
+	//// random size	
 	//int scale = getRand(1, 7);
 	//int width = MAX_MOB_WIDTH * scale;
 	//int height = MAX_MOB_HEIGHT * scale;
