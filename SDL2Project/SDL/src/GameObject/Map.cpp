@@ -121,7 +121,7 @@ MapChunk::MapChunk(MapMode mode)
     std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
     std::string objectData;
     if (mode == MapMode::MAP_VALLILA) {
-       objectData = GenerateObject(data);
+        objectData = GenerateObject(data);
     }
     else {
         MazeGenerator mazeGenerator(CHUNK_UNITS, CHUNK_UNITS);
