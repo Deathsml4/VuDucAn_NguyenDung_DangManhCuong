@@ -120,7 +120,14 @@ MapChunk::MapChunk()
     
 
     std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
-    
+    std::string objectData;
+    if (mode == MapMode::MAP_VALLILA) {
+        objectData = GenerateObject(data);
+    }
+    else {
+        MazeGenerator mazeGenerator(CHUNK_UNITS, CHUNK_UNITS);
+        objectData = mazeGenerator.generateMaze();
+    }
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
         auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
