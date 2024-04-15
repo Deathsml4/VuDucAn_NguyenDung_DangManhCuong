@@ -120,9 +120,7 @@ MapChunk::MapChunk()
     
 
     std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
-    this->m_iWidth = CHUNK_UNITS;
-    this->m_iHeight = CHUNK_UNITS;
-    std::string objectData = GenerateObject(data);
+    
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
         auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
