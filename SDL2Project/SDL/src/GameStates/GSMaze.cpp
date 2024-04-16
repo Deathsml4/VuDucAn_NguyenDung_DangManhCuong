@@ -50,13 +50,14 @@ void GSMaze::Init()
 	playerStatus = std::make_shared<PlayerStatus>(character);
 
 	Camera::GetInstance()->SetTarget(character);
-	for (int i = 0; i < MOB_DENSITY; i++) {
-		texture = ResourceManagers::GetInstance()->GetTexture("sprite/DST_Steam_Animated_Sticker_Chester.png");
-		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 10, 1, 0.05f);
-		mob->SetFlip(SDL_FLIP_HORIZONTAL);
-		mob->Init();
-		mobs.push_back(mob);
-	}
+
+	//for (int i = 0; i < MOB_DENSITY; i++) {
+	//	texture = ResourceManagers::GetInstance()->GetTexture("sprite/DST_Steam_Animated_Sticker_Chester.png");
+	//	std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 10, 1, 0.05f);
+	//	mob->SetFlip(SDL_FLIP_HORIZONTAL);
+	//	mob->Init();
+	//	mobs.push_back(mob);
+	//}
 
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.png");
 	btnMusicOn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
@@ -90,9 +91,6 @@ void GSMaze::Pause()
 }
 void GSMaze::Resume()
 {
-	// button close
-	//auto texture = ResourceManagers::GetInstance()->GetTexture("btn_restart.tga");
-	//button->SetTexture(texture);
 
 }
 
@@ -124,12 +122,6 @@ void GSMaze::HandleKeyEvents(SDL_Event& e)
 		case SDLK_LSHIFT:
 			keyShift = true;
 			break;
-		case SDLK_e:
-			keyE = true;
-			break;
-		case SDLK_BACKSPACE:
-			keyBackspace = true;
-			break;
 		case SDLK_KP_ENTER:
 			keyEnter = true;
 			break;
@@ -153,12 +145,6 @@ void GSMaze::HandleKeyEvents(SDL_Event& e)
 			break;
 		case SDLK_LSHIFT:
 			keyShift = false;
-			break;
-		case SDLK_e:
-			keyE = false;
-			break;
-		case SDLK_BACKSPACE:
-			keyBackspace = false;
 			break;
 		case SDLK_KP_ENTER:
 			keyEnter = false;
@@ -205,6 +191,7 @@ void GSMaze::Update(float deltaTime)
 		/*auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/375px-Player_Sneaky.png");
 		character = std::make_shared<Character>(texture, 3, 15, 3, 0.2f);
 		character->SetTexture(texture);*/
+		
 		if (keyShift) {
 
 			character->RunUp(deltaTime);
@@ -265,24 +252,6 @@ void GSMaze::Update(float deltaTime)
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
 
-	//Get nearby entities
-	/*std::list<std::shared_ptr<MapObject>> newObjList;
-	std::list<std::shared_ptr<Mob>> newMobList;
-
-	for (auto mChunk : map->chunks) {
-		for (auto mObj : mChunk->objects) {
-			if (mObj->objectType != MObject::MOBJECT_INVALID) {
-
-			}
-		}
-		for (auto mMob : mChunk->mobs) {
-
-		}
-	}
-
-	character->m_nearbyObjects = newObjList;
-	character->m_nearbyMobs = newMobList;*/
-
 	//Prevent player fall out of the map
 	if (charPos.x <= MAP_START_X - 10)
 		character->Set2DPosition(MAP_START_X - 10, charPos.y);
@@ -305,10 +274,12 @@ void GSMaze::Update(float deltaTime)
 			if (charPos.y + CHAR_H > tl.y && charPos.y < br.y) {
 				// Adjust character's y position based on collision
 				if (charPos.y < br.y && charPos.y + CHAR_H > br.y) {
-					character->Set2DPosition(charPos.x, br.y);
+					if (keyW)
+						character->Set2DPosition(charPos.x, br.y);
 				}
 				else if (charPos.y + CHAR_H > tl.y && charPos.y < tl.y) {
-					character->Set2DPosition(charPos.x, tl.y - CHAR_H);
+					if (keyS)
+						character->Set2DPosition(charPos.x, tl.y - CHAR_H);
 				}
 			}
 		}
@@ -319,10 +290,12 @@ void GSMaze::Update(float deltaTime)
 			if (charPos.x + CHAR_W > tl.x && charPos.x < br.x) {
 				// Adjust character's x position based on collision
 				if (charPos.x < br.x && charPos.x + CHAR_W > br.x) {
-					character->Set2DPosition(br.x, charPos.y);
+					if (keyA)
+						character->Set2DPosition(br.x, charPos.y);
 				}
 				else if (charPos.x + CHAR_W > tl.x && charPos.x < tl.x) {
-					character->Set2DPosition(tl.x - CHAR_W, charPos.y);
+					if (keyD)
+						character->Set2DPosition(tl.x - CHAR_W, charPos.y);
 				}
 			}
 		}

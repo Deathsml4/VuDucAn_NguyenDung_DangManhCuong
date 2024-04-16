@@ -38,8 +38,6 @@ private:
 	bool keyS = false;
 	bool keyD = false;
 	bool keyShift = false;
-	bool keyE = false;
-	bool keyBackspace = false;
 	bool keyEnter = false;
 	std::shared_ptr<Sprite2D>	m_background;
 	//std::shared_ptr<Text>		m_score;
