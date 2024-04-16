@@ -41,7 +41,17 @@ struct SavePoint
     CharacterInventory saveInventory;
 };
 
-struct CharacterStatus {
+class Character : public SpriteAnimation
+{
+public:
+    PlayerInput             m_input;
+    std::map<int, char*>    m_nearbyEntity;
+    SavePoint               m_playerLastSavePoint;
+    std::map<int, char*>    m_inventory;
+
+    std::list<std::shared_ptr<MapObject> >    m_nearbyObjects;
+    std::list<std::shared_ptr<Mob> >          m_nearbyMobs;
+
     int                     m_maxHP = 0;
     int                     m_maxFood = 0;
     int                     m_maxThirst = 0;
@@ -57,24 +67,9 @@ struct CharacterStatus {
     int                     m_currentAtk = 0;
     int                     m_currentInventorySpace = 0;
     int                     m_heldSlot = 0;
-};
-
-class Character : public SpriteAnimation
-{
-public:
-    PlayerInput             m_input;
-    std::map<int, char*>    m_nearbyEntity;
-    SavePoint               m_playerLastSavePoint;
-    std::map<int, char*>    m_inventory;
-
-    std::list<std::shared_ptr<MapObject> >    m_nearbyObjects;
-    std::list<std::shared_ptr<Mob> >          m_nearbyMobs;
-
-    CharacterStatus status;
 
     Character();
     Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
-    Character(CharacterStatus baseStatus, std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
 
     PlayerInput& getInput();
     void Init() override; 
