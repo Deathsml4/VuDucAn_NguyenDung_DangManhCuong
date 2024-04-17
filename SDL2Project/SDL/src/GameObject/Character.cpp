@@ -42,6 +42,10 @@ void Character::Init()
 	this->m_position.x = PLAYER_START;
 	this->m_position.y = PLAYER_START;
 	//Initial status
+	for (int i = 0; i < 15; i++) {
+		std::shared_ptr <Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
+		status.inventory[i] = newItem;
+	}
 	std::shared_ptr <Item> newItem = std::make_shared<Item>(ItemType::Item_FRUIT);
 	status.inventory[0] = newItem;
 
@@ -67,5 +71,19 @@ void Character::Move(float deltaTime)
 		if (m_input.onA) MoveLeft(deltaTime);
 		if (m_input.onS) MoveDown(deltaTime);
 		if (m_input.onD) MoveRight(deltaTime);
+	}
+}
+
+void Character::DisplayInventory(SDL_Renderer* renderer)
+{
+	int index = 0;
+	int pos = 163;
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++) {
+			status.inventory[index]->Set2DPosition(pos + 36*index, SCREEN_HEIGHT - 40);
+			status.inventory[index]->Draw(renderer);
+			index++;
+		}
+		pos = pos + 3;
 	}
 }

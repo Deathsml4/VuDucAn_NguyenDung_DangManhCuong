@@ -81,4 +81,5 @@ public:
     PlayerInput& getInput();
     void Init() override; 
     void Move(float deltaTime);
+    void DisplayInventory(SDL_Renderer* renderer);
 };
