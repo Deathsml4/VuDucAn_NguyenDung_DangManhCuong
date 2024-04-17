@@ -51,7 +51,7 @@ private:
 	int hungerPerConsumable;
 	std::shared_ptr<TextureManager> texture = ResourceManagers::GetInstance()->GetTexture("star.png");
 public:
-	void Consume(Character player);
+	//void Consume(Character player);
 };
 
 class MapObject : Sprite2D
@@ -69,6 +69,6 @@ public:
 	MapObject(std::shared_ptr<TextureManager> texture);
 
 	void Draw(SDL_Renderer* renderer) override;
-	void OnKilled(Character player);
+	//void OnKilled(Character player);
 };
 
