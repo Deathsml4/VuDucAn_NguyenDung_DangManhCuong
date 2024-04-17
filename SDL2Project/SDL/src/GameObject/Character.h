@@ -8,6 +8,7 @@
 #include"SpriteAnimation.h"
 #include "MapObject.h"
 #include "Mob.h"
+#include "Item.h"
 
 struct PlayerInput
 {
@@ -42,21 +43,22 @@ struct SavePoint
 };
 
 struct CharacterStatus {
-    int                     m_maxHP = 0;
-    int                     m_maxFood = 0;
-    int                     m_maxThirst = 0;
-    int                     m_maxSpeed = 0;
-    int                     m_maxAtk = 0;
-    int                     m_maxInventorySize = 0;
-    int                     m_maxHandSize = 0;
+    std::shared_ptr<Item>   inventory[15];
+    int                     maxHP = 0;
+    int                     maxFood = 0;
+    int                     maxThirst = 0;
+    int                     maxSpeed = 0;
+    int                     maxAtk = 0;
+    int                     maxInventorySize = 0;
+    int                     maxHandSize = 0;
 
-    int                     m_currentHP = 0;
-    int                     m_currentFood = 0;
-    int                     m_currentThirst = 0;
-    int                     m_currentSpeed = 0;
-    int                     m_currentAtk = 0;
-    int                     m_currentInventorySpace = 0;
-    int                     m_heldSlot = 0;
+    int                     currentHP = 0;
+    int                     currentFood = 0;
+    int                     currentThirst = 0;
+    int                     currentSpeed = 0;
+    int                     currentAtk = 0;
+    int                     currentInventorySpace = 0;
+    int                     heldSlot = 0;
 };
 
 class Character : public SpriteAnimation

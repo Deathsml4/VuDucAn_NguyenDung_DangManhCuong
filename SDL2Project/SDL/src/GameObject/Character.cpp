@@ -41,7 +41,18 @@ void Character::Init()
 {
 	this->m_position.x = PLAYER_START;
 	this->m_position.y = PLAYER_START;
-	
+	//Initial status
+	std::shared_ptr <Item> newItem = std::make_shared<Item>(ItemType::Item_FRUIT);
+	status.inventory[0] = newItem;
+
+	status.maxHP = 100;
+	status.currentHP = 50;
+
+	status.maxFood = 100;
+	status.currentFood = 70;
+
+	status.maxThirst = 100;
+	status.currentThirst = 20;
 }
 
 void Character::Move(float deltaTime)
