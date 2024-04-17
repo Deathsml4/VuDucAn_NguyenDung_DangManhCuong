@@ -355,12 +355,14 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
 	map->Draw(renderer);
+	map->DisplayHitboxs(renderer);
 	for (auto it : mobs)
 	{
 		it->Draw(renderer);
 	}
 	
 	character->Draw(renderer);
+	
 	
 	//testChar->Draw(renderer);
 	for (auto it : m_listButton)
@@ -376,5 +378,6 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	for (auto it : playerStatus->drawables) {
 		it->Draw(renderer);
 	}
-	map->DisplayHitboxs(renderer);
+	
+	character->DisplayInventory(renderer);
 }

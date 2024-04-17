@@ -5,7 +5,7 @@ Item::Item(ItemType type)
 	switch (type)
 	{
 	case ItemType::Item_INVALID:
-		m_pTexture = ResourceManagers::GetInstance()->GetTexture("Boulder.png");
+		m_pTexture = ResourceManagers::GetInstance()->GetTexture("Star.png");
 		SetSize(ITEM_SIZE, ITEM_SIZE);
 		consumable = false;
 		hungerPerConsumable = 0;
