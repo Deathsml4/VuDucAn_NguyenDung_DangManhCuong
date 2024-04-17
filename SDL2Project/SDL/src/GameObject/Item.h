@@ -1,6 +1,7 @@
 #pragma once
 #include "Sprite2D.h"
 #include "ResourceManagers.h"
+#include "Define.h"
 
 enum class ItemType
 {
@@ -18,6 +19,7 @@ class Item : public Sprite2D
 {
 private:
 	ItemType itemType;
+	int inventorySlot;
 	bool consumable;
 	int hungerPerConsumable;
 public:
