@@ -67,14 +67,14 @@ public:
     SavePoint               m_playerLastSavePoint;
     std::map<int, char*>    m_inventory;
 
-    std::list<std::shared_ptr<MapObject> >    m_nearbyObjects;
-    std::list<std::shared_ptr<Mob> >          m_nearbyMobs;
+    //std::list<std::shared_ptr<MapObject> >    m_nearbyObjects;
+    //std::list<std::shared_ptr<Mob> >          m_nearbyMobs;
 
     CharacterStatus status;
 
     Character();
     Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
-    Character(CharacterStatus baseStatus, std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
+    //Character(CharacterStatus baseStatus, std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
 
     PlayerInput& getInput();
     void Init() override; 

@@ -6,6 +6,7 @@
 #include"SpriteAnimation.h"
 #include"Sprite2D.h"
 #include"define.h"
+#include "Character.h"
 #include"ResourceManagers.h"
 
 const float TREE_HEIGHT =	3.2	*	 GRID_UNITS;
@@ -31,29 +32,6 @@ enum class MObject
 	MOBJECT_GATE
 };
 
-enum class ItemType
-{
-	Item_INVALID = 0,
-	Item_LOG,
-	Item_BERRIES,
-	Item_ROPE,
-	Item_WHEAT,
-	Item_TWIG,
-	Item_FRUIT,
-	Item_ROCK,
-};
-
-class Item 
-{
-private: 
-	ItemType itemType;
-	bool consumable;
-	int hungerPerConsumable;
-	std::shared_ptr<TextureManager> texture = ResourceManagers::GetInstance()->GetTexture("star.png");
-public:
-	//void Consume(Character player);
-};
-
 class MapObject : Sprite2D
 {
 public:
@@ -69,6 +47,6 @@ public:
 	MapObject(std::shared_ptr<TextureManager> texture);
 
 	void Draw(SDL_Renderer* renderer) override;
-	//void OnKilled(Character player);
+	//void OnKilled(Character* player);
 };
 
