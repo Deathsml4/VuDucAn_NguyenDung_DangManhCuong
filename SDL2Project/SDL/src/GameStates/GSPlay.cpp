@@ -355,7 +355,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
 	map->Draw(renderer);
-	map->DisplayHitboxs(renderer);
+	//map->DisplayHitboxs(renderer);
 	for (auto it : mobs)
 	{
 		it->Draw(renderer);

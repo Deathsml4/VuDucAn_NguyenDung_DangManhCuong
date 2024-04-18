@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Define.h"
+#include <Item.h>
 
 Character::Character(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float frameTime)
 {
@@ -46,8 +47,16 @@ void Character::Init()
 		std::shared_ptr <Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
 		status.inventory[i] = newItem;
 	}
-	std::shared_ptr <Item> newItem = std::make_shared<Item>(ItemType::Item_FRUIT);
-	status.inventory[0] = newItem;
+	
+	status.inventory[0] = std::make_shared<Item>(ItemType::Item_FRUIT);
+	status.inventory[1] = std::make_shared<Item>(ItemType::Item_BERRIES);
+	status.inventory[2] = std::make_shared<Item>(ItemType::Item_LOG);
+	status.inventory[3] = std::make_shared<Item>(ItemType::Item_TWIG);
+	status.inventory[4] = std::make_shared<Item>(ItemType::Item_WHEAT);
+	status.inventory[5] = std::make_shared<Item>(ItemType::Item_BERRIES);
+	status.inventory[6] = std::make_shared<Item>(ItemType::Item_ROCK);
+	status.inventory[7] = std::make_shared<Item>(ItemType::Item_ROPE);
+	status.inventory[8] = std::make_shared<Item>(ItemType::Item_ROCK);
 
 	status.maxHP = 100;
 	status.currentHP = 50;
@@ -80,7 +89,7 @@ void Character::DisplayInventory(SDL_Renderer* renderer)
 	int pos = 163;
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 5; j++) {
-			status.inventory[index]->Set2DPosition(pos + 36*index, SCREEN_HEIGHT - 40);
+			status.inventory[index]->Set2DPosition(pos + 36*index, SCREEN_HEIGHT - 38);
 			status.inventory[index]->Draw(renderer);
 			index++;
 		}
