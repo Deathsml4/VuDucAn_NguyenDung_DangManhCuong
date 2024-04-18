@@ -310,42 +310,45 @@ void GSPlay::Update(float deltaTime)
 
 	// Obstacles
 	map->UpdateCollies();
+	Vector2 playerCenter = Vector2(charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2);
 	for (auto obstacle : map->collieBoxs) {
 		Vector2 tl = obstacle.first;
 		Vector2 br = obstacle.second;
 
-		// Check for collision on the x-axis
-		if (charPos.x + CHAR_W > tl.x && charPos.x < br.x) {
-			// Check if character is above or below the obstacle
-			if (charPos.y + CHAR_H > tl.y && charPos.y < br.y) {
-				// Adjust character's y position based on collision
-				if (charPos.y < br.y && charPos.y + CHAR_H > br.y) {
-					if (keyW)
-					character->Set2DPosition(charPos.x, br.y);
+		// Check for collision on both x-axis and y-axis
+		if (playerCenter.x > tl.x && playerCenter.x < br.x &&
+			playerCenter.y > tl.y && playerCenter.y < br.y) {
+
+			// Calculate the overlap amounts in both x and y directions
+			float overlapX = std::min(br.x - playerCenter.x, playerCenter.x - tl.x);
+			float overlapY = std::min(br.y - playerCenter.y, playerCenter.y - tl.y);
+
+			// Adjust character's position based on the smaller overlap
+			if (overlapX < overlapY) {
+				// Adjust x position
+				if (playerCenter.x < (tl.x + br.x) / 2) {
+					// Move left
+					character->Set2DPosition(tl.x - CHAR_W / 2, charPos.y);
 				}
-				else if (charPos.y + CHAR_H > tl.y && charPos.y < tl.y) {
-					if (keyS)
-					character->Set2DPosition(charPos.x, tl.y - CHAR_H);
+				else {
+					// Move right
+					character->Set2DPosition(br.x - CHAR_W / 2, charPos.y);
 				}
 			}
-		}
-
-		// Check for collision on the y-axis
-		if (charPos.y + CHAR_H > tl.y && charPos.y < br.y) {
-			// Check if character is to the left or right of the obstacle
-			if (charPos.x + CHAR_W > tl.x && charPos.x < br.x) {
-				// Adjust character's x position based on collision
-				if (charPos.x < br.x && charPos.x + CHAR_W > br.x) {
-					if (keyA)
-					character->Set2DPosition(br.x, charPos.y);
+			else {
+				// Adjust y position
+				if (playerCenter.y < (tl.y + br.y) / 2) {
+					// Move up
+					character->Set2DPosition(charPos.x, tl.y - CHAR_H / 2);
 				}
-				else if (charPos.x + CHAR_W > tl.x && charPos.x < tl.x) {
-					if (keyD)
-					character->Set2DPosition(tl.x - CHAR_W, charPos.y);
+				else {
+					// Move down
+					character->Set2DPosition(charPos.x, br.y - CHAR_H / 2);
 				}
 			}
 		}
 	}
+
 
 
 
