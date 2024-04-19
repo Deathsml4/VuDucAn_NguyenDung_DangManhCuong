@@ -286,45 +286,8 @@ void GSPlay::Update(float deltaTime)
 	// Obstacles
 	map->UpdateCollies();
 
-	Vector2 playerCenter = Vector2(charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2);
-	for (auto obstacle : map->collieBoxs) {
-		Vector2 tl = obstacle.first;
-		Vector2 br = obstacle.second;
-
-		// Check for collision on both x-axis and y-axis
-		if (playerCenter.x > tl.x && playerCenter.x < br.x &&
-			playerCenter.y > tl.y && playerCenter.y < br.y) {
-
-			// Calculate the overlap amounts in both x and y directions
-			float overlapX = std::min(br.x - playerCenter.x, playerCenter.x - tl.x);
-			float overlapY = std::min(br.y - playerCenter.y, playerCenter.y - tl.y);
-
-			// Adjust character's position based on the smaller overlap
-			if (overlapX < overlapY) {
-				// Adjust x position
-				if (playerCenter.x < (tl.x + br.x) / 2) {
-					// Move left
-					character->Set2DPosition(tl.x - CHAR_W / 2, charPos.y);
-				}
-				else {
-					// Move right
-					character->Set2DPosition(br.x - CHAR_W / 2, charPos.y);
-				}
-			}
-			else {
-				// Adjust y position
-				if (playerCenter.y < (tl.y + br.y) / 2) {
-					// Move up
-					character->Set2DPosition(charPos.x, tl.y - CHAR_H / 2);
-				}
-				else {
-					// Move down
-					character->Set2DPosition(charPos.x, br.y - CHAR_H / 2);
-				}
-			}
-		}
-	}
-
+	
+	UpdateObstacle();
 
 
 
@@ -443,5 +406,47 @@ void GSPlay::DisplayNearestObject(SDL_Renderer* renderer)
 		SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xFF);
 		SDL_RenderDrawLine(renderer, x3 - Camera::GetInstance()->GetPosition().x, y3 - Camera::GetInstance()->GetPosition().y, charPos.x + CHAR_W/2 - Camera::GetInstance()->GetPosition().x, charPos.y + CHAR_H/2 - Camera::GetInstance()->GetPosition().y);
 		//SDL_RenderPresent(renderer);
+	}
+}
+
+void GSPlay::UpdateObstacle()
+{
+	Vector2 playerCenter = Vector2(charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2);
+	for (auto obstacle : map->collieBoxs) {
+		Vector2 tl = obstacle.first;
+		Vector2 br = obstacle.second;
+
+		// Check for collision on both x-axis and y-axis
+		if (playerCenter.x > tl.x && playerCenter.x < br.x &&
+			playerCenter.y > tl.y && playerCenter.y < br.y) {
+
+			// Calculate the overlap amounts in both x and y directions
+			float overlapX = std::min(br.x - playerCenter.x, playerCenter.x - tl.x);
+			float overlapY = std::min(br.y - playerCenter.y, playerCenter.y - tl.y);
+
+			// Adjust character's position based on the smaller overlap
+			if (overlapX < overlapY) {
+				// Adjust x position
+				if (playerCenter.x < (tl.x + br.x) / 2) {
+					// Move left
+					character->Set2DPosition(tl.x - CHAR_W / 2, charPos.y);
+				}
+				else {
+					// Move right
+					character->Set2DPosition(br.x - CHAR_W / 2, charPos.y);
+				}
+			}
+			else {
+				// Adjust y position
+				if (playerCenter.y < (tl.y + br.y) / 2) {
+					// Move up
+					character->Set2DPosition(charPos.x, tl.y - CHAR_H / 2);
+				}
+				else {
+					// Move down
+					character->Set2DPosition(charPos.x, br.y - CHAR_H / 2);
+				}
+			}
+		}
 	}
 }
