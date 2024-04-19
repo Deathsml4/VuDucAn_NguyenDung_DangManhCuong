@@ -308,7 +308,7 @@ void GSPlay::UpdateNearestObject()
 	float nearestDistance = (float)INT_MAX;
 	for (auto obj : map->chunks[0]->objects) {
 		if (obj->objectType == MObject::MOBJECT_INVALID) continue;
-		float distanceToObject = GetDistance(obj->target.x, obj->target.y, charPos.x, charPos.y);
+		float distanceToObject = GetDistance(obj->target.x, obj->target.y, charPos.x + CHAR_W/2, charPos.y + CHAR_H/2);
 
 		if (distanceToObject < nearestDistance) {
 			nearestObject = obj;
