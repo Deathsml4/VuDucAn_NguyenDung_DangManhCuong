@@ -28,6 +28,9 @@ public:
 	void	HandleMouseMoveEvents(int x, int y) override;
 	void	Update(float deltaTime) override;
 	void	Draw(SDL_Renderer* renderer) override;
+
+	void	DisplayNearestObject(SDL_Renderer* renderer);
+
 	int m_KeyPress;
 	int charHeight = 60;
 	int charWidth = 31;
@@ -42,12 +45,15 @@ private:
 	bool keyBackspace = false;
 	bool keyEnter = false;
 
+	Vector2 charPos;
+
 	std::shared_ptr<Sprite2D>	m_background;
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
 	std::list<std::shared_ptr<Mob>> mobs; // list the mobs
 	std::shared_ptr<Character> character;
+	std::shared_ptr<MapObject> nearestObject;
 	std::shared_ptr<SpriteAnimation> testChar;
 	std::shared_ptr<PlayerStatus> playerStatus;
 	std::shared_ptr<MouseButton> button;

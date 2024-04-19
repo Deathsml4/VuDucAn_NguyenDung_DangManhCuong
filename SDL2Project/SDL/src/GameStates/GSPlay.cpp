@@ -192,7 +192,7 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-	Vector2 charPos = character->Get2DPosition();
+	charPos = character->Get2DPosition();
 	//Sprite update
 	for (auto it : m_listButton)
 	{
@@ -280,33 +280,17 @@ void GSPlay::Update(float deltaTime)
 	//Update position of camera
 	Camera::GetInstance()->Update(deltaTime);
 
-	//Get nearby entities
-	/*std::list<std::shared_ptr<MapObject>> newObjList;
-	std::list<std::shared_ptr<Mob>> newMobList;
+	// Get nearest object
+	float nearestDistance = (float)INT_MAX;
+	for (auto obj : map->chunks[0]->objects) {	
+		float distanceToObject = GetDistance(obj->target.x, obj->target.y, charPos.x, charPos.y);
 
-	for (auto mChunk : map->chunks) {
-		for (auto mObj : mChunk->objects) {
-			if (mObj->objectType != MObject::MOBJECT_INVALID) {
-
-			}
-		}
-		for (auto mMob : mChunk->mobs) {
-
+		if (distanceToObject < nearestDistance) {
+			nearestObject = obj;
+			nearestDistance = distanceToObject;
+			
 		}
 	}
-
-	character->m_nearbyObjects = newObjList;
-	character->m_nearbyMobs = newMobList;*/
-
-	//Prevent player fall out of the map
-	/*if (charPos.x <= MAP_START_X - 10)
-		character->Set2DPosition(MAP_START_X - 10, charPos.y);
-	if (charPos.y <= MAP_START_Y - 20)
-		character->Set2DPosition(charPos.x, MAP_START_Y - 20);
-	if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
-		character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
-	if (charPos.y >= MAP_START_Y + CHUNK_HEIGHT - CHAR_H)
-		character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_HEIGHT - CHAR_H - 1);*/
 
 	// Obstacles
 	map->UpdateCollies();
@@ -359,6 +343,8 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	m_background->Draw(renderer);
 	map->Draw(renderer);
 	//map->DisplayHitboxs(renderer);
+	DisplayNearestObject(renderer);
+
 	for (auto it : mobs)
 	{
 		it->Draw(renderer);
@@ -383,4 +369,28 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	}
 	
 	character->DisplayInventory(renderer);
+}
+
+void GSPlay::DisplayNearestObject(SDL_Renderer* renderer)
+{
+	if (nearestObject->objectType != MObject::MOBJECT_INVALID) {
+		float dimension = 30;
+		float x1 = nearestObject->hitbox[0].x;
+		float y1 = nearestObject->hitbox[0].y;
+		float x2 = nearestObject->hitbox[1].x;
+		float y2 = nearestObject->hitbox[1].y;
+		float x3 = nearestObject->target.x;
+		float y3 = nearestObject->target.y;
+		auto texture = ResourceManagers::GetInstance()->GetTexture("l.png");
+		texture->Render(x1 - Camera::GetInstance()->GetPosition().x, y1 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
+		texture->Render(x2 - dimension - Camera::GetInstance()->GetPosition().x, y2 - dimension - Camera::GetInstance()->GetPosition().y, dimension, dimension, 180, SDL_FLIP_NONE);
+		texture = ResourceManagers::GetInstance()->GetTexture("star.png");
+		texture->Render(x3 - dimension / 2 - Camera::GetInstance()->GetPosition().x, y3 - dimension / 2 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
+
+		
+		// Set the draw color to black
+		SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xFF);
+		SDL_RenderDrawLine(renderer, x3 - Camera::GetInstance()->GetPosition().x, y3 - Camera::GetInstance()->GetPosition().y, charPos.x + CHAR_W/2 - Camera::GetInstance()->GetPosition().x, charPos.y + CHAR_H/2 - Camera::GetInstance()->GetPosition().y);
+		//SDL_RenderPresent(renderer);
+	}
 }
