@@ -283,6 +283,7 @@ void GSPlay::Update(float deltaTime)
 	// Get nearest object
 	float nearestDistance = (float)INT_MAX;
 	for (auto obj : map->chunks[0]->objects) {	
+		if (obj->objectType == MObject::MOBJECT_INVALID) continue;
 		float distanceToObject = GetDistance(obj->target.x, obj->target.y, charPos.x, charPos.y);
 
 		if (distanceToObject < nearestDistance) {
