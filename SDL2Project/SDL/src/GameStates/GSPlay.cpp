@@ -202,74 +202,9 @@ void GSPlay::Update(float deltaTime)
 	{
 		it->Update(deltaTime);
 	}
-
 	//Keystate
-	if (keyW) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/342px-Frog_Webber_jump_up2.png");
-		character->SetTexture(texture);
-		if (keyShift) {
+	KeyStateHandler(deltaTime);
 
-			character->RunUp(deltaTime);
-		}
-		else {
-			character->MoveUp(deltaTime);
-		}
-
-		//Prevent player fall out of the map
-		if (charPos.y <= MAP_START_Y - 20)
-			character->Set2DPosition(charPos.x, MAP_START_Y - 20);
-	}
-	if (keyA) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
-		character->SetTexture(texture);
-		character->SetFlip(SDL_FLIP_HORIZONTAL);
-		if (keyShift) {
-			character->RunLeft(deltaTime);
-		}
-		else {
-			character->MoveLeft(deltaTime);
-		}
-
-		//Prevent player fall out of the map
-		if (charPos.x <= MAP_START_X - 10)
-			character->Set2DPosition(MAP_START_X - 10, charPos.y);
-	}
-	if (keyS) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
-		character->SetTexture(texture);
-		if (keyShift) {
-			character->RunDown(deltaTime);
-		}
-		else {
-			character->MoveDown(deltaTime);
-		}
-
-		//Prevent player fall out of the map
-		if (charPos.y >= MAP_START_Y + CHUNK_HEIGHT - CHAR_H)
-			character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_HEIGHT - CHAR_H - 1);
-	}
-	if (keyD) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
-		character->SetTexture(texture);
-		character->SetFlip(SDL_FLIP_NONE);
-		if (keyShift) {
-			character->RunRight(deltaTime);
-		}
-		else {
-			character->MoveRight(deltaTime);
-		}
-
-		//Prevent player fall out of the map
-		if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
-			character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
-	}
-	if (keyEnter) {
-
-		if (map->isOnTheCheckPoint(charPos)) {
-			map->chunks.clear();
-			map->Init(MapMode::MAP_VALLILA);
-		}
-	}
 	character->Update(deltaTime);
 	for (auto it : mobs)
 	{
@@ -285,8 +220,6 @@ void GSPlay::Update(float deltaTime)
 
 	// Obstacles
 	map->UpdateCollies();
-
-	
 	UpdateObstacle();
 
 
@@ -447,6 +380,76 @@ void GSPlay::UpdateObstacle()
 					character->Set2DPosition(charPos.x, br.y - CHAR_H / 2);
 				}
 			}
+		}
+	}
+}
+
+void GSPlay::KeyStateHandler(float deltaTime)
+{
+	if (keyW) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/342px-Frog_Webber_jump_up2.png");
+		character->SetTexture(texture);
+		if (keyShift) {
+
+			character->RunUp(deltaTime);
+		}
+		else {
+			character->MoveUp(deltaTime);
+		}
+
+		//Prevent player fall out of the map
+		if (charPos.y <= MAP_START_Y - 20)
+			character->Set2DPosition(charPos.x, MAP_START_Y - 20);
+	}
+	if (keyA) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		character->SetTexture(texture);
+		character->SetFlip(SDL_FLIP_HORIZONTAL);
+		if (keyShift) {
+			character->RunLeft(deltaTime);
+		}
+		else {
+			character->MoveLeft(deltaTime);
+		}
+
+		//Prevent player fall out of the map
+		if (charPos.x <= MAP_START_X - 10)
+			character->Set2DPosition(MAP_START_X - 10, charPos.y);
+	}
+	if (keyS) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
+		character->SetTexture(texture);
+		if (keyShift) {
+			character->RunDown(deltaTime);
+		}
+		else {
+			character->MoveDown(deltaTime);
+		}
+
+		//Prevent player fall out of the map
+		if (charPos.y >= MAP_START_Y + CHUNK_HEIGHT - CHAR_H)
+			character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_HEIGHT - CHAR_H - 1);
+	}
+	if (keyD) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		character->SetTexture(texture);
+		character->SetFlip(SDL_FLIP_NONE);
+		if (keyShift) {
+			character->RunRight(deltaTime);
+		}
+		else {
+			character->MoveRight(deltaTime);
+		}
+
+		//Prevent player fall out of the map
+		if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
+			character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
+	}
+	if (keyEnter) {
+
+		if (map->isOnTheCheckPoint(charPos)) {
+			map->chunks.clear();
+			map->Init(MapMode::MAP_VALLILA);
 		}
 	}
 }
