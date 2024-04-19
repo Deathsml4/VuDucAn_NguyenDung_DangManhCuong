@@ -33,6 +33,8 @@ public:
 	int charWidth = 31;
 private:
 
+	bool CheckCollision(SDL_Rect a, SDL_Rect b);
+
 	bool keyW = false;
 	bool keyA = false;
 	bool keyS = false;
