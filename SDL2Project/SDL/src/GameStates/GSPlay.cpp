@@ -281,20 +281,11 @@ void GSPlay::Update(float deltaTime)
 	Camera::GetInstance()->Update(deltaTime);
 
 	// Get nearest object
-	float nearestDistance = (float)INT_MAX;
-	for (auto obj : map->chunks[0]->objects) {	
-		if (obj->objectType == MObject::MOBJECT_INVALID) continue;
-		float distanceToObject = GetDistance(obj->target.x, obj->target.y, charPos.x, charPos.y);
-
-		if (distanceToObject < nearestDistance) {
-			nearestObject = obj;
-			nearestDistance = distanceToObject;
-			
-		}
-	}
+	UpdateNearestObject();
 
 	// Obstacles
 	map->UpdateCollies();
+
 	Vector2 playerCenter = Vector2(charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2);
 	for (auto obstacle : map->collieBoxs) {
 		Vector2 tl = obstacle.first;
@@ -414,6 +405,21 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	}
 	
 	character->DisplayInventory(renderer);
+}
+
+void GSPlay::UpdateNearestObject()
+{
+	float nearestDistance = (float)INT_MAX;
+	for (auto obj : map->chunks[0]->objects) {
+		if (obj->objectType == MObject::MOBJECT_INVALID) continue;
+		float distanceToObject = GetDistance(obj->target.x, obj->target.y, charPos.x, charPos.y);
+
+		if (distanceToObject < nearestDistance) {
+			nearestObject = obj;
+			nearestDistance = distanceToObject;
+
+		}
+	}
 }
 
 void GSPlay::DisplayNearestObject(SDL_Renderer* renderer)

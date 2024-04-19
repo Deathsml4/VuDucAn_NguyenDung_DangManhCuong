@@ -29,7 +29,9 @@ public:
 	void	Update(float deltaTime) override;
 	void	Draw(SDL_Renderer* renderer) override;
 
+	void	UpdateNearestObject();
 	void	DisplayNearestObject(SDL_Renderer* renderer);
+	void	UpdateObstacle();
 
 	int m_KeyPress;
 	int charHeight = 60;
