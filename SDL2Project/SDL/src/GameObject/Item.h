@@ -25,4 +25,5 @@ private:
 public:
 	//void Consume(Character* player);
 	Item(ItemType type);
+	ItemType GetType();
 };

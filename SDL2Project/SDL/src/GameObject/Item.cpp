@@ -56,3 +56,8 @@ Item::Item(ItemType type)
 		break;
 	}
 }
+
+ItemType Item::GetType()
+{
+	return this->itemType;
+}
