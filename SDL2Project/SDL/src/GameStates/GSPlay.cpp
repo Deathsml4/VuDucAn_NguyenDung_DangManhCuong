@@ -333,7 +333,7 @@ void GSPlay::DisplayNearestObject(SDL_Renderer* renderer)
 		texture->Render(x2 - dimension - Camera::GetInstance()->GetPosition().x, y2 - dimension - Camera::GetInstance()->GetPosition().y, dimension, dimension, 180, SDL_FLIP_NONE);
 		texture = ResourceManagers::GetInstance()->GetTexture("star.png");
 		texture->Render(x3 - dimension / 2 - Camera::GetInstance()->GetPosition().x, y3 - dimension / 2 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
-		//std::cout << "object active: " << nearestObject->active << std::endl;
+		std::cout << "object active: " << nearestObject->hp << std::endl;
 		SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xFF);
 		SDL_RenderDrawLine(renderer, x3 - Camera::GetInstance()->GetPosition().x, y3 - Camera::GetInstance()->GetPosition().y, charPos.x + CHAR_W/2 - Camera::GetInstance()->GetPosition().x, charPos.y + CHAR_H/2 - Camera::GetInstance()->GetPosition().y);
 		//SDL_RenderPresent(renderer);
@@ -461,12 +461,16 @@ void GSPlay::InteractToObject()
 
 	if (distanceToObject < GRID_UNITS) {
 		// Set object to be disabled
-		map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
-		map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0,0);
-		map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
-		std::cout << "hit" << nearestObject->active << std::endl;
+		if (map->chunks[0]->objects[nearestObject->gridNumber]->hp <= 0) {
+			map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
+			map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0,0);
+			map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
+		}
+		map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
+		
+		std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 	}
 	else {
-		std::cout << "miss" << std::endl;
+		std::cout << "Cannot reach the target!" << std::endl;
 	}
 }

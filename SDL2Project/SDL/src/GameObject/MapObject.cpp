@@ -9,6 +9,8 @@ MapObject::MapObject()
 MapObject::MapObject(std::shared_ptr<TextureManager> texture)
 {
 	MapObject();
+	this->active = true;
+	this->hp = 10;
 	this->texture = texture;
 }
 
@@ -29,8 +31,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - TREE_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_BUSH:
@@ -39,8 +39,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_GRASS:
@@ -49,8 +47,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_CROP:
@@ -59,8 +55,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_DEADBUSH:
@@ -69,8 +63,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_ROCK:
@@ -79,8 +71,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - ROCK_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_CHESS:
@@ -89,8 +79,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - CHESS_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 
 	case MObject::MOBJECT_GATE:
@@ -99,8 +87,6 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - CHESS_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->active = true;
-		this->hp = 10;
 		break;
 	}
 	if (active = true) {
