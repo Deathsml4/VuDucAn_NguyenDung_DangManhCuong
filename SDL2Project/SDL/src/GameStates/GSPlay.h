@@ -33,6 +33,7 @@ public:
 	void	DisplayNearestObject(SDL_Renderer* renderer);
 	void	UpdateObstacle();
 	void	KeyStateHandler(float deltaTime);
+	void	InteractToObject();
 
 	int m_KeyPress;
 	int charHeight = 60;

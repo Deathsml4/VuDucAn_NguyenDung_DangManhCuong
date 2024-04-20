@@ -38,6 +38,7 @@ public:
 	MObject objectType;
 	int gridNumber;
 	bool active;
+	int hp;
 	Vector2 hitbox[2];
 	Vector2 tl, br, target; // top-left and bottom-right coodinate
 
@@ -47,6 +48,6 @@ public:
 	MapObject(std::shared_ptr<TextureManager> texture);
 
 	void Draw(SDL_Renderer* renderer) override;
-	//void OnKilled(Character* player);
+	void PreUpdate();
 };
 
