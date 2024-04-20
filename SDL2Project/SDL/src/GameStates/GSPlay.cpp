@@ -224,6 +224,8 @@ void GSPlay::Update(float deltaTime)
 
 	// Cooldown
 	interactCD = interactCD <= 0 ? 0 : interactCD-1;
+
+	UpdateTime();
 }
 
 bool GSPlay::CheckCollision(SDL_Rect a, SDL_Rect b)
@@ -471,7 +473,7 @@ void GSPlay::InteractToObject()
 				map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
 			}
 			interactCD = INTERACT_CD;
-			std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
+			//std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 		}
 		else {
 			std::cout << "On cooling down, hold on!" << std::endl;
@@ -481,4 +483,22 @@ void GSPlay::InteractToObject()
 	else {
 		std::cout << "Cannot reach the target!" << std::endl;
 	}
+}
+
+void GSPlay::UpdateTime()
+{
+	timeMs++;
+	if (timeMs == LIMIT_FPS*2) {
+		timeS++;
+		if (timeS == 60) {
+			timeM++;
+			if (timeM == 60) {
+				timeH++;
+				timeM = 0;
+			}
+			timeS = 0;
+		}
+		timeMs = 0;
+	}
+	std::cout << timeH << ":" << timeM << ":" << timeS << ":" << timeMs << std::endl;
 }

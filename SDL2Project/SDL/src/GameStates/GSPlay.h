@@ -34,9 +34,14 @@ public:
 	void	UpdateObstacle();
 	void	KeyStateHandler(float deltaTime);
 	void	InteractToObject();
+	void	UpdateTime();
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;
+	int timeH = 0;
+	int timeM = 0;
+	int timeS = 0;
+	int timeMs = 0;
 	int charHeight = 60;
 	int charWidth = 31;
 private:
