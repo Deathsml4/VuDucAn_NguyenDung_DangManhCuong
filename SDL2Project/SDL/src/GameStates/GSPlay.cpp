@@ -470,7 +470,7 @@ void GSPlay::InteractToObject()
 			else {
 				map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
 			}
-			interactCD = 100;
+			interactCD = INTERACT_CD;
 			std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 		}
 		else {

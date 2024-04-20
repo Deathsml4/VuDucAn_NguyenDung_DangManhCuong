@@ -36,7 +36,7 @@ public:
 	void	InteractToObject();
 
 	int m_KeyPress;
-	float interactCD = 100;
+	float interactCD = INTERACT_CD;
 	int charHeight = 60;
 	int charWidth = 31;
 private:

@@ -24,3 +24,5 @@
 #define MOB_DENSITY CHUNK_SIZE / 40
 
 #define ITEM_SIZE 30
+
+#define INTERACT_CD 50
