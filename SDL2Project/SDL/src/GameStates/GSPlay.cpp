@@ -222,8 +222,8 @@ void GSPlay::Update(float deltaTime)
 	map->UpdateCollies();
 	UpdateObstacle();
 
-
-
+	// Cooldown
+	interactCD = interactCD <= 0 ? 0 : interactCD-1;
 }
 
 bool GSPlay::CheckCollision(SDL_Rect a, SDL_Rect b)
@@ -460,15 +460,23 @@ void GSPlay::InteractToObject()
 	float distanceToObject = GetDistance(nearestObject->target.x, nearestObject->target.y, charPos.x + CHAR_W / 2, charPos.y + CHAR_H / 2);
 
 	if (distanceToObject < GRID_UNITS) {
-		// Set object to be disabled
-		if (map->chunks[0]->objects[nearestObject->gridNumber]->hp <= 0) {
-			map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
-			map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0,0);
-			map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
+		if (interactCD <= 0) {
+			// Set object to be disabled
+			if (map->chunks[0]->objects[nearestObject->gridNumber]->hp <= 0) {
+				map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
+				map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0, 0);
+				map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
+			}
+			else {
+				map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
+			}
+			interactCD = 100;
+			std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 		}
-		map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
+		else {
+			std::cout << "On cooling down, hold on!" << std::endl;
+		}
 		
-		std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 	}
 	else {
 		std::cout << "Cannot reach the target!" << std::endl;
