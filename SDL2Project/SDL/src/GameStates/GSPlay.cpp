@@ -476,6 +476,7 @@ void GSPlay::InteractToObject()
 		if (interactCD <= 0) {
 			// Set object to be disabled
 			if (map->chunks[0]->objects[nearestObject->gridNumber]->hp <= 0) {
+				GartherItem(map->chunks[0]->objects[nearestObject->gridNumber]->objectType);
 				map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
 				map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0, 0);
 				map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
@@ -487,12 +488,12 @@ void GSPlay::InteractToObject()
 			//std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 		}
 		else {
-			std::cout << "On cooling down, hold on!" << std::endl;
+			//std::cout << "On cooling down, hold on!" << std::endl;
 		}
 		
 	}
 	else {
-		std::cout << "Cannot reach the target!" << std::endl;
+		//std::cout << "Cannot reach the target!" << std::endl;
 	}
 }
 
@@ -512,4 +513,52 @@ void GSPlay::UpdateTime()
 		timeMs = 0;
 	}
 	std::cout << timeH << ":" << timeM << ":" << timeS << ":" << timeMs << std::endl;
+}
+
+void GSPlay::GartherItem(MObject killedObj)
+{
+	std::shared_ptr<Item> newItem[5];
+	for (int i = 0; i < 5; i++) {
+		newItem[i] = std::make_shared<Item>(ItemType::Item_INVALID);
+	}
+	switch (killedObj)
+	{
+	case MObject::MOBJECT_INVALID:
+		break;
+	case MObject::MOBJECT_TREE:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_LOG);
+		newItem[1] = std::make_shared<Item>(ItemType::Item_FRUIT);
+		break;
+	case MObject::MOBJECT_BUSH:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_BERRIES);
+		break;
+	case MObject::MOBJECT_GRASS:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_ROPE);
+		break;
+	case MObject::MOBJECT_CROP:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_WHEAT);
+		break;
+	case MObject::MOBJECT_DEADBUSH:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_TWIG);
+		break;
+	case MObject::MOBJECT_CHESS:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_FRUIT);
+		newItem[1] = std::make_shared<Item>(ItemType::Item_BERRIES);
+		break;
+	case MObject::MOBJECT_ROCK:
+		newItem[0] = std::make_shared<Item>(ItemType::Item_ROCK);
+		break;
+	case MObject::MOBJECT_GATE:
+		break;
+	default:
+		break;
+	}
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 15; j++) {
+			if (character->status.inventory[j]->GetType() == ItemType::Item_INVALID && newItem[i]->GetType() != ItemType::Item_INVALID) {
+				character->status.inventory[j] = newItem[i];
+				break;
+			}
+		}
+	}
 }

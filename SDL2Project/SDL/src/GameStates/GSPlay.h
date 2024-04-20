@@ -35,6 +35,7 @@ public:
 	void	KeyStateHandler(float deltaTime);
 	void	InteractToObject();
 	void	UpdateTime();
+	void	GartherItem(MObject killedObj);
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;
