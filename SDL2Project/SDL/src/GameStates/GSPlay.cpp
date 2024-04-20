@@ -335,10 +335,21 @@ void GSPlay::DisplayNearestObject(SDL_Renderer* renderer)
 		texture->Render(x2 - dimension - Camera::GetInstance()->GetPosition().x, y2 - dimension - Camera::GetInstance()->GetPosition().y, dimension, dimension, 180, SDL_FLIP_NONE);
 		texture = ResourceManagers::GetInstance()->GetTexture("star.png");
 		texture->Render(x3 - dimension / 2 - Camera::GetInstance()->GetPosition().x, y3 - dimension / 2 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
-		std::cout << "object active: " << nearestObject->hp << std::endl;
 		SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xFF);
 		SDL_RenderDrawLine(renderer, x3 - Camera::GetInstance()->GetPosition().x, y3 - Camera::GetInstance()->GetPosition().y, charPos.x + CHAR_W/2 - Camera::GetInstance()->GetPosition().x, charPos.y + CHAR_H/2 - Camera::GetInstance()->GetPosition().y);
-		//SDL_RenderPresent(renderer);
+		//Draw the HP 
+
+		int curHP = nearestObject->hp;
+		int barWidth = curHP * (x2 - x1) / 10;
+		// Set the draw color based on value
+		if (curHP >= 7) {
+			SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0xFF); // Green
+		}
+		else {
+			SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
+		}
+		SDL_Rect hpBarRect = { x1 - Camera::GetInstance()->GetPosition().x, y1 - Camera::GetInstance()->GetPosition().y, barWidth, 5};
+		SDL_RenderFillRect(renderer, &hpBarRect);
 	}
 }
 
