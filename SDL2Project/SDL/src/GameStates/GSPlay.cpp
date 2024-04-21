@@ -6,6 +6,17 @@
 #include "GameObject/Camera.h"
 #include "KeyState.h"
 
+std::string formatTime(int timeH, int timeM, int timeS, int timeMs) {
+	std::stringstream ss;
+	ss << std::setfill('0');
+	ss << std::setw(2) << timeH << ":";
+	ss << std::setw(2) << timeM << ":";
+	ss << std::setw(2) << timeS << ":";
+	ss << std::setw(2) << timeMs;
+
+	return ss.str();
+}
+
 float GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -456,7 +467,7 @@ void GSPlay::InteractToObject()
 void GSPlay::UpdateTime()
 {
 	timeMs++;
-	if (timeMs == LIMIT_FPS*2) {
+	if (timeMs == LIMIT_FPS) {
 		timeS++;
 		if (timeS == 60) {
 			timeM++;
@@ -468,7 +479,7 @@ void GSPlay::UpdateTime()
 		}
 		timeMs = 0;
 	}
-	std::cout << timeH << ":" << timeM << ":" << timeS << ":" << timeMs << std::endl;
+	std::cout << formatTime(timeH, timeM, timeS, timeMs) << std::endl;
 }
 
 void GSPlay::GatherItem(MObject killedObj)

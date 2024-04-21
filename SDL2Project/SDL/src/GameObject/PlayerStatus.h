@@ -10,6 +10,7 @@
 #include "Define.h"
 #include "Character.h"
 #include "ResourceManagers.h"
+#include "Text.h"
 
 class PlayerStatus
 {
@@ -26,6 +27,7 @@ public:
 	std::vector< std::shared_ptr<Sprite2D> > inventoryItem;
 
 	std::list< std::shared_ptr<BaseObject>> drawables;
+	std::string time;
 
 	PlayerStatus();
 	PlayerStatus(std::shared_ptr<Character> character);
