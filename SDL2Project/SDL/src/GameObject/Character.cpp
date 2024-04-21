@@ -30,10 +30,13 @@ void Character::Init()
 	for (int i = 0; i < 15; i++) {
 		std::shared_ptr <Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
 		status.inventory[i] = newItem;
+		status.inventorySlot[i] = 0;
 	}
 	
 	status.inventory[0] = std::make_shared<Item>(ItemType::Item_FRUIT);
 	status.inventory[1] = std::make_shared<Item>(ItemType::Item_BERRIES);
+	status.inventorySlot[0] = 1;
+	status.inventorySlot[1] = 1;
 
 	status.maxHP = 100;
 	status.currentHP = 50;
