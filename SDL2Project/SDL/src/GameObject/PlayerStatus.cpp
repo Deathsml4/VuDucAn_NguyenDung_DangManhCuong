@@ -43,7 +43,7 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 
 	///Set Font
 	textColor = { 255, 255, 255 };
-	formattedTime = std::make_shared<Text>("Data/MonsterGame-EjB9.ttf", textColor);
+	formattedTime = std::make_shared<Text>("Data/Text/Consolas.ttf", textColor);
 	formattedTime->SetSize(120, 40);
 	formattedTime->Set2DPosition(SCREEN_WIDTH - formattedTime->GetWidth() - 120, 10);
 	formattedTime->LoadFromRenderText(time);
