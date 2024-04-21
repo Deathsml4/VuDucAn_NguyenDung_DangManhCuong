@@ -40,6 +40,14 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	thirstBar->SetSize(50, 50);
 	thirstBar->Set2DPosition(SCREEN_WIDTH - 75, SCREEN_HEIGHT - 52);
 	drawables.push_back(thirstBar);
+
+	///Set Font
+	textColor = { 255, 255, 255 };
+	formattedTime = std::make_shared<Text>("Data/MonsterGame-EjB9.ttf", textColor);
+	formattedTime->SetSize(120, 40);
+	formattedTime->Set2DPosition(SCREEN_WIDTH - formattedTime->GetWidth() - 120, 10);
+	formattedTime->LoadFromRenderText(time);
+	drawables.push_back(formattedTime);
 }
 
 PlayerStatus::~PlayerStatus()

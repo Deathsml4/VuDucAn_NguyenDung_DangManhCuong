@@ -83,7 +83,12 @@ void GSPlay::Init()
 		});
 	m_listButton.push_back(btnMusicOn);
 	
-	//m_listAnimation.push_back(character);
+	///Set Font
+	textColor = { 255, 255, 255 };
+	formattedTime = std::make_shared<Text>("Data/MonsterGame-EjB9.ttf", textColor);
+	formattedTime->SetSize(120, 40);
+	formattedTime->Set2DPosition(SCREEN_WIDTH - formattedTime->GetWidth() - 120, 10);
+	formattedTime->LoadFromRenderText(playerStatus->time);
 
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
@@ -237,6 +242,10 @@ void GSPlay::Update(float deltaTime)
 	interactCD = interactCD <= 0 ? 0 : interactCD-1;
 
 	UpdateTime();
+
+	for (auto it : playerStatus->drawables) {
+		it->Update(deltaTime);
+	}
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
@@ -479,7 +488,9 @@ void GSPlay::UpdateTime()
 		}
 		timeMs = 0;
 	}
-	std::cout << formatTime(timeH, timeM, timeS, timeMs) << std::endl;
+	playerStatus->time = formatTime(timeH, timeM, timeS, timeMs);
+	playerStatus->formattedTime->LoadFromRenderText(playerStatus->time);
+	std::cout << playerStatus->time << std::endl;
 }
 
 void GSPlay::GatherItem(MObject killedObj)
