@@ -18,11 +18,12 @@ enum class ItemType
 class Item : public Sprite2D
 {
 private:
-	ItemType itemType;
+	
 	int inventorySlot;
 	bool consumable;
 	int hungerPerConsumable;
 public:
+	ItemType itemType;
 	//void Consume(Character* player);
 	Item(ItemType type);
 	ItemType GetType();

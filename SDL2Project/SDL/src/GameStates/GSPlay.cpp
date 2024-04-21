@@ -476,7 +476,7 @@ void GSPlay::InteractToObject()
 		if (interactCD <= 0) {
 			// Set object to be disabled
 			if (map->chunks[0]->objects[nearestObject->gridNumber]->hp <= 0) {
-				GartherItem(map->chunks[0]->objects[nearestObject->gridNumber]->objectType);
+				GatherItem(map->chunks[0]->objects[nearestObject->gridNumber]->objectType);
 				map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
 				map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0, 0);
 				map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
@@ -515,7 +515,7 @@ void GSPlay::UpdateTime()
 	std::cout << timeH << ":" << timeM << ":" << timeS << ":" << timeMs << std::endl;
 }
 
-void GSPlay::GartherItem(MObject killedObj)
+void GSPlay::GatherItem(MObject killedObj)
 {
 	std::shared_ptr<Item> newItem[5];
 	for (int i = 0; i < 5; i++) {
@@ -555,9 +555,13 @@ void GSPlay::GartherItem(MObject killedObj)
 	}
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 15; j++) {
-			if (character->status.inventory[j]->GetType() == ItemType::Item_INVALID && newItem[i]->GetType() != ItemType::Item_INVALID) {
+			if (character->status.inventory[j]->itemType == ItemType::Item_INVALID && newItem[i]->itemType != ItemType::Item_INVALID) {
+				std::cout << "true" << std::endl;
 				character->status.inventory[j] = newItem[i];
 				break;
+			}
+			else {
+				std::cout << (int) character->status.inventory[j]->GetType() << "!=" << (int) newItem[i]->GetType() << std::endl;
 			}
 		}
 	}
