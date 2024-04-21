@@ -87,7 +87,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		this->tl.y = this->hitbox[0].y - CHESS_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
-		this->hp = 1000;
+		this->hp = 10;
 		break;
 	}
 	if (active = true) {
