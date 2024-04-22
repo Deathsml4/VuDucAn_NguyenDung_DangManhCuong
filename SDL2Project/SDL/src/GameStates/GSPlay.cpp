@@ -29,9 +29,27 @@ std::string GSPlay::formatStatus(int HP, int Hunger, int Thirst) {
 
 void GSPlay::UpdatePlayerStatus()
 {
+	//update status
+	if (hungerDuration <= 0) {
+		character->status.currentFood--;
+		hungerDuration = HUNGER_DURATION;
+	}
+	if (thirstDuration <= 0) {
+		character->status.currentThirst--;
+		thirstDuration = THIRST_DURATION;
+	}
+
 	int charHP = (character->status.currentHP * 100 / character->status.maxHP);
 	int charHunger = (character->status.currentFood * 100 / character->status.maxFood);
 	int charThirst = (character->status.currentThirst * 100 / character->status.maxThirst);
+
+	//heal
+	if (healDuration <= 0 && charHP <= charHunger) {
+		character->status.currentHP ++;
+		character->status.currentFood--;
+		healDuration = HEAL_DURATION;
+	}
+
 	playerStatus->statusData = formatStatus(charHP, charHunger, charThirst);
 }
 
@@ -264,6 +282,9 @@ void GSPlay::Update(float deltaTime)
 	// Cooldown
 	interactCD = interactCD <= 0 ? 0 : interactCD-1;
 	holdItemCD = holdItemCD <= 0 ? 0 : holdItemCD - 1;
+	hungerDuration = hungerDuration <= 0 ? 0 : hungerDuration - 1;
+	thirstDuration = thirstDuration <= 0 ? 0 : thirstDuration - 1;
+	healDuration = healDuration <= 0 ? 0 : healDuration - 1;
 
 	UpdateTime();
 

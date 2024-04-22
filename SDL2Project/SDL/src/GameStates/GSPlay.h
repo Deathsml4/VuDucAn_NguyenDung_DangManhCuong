@@ -48,6 +48,9 @@ public:
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;
 	float holdItemCD = HOLD_ITEM_CD;
+	float hungerDuration = HUNGER_DURATION;
+	float thirstDuration = THIRST_DURATION;
+	float healDuration = HEAL_DURATION;
 	int timeH = 0;
 	int timeM = 0;
 	int timeS = 0;
