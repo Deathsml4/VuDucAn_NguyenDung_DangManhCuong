@@ -44,6 +44,7 @@ public:
 	float	GetDistance(float x1, float y1, float x2, float y2);
 	std::string formatStatus(int HP, int Hunger, int Thirst);
 	void	UpdatePlayerStatus();
+	void	ConsumItem();
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;

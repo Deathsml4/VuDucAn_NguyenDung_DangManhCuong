@@ -53,6 +53,26 @@ void GSPlay::UpdatePlayerStatus()
 	playerStatus->statusData = formatStatus(charHP, charHunger, charThirst);
 }
 
+void GSPlay::ConsumItem()
+{
+	if (character->status.inventory[holdingItem]->IsConsumable()) {
+		std::shared_ptr<Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
+		character->status.inventory[holdingItem] = newItem;
+		character->status.inventorySlot[holdingItem] = 0;
+		switch (character->status.inventory[holdingItem]->itemType)
+		{
+		case ItemType::Item_FRUIT:
+			character->status.currentFood += 10;
+			break;
+		case ItemType::Item_BERRIES:
+			character->status.currentFood += 5;
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -507,6 +527,9 @@ void GSPlay::KeyStateHandler(float deltaTime)
 		if (holdingItem > 15) {
 			holdingItem = 0;
 		}
+	}
+	if (keyE) {
+		ConsumItem();
 	}
 }
 

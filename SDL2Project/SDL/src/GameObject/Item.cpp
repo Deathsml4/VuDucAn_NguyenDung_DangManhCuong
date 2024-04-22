@@ -61,3 +61,8 @@ ItemType Item::GetType()
 {
 	return this->itemType;
 }
+
+bool Item::IsConsumable()
+{
+	return consumable;
+}
