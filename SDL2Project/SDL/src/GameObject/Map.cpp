@@ -120,7 +120,7 @@ MapChunk::MapChunk(MapMode mode) : mode(mode)
 {
     // Background only run this
     if (mode == MapMode::MAP_OCEAN) {
-        for (int i = 0; i < CHUNK_SIZE * 4; ++i) {
+        for (int i = 0; i < (CHUNK_UNITS + SCREEN_WIDTH / GRID_UNITS) * (CHUNK_UNITS + SCREEN_WIDTH / GRID_UNITS); ++i) {
             std::shared_ptr<GridPoint> ocean = std::make_shared<GridPoint>();
             ocean->gridNumber = i;
             grids.push_back(ocean);
@@ -322,8 +322,8 @@ void GridPoint::Draw(SDL_Renderer* renderer)
 
 void GridPoint::DrawForBackground(SDL_Renderer* renderer)
 {
-    float x = MAP_START_X - SCREEN_WIDTH/2 + GRID_UNITS * (gridNumber % (CHUNK_UNITS * 2));
-    float y = MAP_START_Y - SCREEN_HEIGHT/2 + GRID_UNITS * (gridNumber / (CHUNK_UNITS * 2));
+    float x = MAP_START_X - SCREEN_WIDTH/2 + GRID_UNITS * (gridNumber % (CHUNK_UNITS + SCREEN_WIDTH/GRID_UNITS));
+    float y = MAP_START_Y - SCREEN_HEIGHT/2 + GRID_UNITS * (gridNumber / (CHUNK_UNITS + SCREEN_WIDTH / GRID_UNITS));
     texture = ResourceManagers::GetInstance()->GetTexture("Shallow_Ocean_Terrain_Texture.png");
     if (texture != nullptr)
     {
