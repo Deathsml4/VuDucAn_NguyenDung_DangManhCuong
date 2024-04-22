@@ -508,6 +508,9 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			map->Init(MapMode::MAP_VALLILA);
 		}
 	}
+	if (keyBackspace) {
+		InteractToObject();
+	}
 	if (keyLeft) {
 		if (holdItemCD <= 0) {
 			holdingItem--;
