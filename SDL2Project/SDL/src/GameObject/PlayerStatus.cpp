@@ -54,7 +54,7 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	playerStatusLabel->LoadFromRenderText(statusLabel);
 	drawables.push_back(playerStatusLabel);
 
-	playerStatusData = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
+	playerStatusData = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorGreen);
 	playerStatusData->SetSize(250, 20);
 	playerStatusData->Set2DPosition(100, 10);
 	playerStatusData->LoadFromRenderText(statusData);

@@ -29,6 +29,7 @@ public:
 
 	SDL_Color textColorWhite = { 255, 255, 255 };
 	SDL_Color textColorRed = { 255, 0, 0 };
+	SDL_Color textColorGreen = { 3, 252, 23 };
 	std::shared_ptr<Text> formattedTime;
 	std::shared_ptr<Text> playerStatusLabel;
 	std::shared_ptr<Text> playerStatusData;

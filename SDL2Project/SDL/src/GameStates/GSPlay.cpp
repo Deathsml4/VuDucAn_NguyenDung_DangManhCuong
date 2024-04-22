@@ -8,7 +8,7 @@
 
 std::string GSPlay::formatTime(int timeH, int timeM, int timeS, int timeMs) {
 	std::stringstream ss;
-	ss << std::setfill(' ');
+	ss << std::setfill('0');
 	ss << std::setw(2) << timeH << ":";
 	ss << std::setw(2) << timeM << ":";
 	ss << std::setw(2) << timeS << ":";
@@ -19,7 +19,7 @@ std::string GSPlay::formatTime(int timeH, int timeM, int timeS, int timeMs) {
 
 std::string GSPlay::formatStatus(int HP, int Hunger, int Thirst) {
 	std::stringstream ss;
-	ss << std::setfill('0');
+	ss << std::setfill(' ');
 	ss << "   " << std::setw(3) << HP;
 	ss << "         " << std::setw(3) << Hunger;
 	ss << "         " << std::setw(3) << Thirst;
