@@ -2,7 +2,6 @@
 
 Item::Item(ItemType type)
 {
-	this->itemType = type;
 	switch (type)
 	{
 	case ItemType::Item_INVALID:
@@ -61,38 +60,4 @@ Item::Item(ItemType type)
 ItemType Item::GetType()
 {
 	return this->itemType;
-}
-
-std::string Item::GetTypeName()
-{
-	switch (this->itemType)
-	{
-		case ItemType::Item_INVALID:
-			return "Invalid\n";
-			break;
-		case ItemType::Item_LOG:
-			return "Log\n";
-			break;
-		case ItemType::Item_BERRIES:
-			return "Berries\n";
-			break;
-		case ItemType::Item_ROPE:
-			return "Rope\n";
-			break;
-		case ItemType::Item_WHEAT:
-			return "Wheat\n";
-			break;
-		case ItemType::Item_TWIG:
-			return "Twig\n";
-			break;
-		case ItemType::Item_FRUIT:
-			return "Fruit\n";
-			break;
-		case ItemType::Item_ROCK:
-			return "Rock\n";
-			break;
-		default:
-			return "None of them\n";
-			break;
-	}
 }
