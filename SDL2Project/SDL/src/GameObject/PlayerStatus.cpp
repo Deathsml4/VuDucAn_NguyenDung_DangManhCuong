@@ -75,10 +75,6 @@ void PlayerStatus::Draw()
 
 void PlayerStatus::Update()
 {
-	//int hp = (m_Target->m_currentHP / m_Target->m_maxHP) * 100;
-	//int hunger = (m_Target->m_currentFood / m_Target->m_maxFood) * 100;
-	//int thirst = (m_Target->m_currentThirst / m_Target->m_maxThirst) * 100;
-	std::map <int, char*> inventory = m_Target->m_inventory;
-
-
+	formattedTime->LoadFromRenderText(time);
+	playerStatusData->LoadFromRenderText(statusData);
 }

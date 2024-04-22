@@ -8,13 +8,31 @@
 
 std::string GSPlay::formatTime(int timeH, int timeM, int timeS, int timeMs) {
 	std::stringstream ss;
-	ss << std::setfill('0');
+	ss << std::setfill(' ');
 	ss << std::setw(2) << timeH << ":";
 	ss << std::setw(2) << timeM << ":";
 	ss << std::setw(2) << timeS << ":";
 	ss << std::setw(2) << timeMs;
 
 	return ss.str();
+}
+
+std::string GSPlay::formatStatus(int HP, int Hunger, int Thirst) {
+	std::stringstream ss;
+	ss << std::setfill('0');
+	ss << "   " << std::setw(3) << HP;
+	ss << "         " << std::setw(3) << Hunger;
+	ss << "         " << std::setw(3) << Thirst;
+
+	return ss.str();
+}
+
+void GSPlay::UpdatePlayerStatus()
+{
+	int charHP = (character->status.currentHP * 100 / character->status.maxHP);
+	int charHunger = (character->status.currentFood * 100 / character->status.maxFood);
+	int charThirst = (character->status.currentThirst * 100 / character->status.maxThirst);
+	playerStatus->statusData = formatStatus(charHP, charHunger, charThirst);
 }
 
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
@@ -254,6 +272,8 @@ void GSPlay::Update(float deltaTime)
 	}
 
 	UpdateHoldingItem();
+	UpdatePlayerStatus();
+	playerStatus->Update();
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
