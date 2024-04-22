@@ -1,4 +1,7 @@
 #pragma once
+#include <sstream>
+#include <iomanip>
+
 #include "GameStateBase.h"
 #include "GameObject/MouseButton.h"
 #include "Map.h"
@@ -28,6 +31,8 @@ public:
 	void	HandleMouseMoveEvents(int x, int y) override;
 	void	Update(float deltaTime) override;
 	void	Draw(SDL_Renderer* renderer) override;
+	std::string formatTime(int timeH, int timeM, int timeS, int timeMs);
+	void	UpdateTime();
 	int m_KeyPress;
 	int charHeight = 60;
 	int charWidth = 31;
@@ -37,6 +42,10 @@ private:
 	bool keyA = false;
 	bool keyS = false;
 	bool keyD = false;
+	int timeH = 0;
+	int timeM = 0;
+	int timeS = 0;
+	int timeMs = 0;
 	bool keyShift = false;
 	bool keyEnter = false;
 	std::shared_ptr<Sprite2D>	m_background;

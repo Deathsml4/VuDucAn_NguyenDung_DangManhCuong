@@ -40,6 +40,8 @@ public:
 	void	UpdateTime();
 	void	GatherItem(MObject killedObj);
 	void	UpdateHoldingItem();
+	std::string formatTime(int timeH, int timeM, int timeS, int timeMs);
+	float	GetDistance(float x1, float y1, float x2, float y2);
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;

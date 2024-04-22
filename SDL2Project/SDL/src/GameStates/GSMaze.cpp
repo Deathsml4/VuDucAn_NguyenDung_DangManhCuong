@@ -302,7 +302,9 @@ void GSMaze::Update(float deltaTime)
 	}
 
 
-
+	for (auto it : playerStatus->drawables) {
+		it->Update(deltaTime);
+	}
 }
 
 void GSMaze::Draw(SDL_Renderer* renderer)
@@ -331,4 +333,34 @@ void GSMaze::Draw(SDL_Renderer* renderer)
 		it->Draw(renderer);
 	}
 	//map->DisplayHitboxs(renderer);
+}
+
+std::string GSMaze::formatTime(int timeH, int timeM, int timeS, int timeMs) {
+	std::stringstream ss;
+	ss << std::setfill('0');
+	ss << std::setw(2) << timeH << ":";
+	ss << std::setw(2) << timeM << ":";
+	ss << std::setw(2) << timeS << ":";
+	ss << std::setw(2) << timeMs;
+
+	return ss.str();
+}
+
+void GSMaze::UpdateTime()
+{
+	timeMs++;
+	if (timeMs == LIMIT_FPS) {
+		timeS++;
+		if (timeS == 60) {
+			timeM++;
+			if (timeM == 60) {
+				timeH++;
+				timeM = 0;
+			}
+			timeS = 0;
+		}
+		timeMs = 0;
+	}
+	playerStatus->time = formatTime(timeH, timeM, timeS, timeMs);
+	playerStatus->formattedTime->LoadFromRenderText(playerStatus->time);
 }

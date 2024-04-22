@@ -6,7 +6,7 @@
 #include "GameObject/Camera.h"
 #include "KeyState.h"
 
-std::string formatTime(int timeH, int timeM, int timeS, int timeMs) {
+std::string GSPlay::formatTime(int timeH, int timeM, int timeS, int timeMs) {
 	std::stringstream ss;
 	ss << std::setfill('0');
 	ss << std::setw(2) << timeH << ":";
@@ -17,7 +17,7 @@ std::string formatTime(int timeH, int timeM, int timeS, int timeMs) {
 	return ss.str();
 }
 
-float GetDistance(float x1, float y1, float x2, float y2) {
+float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 
@@ -589,3 +589,4 @@ void GSPlay::UpdateHoldingItem()
 		}
 	}
 }
+
