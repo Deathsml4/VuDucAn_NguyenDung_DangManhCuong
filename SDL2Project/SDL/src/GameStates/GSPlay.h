@@ -39,15 +39,18 @@ public:
 	void	InteractToObject();
 	void	UpdateTime();
 	void	GatherItem(MObject killedObj);
+	void	UpdateHoldingItem();
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;
+	float holdItemCD = HOLD_ITEM_CD;
 	int timeH = 0;
 	int timeM = 0;
 	int timeS = 0;
 	int timeMs = 0;
 	int charHeight = 60;
 	int charWidth = 31;
+	int holdingItem = 0;
 private:
 
 	bool keyW = false;
@@ -58,6 +61,8 @@ private:
 	bool keyE = false;
 	bool keyBackspace = false;
 	bool keyEnter = false;
+	bool keyLeft = false;
+	bool keyRight = false;
 
 	Vector2 charPos;
 

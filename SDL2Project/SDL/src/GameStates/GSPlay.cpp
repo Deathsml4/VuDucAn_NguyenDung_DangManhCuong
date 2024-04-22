@@ -145,6 +145,12 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_KP_ENTER:
 			keyEnter = true;
 			break;
+		case SDLK_LEFT:
+			keyLeft = true;
+			break;
+		case SDLK_RIGHT:
+			keyRight = true;
+			break;
 		default:
 			break;
 		}
@@ -174,6 +180,12 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 			break;
 		case SDLK_KP_ENTER:
 			keyEnter = false;
+			break;
+		case SDLK_LEFT:
+			keyLeft = false;
+			break;
+		case SDLK_RIGHT:
+			keyRight = false;
 			break;
 		default:
 			break;
@@ -233,12 +245,15 @@ void GSPlay::Update(float deltaTime)
 
 	// Cooldown
 	interactCD = interactCD <= 0 ? 0 : interactCD-1;
+	holdItemCD = holdItemCD <= 0 ? 0 : holdItemCD - 1;
 
 	UpdateTime();
 
 	for (auto it : playerStatus->drawables) {
 		it->Update(deltaTime);
 	}
+
+	UpdateHoldingItem();
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
@@ -432,8 +447,25 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			map->Init(MapMode::MAP_VALLILA);
 		}
 	}
-	if (keyBackspace) {
-		InteractToObject();
+	if (keyLeft) {
+		if (holdItemCD <= 0) {
+			holdingItem--;
+			holdItemCD = HOLD_ITEM_CD;
+		}
+		
+		if (holdingItem < 0) {
+			holdingItem = 15;
+		}
+	}
+	if (keyRight) {
+		if (holdItemCD <= 0) {
+			holdingItem++;
+			holdItemCD = HOLD_ITEM_CD;
+		}
+
+		if (holdingItem > 15) {
+			holdingItem = 0;
+		}
 	}
 }
 
@@ -541,8 +573,19 @@ void GSPlay::GatherItem(MObject killedObj)
 				break;
 			}
 			else {
-				std::cout << (int) character->status.inventory[j]->GetType() << "!=" << (int) newItem[i]->GetType() << std::endl;
+				
 			}
+		}
+	}
+}
+
+void GSPlay::UpdateHoldingItem()
+{
+	for (int i = 0; i < 15; i++)
+	{
+		character->status.inventory[i]->SetSize(ITEM_SIZE, ITEM_SIZE);
+		if (i == holdingItem) {
+			character->status.inventory[i]->SetSize(HOLDING_ITEM_SIZE, HOLDING_ITEM_SIZE);
 		}
 	}
 }

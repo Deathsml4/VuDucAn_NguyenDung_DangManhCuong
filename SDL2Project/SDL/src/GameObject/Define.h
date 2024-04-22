@@ -24,5 +24,7 @@
 #define MOB_DENSITY CHUNK_SIZE / 40
 
 #define ITEM_SIZE 30
+#define HOLDING_ITEM_SIZE 40
 
 #define INTERACT_CD 20
+#define HOLD_ITEM_CD 10

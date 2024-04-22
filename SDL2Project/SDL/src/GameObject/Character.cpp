@@ -35,6 +35,12 @@ void Character::Init()
 	
 	status.inventory[0] = std::make_shared<Item>(ItemType::Item_FRUIT);
 	status.inventory[1] = std::make_shared<Item>(ItemType::Item_BERRIES);
+	status.inventory[6] = std::make_shared<Item>(ItemType::Item_LOG);
+	status.inventory[7] = std::make_shared<Item>(ItemType::Item_TWIG);
+	status.inventory[8] = std::make_shared<Item>(ItemType::Item_WHEAT);
+	status.inventory[9] = std::make_shared<Item>(ItemType::Item_BERRIES);
+	status.inventory[13] = std::make_shared<Item>(ItemType::Item_ROCK);
+	status.inventory[14] = std::make_shared<Item>(ItemType::Item_ROPE);
 	status.inventorySlot[0] = 1;
 	status.inventorySlot[1] = 1;
 
