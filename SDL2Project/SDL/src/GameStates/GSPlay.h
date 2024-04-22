@@ -1,4 +1,7 @@
 #pragma once
+#include <sstream>
+#include <iomanip>
+
 #include "GameStateBase.h"
 #include "GameObject/MouseButton.h"
 #include "Map.h"

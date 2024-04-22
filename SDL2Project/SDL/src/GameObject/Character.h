@@ -44,6 +44,7 @@ struct SavePoint
 
 struct CharacterStatus {
     std::shared_ptr<Item>   inventory[15];
+    int                     inventorySlot[15];
     int                     maxHP = 0;
     int                     maxFood = 0;
     int                     maxThirst = 0;

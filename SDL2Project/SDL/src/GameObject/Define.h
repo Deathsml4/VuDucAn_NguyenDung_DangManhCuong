@@ -25,4 +25,4 @@
 
 #define ITEM_SIZE 30
 
-#define INTERACT_CD 50
+#define INTERACT_CD 20

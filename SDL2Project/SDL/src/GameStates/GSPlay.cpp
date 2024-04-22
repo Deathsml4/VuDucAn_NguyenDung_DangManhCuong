@@ -6,6 +6,17 @@
 #include "GameObject/Camera.h"
 #include "KeyState.h"
 
+std::string formatTime(int timeH, int timeM, int timeS, int timeMs) {
+	std::stringstream ss;
+	ss << std::setfill('0');
+	ss << std::setw(2) << timeH << ":";
+	ss << std::setw(2) << timeM << ":";
+	ss << std::setw(2) << timeS << ":";
+	ss << std::setw(2) << timeMs;
+
+	return ss.str();
+}
+
 float GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -71,8 +82,6 @@ void GSPlay::Init()
 		i->PlaySound();
 		});
 	m_listButton.push_back(btnMusicOn);
-	
-	//m_listAnimation.push_back(character);
 
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
@@ -226,6 +235,10 @@ void GSPlay::Update(float deltaTime)
 	interactCD = interactCD <= 0 ? 0 : interactCD-1;
 
 	UpdateTime();
+
+	for (auto it : playerStatus->drawables) {
+		it->Update(deltaTime);
+	}
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
@@ -441,22 +454,19 @@ void GSPlay::InteractToObject()
 				map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
 			}
 			interactCD = INTERACT_CD;
-			//std::cout << map->chunks[0]->objects[nearestObject->gridNumber]->hp << std::endl;
 		}
 		else {
-			//std::cout << "On cooling down, hold on!" << std::endl;
 		}
 		
 	}
 	else {
-		//std::cout << "Cannot reach the target!" << std::endl;
 	}
 }
 
 void GSPlay::UpdateTime()
 {
 	timeMs++;
-	if (timeMs == LIMIT_FPS*2) {
+	if (timeMs == LIMIT_FPS) {
 		timeS++;
 		if (timeS == 60) {
 			timeM++;
@@ -468,52 +478,66 @@ void GSPlay::UpdateTime()
 		}
 		timeMs = 0;
 	}
-	std::cout << timeH << ":" << timeM << ":" << timeS << ":" << timeMs << std::endl;
+	playerStatus->time = formatTime(timeH, timeM, timeS, timeMs);
+	playerStatus->formattedTime->LoadFromRenderText(playerStatus->time);
 }
 
 void GSPlay::GatherItem(MObject killedObj)
 {
 	std::shared_ptr<Item> newItem[5];
+	int newItemSlot[5];
 	for (int i = 0; i < 5; i++) {
 		newItem[i] = std::make_shared<Item>(ItemType::Item_INVALID);
+		newItemSlot[i] = 0;
 	}
 	switch (killedObj)
 	{
 	case MObject::MOBJECT_INVALID:
+		newItemSlot[0] = 0;
 		break;
 	case MObject::MOBJECT_TREE:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_LOG);
 		newItem[1] = std::make_shared<Item>(ItemType::Item_FRUIT);
+		newItemSlot[0] = 1;
+		newItemSlot[1] = 1;
 		break;
 	case MObject::MOBJECT_BUSH:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_BERRIES);
+		newItemSlot[0] = 1;
 		break;
 	case MObject::MOBJECT_GRASS:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_ROPE);
+		newItemSlot[0] = 1;
 		break;
 	case MObject::MOBJECT_CROP:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_WHEAT);
+		newItemSlot[0] = 1;
 		break;
 	case MObject::MOBJECT_DEADBUSH:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_TWIG);
+		newItemSlot[0] = 1;
 		break;
 	case MObject::MOBJECT_CHESS:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_FRUIT);
 		newItem[1] = std::make_shared<Item>(ItemType::Item_BERRIES);
+		newItemSlot[0] = 1;
+		newItemSlot[1] = 1;
 		break;
 	case MObject::MOBJECT_ROCK:
 		newItem[0] = std::make_shared<Item>(ItemType::Item_ROCK);
+		newItemSlot[0] = 1;
 		break;
 	case MObject::MOBJECT_GATE:
 		break;
 	default:
 		break;
 	}
+	//character->status.inventory[9] = newItem[0];
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 15; j++) {
-			if (character->status.inventory[j]->itemType == ItemType::Item_INVALID && newItem[i]->itemType != ItemType::Item_INVALID) {
-				std::cout << "true" << std::endl;
+			if (character->status.inventorySlot[j] == 0 && newItemSlot[i]!=0) {
 				character->status.inventory[j] = newItem[i];
+				character->status.inventorySlot[j] = 1;
 				break;
 			}
 			else {

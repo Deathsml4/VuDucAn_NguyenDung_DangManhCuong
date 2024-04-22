@@ -3,16 +3,16 @@
 #include "ResourceManagers.h"
 #include "Define.h"
 
-enum class ItemType
+enum class ItemType : int
 {
 	Item_INVALID = 0,
-	Item_LOG,
-	Item_BERRIES,
-	Item_ROPE,
-	Item_WHEAT,
-	Item_TWIG,
-	Item_FRUIT,
-	Item_ROCK,
+	Item_LOG = 1,
+	Item_BERRIES = 2,
+	Item_ROPE = 3,
+	Item_WHEAT = 4,
+	Item_TWIG = 5,
+	Item_FRUIT = 6,
+	Item_ROCK = 7,
 };
 
 class Item : public Sprite2D
