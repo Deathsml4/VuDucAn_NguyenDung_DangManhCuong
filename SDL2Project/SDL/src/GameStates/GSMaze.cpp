@@ -330,5 +330,5 @@ void GSMaze::Draw(SDL_Renderer* renderer)
 	for (auto it : playerStatus->drawables) {
 		it->Draw(renderer);
 	}
-	map->DisplayHitboxs(renderer);
+	//map->DisplayHitboxs(renderer);
 }
