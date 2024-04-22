@@ -15,7 +15,8 @@ enum class MapMode
 {
 	MAP_INVALID = 0,
 	MAP_VALLILA,
-	MAP_MAZE
+	MAP_MAZE,
+	MAP_OCEAN
 };
 
 enum class MTerrain
@@ -35,10 +36,12 @@ public:
 	GridPoint(std::shared_ptr<TextureManager> texture);
 
 	void Draw(SDL_Renderer* renderer) override;
+	void DrawForBackground(SDL_Renderer* renderer);
 };
 
 class MapChunk : Sprite2D {
 public:
+	MapMode mode;
 	int mobCount = 0;
 	std::shared_ptr<GridPoint> plainTerrain;
 	std::shared_ptr<GridPoint> riverTerrain;

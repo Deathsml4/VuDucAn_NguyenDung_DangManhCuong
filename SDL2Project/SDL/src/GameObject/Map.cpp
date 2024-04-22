@@ -116,8 +116,17 @@ std::string GenerateObject(std::string chunkData) {
     return result;
 }
 
-MapChunk::MapChunk(MapMode mode)
+MapChunk::MapChunk(MapMode mode) : mode(mode)
 {
+    // Background only run this
+    if (mode == MapMode::MAP_OCEAN) {
+        for (int i = 0; i < CHUNK_SIZE * 4; ++i) {
+            std::shared_ptr<GridPoint> ocean = std::make_shared<GridPoint>();
+            ocean->gridNumber = i;
+            grids.push_back(ocean);
+        }
+        return;
+    }
     std::string data = GenerateChunk(CHUNK_UNITS, CHUNK_UNITS, 0.2, 0.01);
     std::string objectData;
     if (mode == MapMode::MAP_VALLILA) {
@@ -177,6 +186,12 @@ MapChunk::MapChunk(MapMode mode)
 
 void MapChunk::Draw(SDL_Renderer* renderer)
 {
+    if (mode == MapMode::MAP_OCEAN) {
+        for (auto it : grids) {
+            it->DrawForBackground(renderer);
+        }
+        return;
+    }
     for (auto it : grids)
     {
         it->Draw(renderer);
@@ -304,3 +319,15 @@ void GridPoint::Draw(SDL_Renderer* renderer)
         texture->Render(x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, GRID_UNITS, GRID_UNITS, 0, m_flip);
     }
 }
+
+void GridPoint::DrawForBackground(SDL_Renderer* renderer)
+{
+    float x = MAP_START_X - SCREEN_WIDTH/2 + GRID_UNITS * (gridNumber % (CHUNK_UNITS * 2));
+    float y = MAP_START_Y - SCREEN_HEIGHT/2 + GRID_UNITS * (gridNumber / (CHUNK_UNITS * 2));
+    texture = ResourceManagers::GetInstance()->GetTexture("Shallow_Ocean_Terrain_Texture.png");
+    if (texture != nullptr)
+    {
+        texture->Render(x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, GRID_UNITS, GRID_UNITS, 0, m_flip);
+    }
+}
+
