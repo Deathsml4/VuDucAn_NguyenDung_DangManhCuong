@@ -510,10 +510,16 @@ void GSPlay::GatherItem(MObject killedObj)
 		break;
 	}
 	for (int i = 0; i < 3; i++) {
+		if (newItem[i]->GetType() == ItemType::Item_INVALID) {
+			std::cout << "Invalid item\n";
+			continue;
+		}
 		for (int j = 0; j < 15; j++) {
-			if (character->status.inventory[j]->itemType == ItemType::Item_INVALID && newItem[i]->itemType != ItemType::Item_INVALID) {
+			//std::cout << character->status.inventory[j]->GetTypeName() << std::endl;
+			if (character->status.inventory[j]->GetType() == ItemType::Item_INVALID) {
 				std::cout << "true" << std::endl;
 				character->status.inventory[j] = newItem[i];
+				std::cout << "Gathered new item\n";
 				break;
 			}
 			else {
