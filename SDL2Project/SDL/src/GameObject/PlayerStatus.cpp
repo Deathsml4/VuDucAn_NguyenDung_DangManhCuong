@@ -8,7 +8,13 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 {
 	m_Target = character;
 
-	auto texture = ResourceManagers::GetInstance()->GetTexture("Inventory_Empty.png");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("realistic smoke overlay.png");
+	overlayA = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	overlayA->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	overlayA->Set2DPosition(0,0);
+	drawables.push_back(overlayA);
+
+	texture = ResourceManagers::GetInstance()->GetTexture("Inventory_Empty.png");
 	craftColumn = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	craftColumn->SetSize(680, 50);
 	craftColumn->Set2DPosition(-680/2+25, 680/2);
