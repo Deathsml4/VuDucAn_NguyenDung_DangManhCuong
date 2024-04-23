@@ -42,10 +42,16 @@ public:
 	void	UpdateHoldingItem();
 	std::string formatTime(int timeH, int timeM, int timeS, int timeMs);
 	float	GetDistance(float x1, float y1, float x2, float y2);
+	std::string formatStatus(int HP, int Hunger, int Thirst);
+	void	UpdatePlayerStatus();
+	void	ConsumItem();
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;
 	float holdItemCD = HOLD_ITEM_CD;
+	float hungerDuration = HUNGER_DURATION;
+	float thirstDuration = THIRST_DURATION;
+	float healDuration = HEAL_DURATION;
 	int timeH = 0;
 	int timeM = 0;
 	int timeS = 0;
@@ -68,7 +74,7 @@ private:
 
 	Vector2 charPos;
 
-	std::shared_ptr<Map>	m_background;
+	std::shared_ptr<Sprite2D>	m_background;
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;

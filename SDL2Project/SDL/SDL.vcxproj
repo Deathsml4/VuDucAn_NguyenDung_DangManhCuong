@@ -177,6 +177,7 @@
     <ClCompile Include="src\GameObject\Camera.cpp" />
     <ClCompile Include="src\GameObject\CMath.cpp" />
     <ClCompile Include="src\GameObject\Map.cpp" />
+    <ClCompile Include="src\GameObject\ParticleSwarmOptimization.cpp" />
     <ClCompile Include="src\GameObject\PerlinNoise.cpp" />
     <ClCompile Include="src\GameObject\PlayerStatus.cpp" />
     <ClCompile Include="src\GameObject\Tessellation.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="src\GameObject\Camera.h" />
     <ClInclude Include="src\GameObject\CMath.h" />
     <ClInclude Include="src\GameObject\Define.h" />
+    <ClInclude Include="src\GameObject\ParticleSwarmOptimization.h" />
     <ClInclude Include="src\GameObject\PerlinNoise.h" />
     <ClInclude Include="src\GameObject\PlayerStatus.h" />
     <ClInclude Include="src\GameObject\Tessellation.h" />

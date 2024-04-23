@@ -48,10 +48,10 @@ void Character::Init()
 	status.currentHP = 50;
 
 	status.maxFood = 100;
-	status.currentFood = 70;
+	status.currentFood = 90;
 
 	status.maxThirst = 100;
-	status.currentThirst = 20;
+	status.currentThirst = 40;
 }
 
 void Character::Move(float deltaTime)

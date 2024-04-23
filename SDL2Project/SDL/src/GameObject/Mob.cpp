@@ -71,20 +71,44 @@ void Mob::Init()
 
 void Mob::AutoMove(float deltaTime)
 {
-	int direction = 0;
-	int speed = getRandT(0, 2);
-	int head = getRandT(0, 100);
-	int angle = getRandT(0, 180) - 90;
-
-	direction = head < 25 ? direction == 0 ? 180 : 0 : direction;
-	SetFlip(head < 25 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
-
-	int dx = cos(angle) * 1;
-	int dy = sin(angle) * 1;
-	
-	Set2DPosition(this->Get2DPosition().x + dx, this->Get2DPosition().y + dy);
+	/*moveDuration = moveDuration <= 0 ? 0 : moveDuration - 1;
+	if (moveDuration <= 0) {
+		moveGoal = MakeDesicion();
+	}
+	MoveToward(moveGoal, deltaTime);*/
 }
 
 void Mob::OnHit()
 {
+}
+
+Vector2 Mob::MakeDesicion()
+{
+	auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+	srand(seed);
+
+	int xOffset = rand() % 101 - MOB_VISION;
+	int yOffset = rand() % 101 - MOB_VISION;
+
+	int newX = this->Get2DPosition().x + xOffset;
+	int newY = this->Get2DPosition().y + yOffset;
+
+	newX = std::max(0, std::min(CHUNK_SIZE - 1, newX));
+	newY = std::max(0, std::min(CHUNK_SIZE - 1, newY));
+
+	return Vector2(newX, newY);
+}
+
+void Mob::MoveToward(Vector2 goal, float deltaTime)
+{
+	if (this->distanceToPlayer < 3 * GRID_UNITS) {
+		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
+		float stepSize = 0.001; 
+
+		float newX = this->Get2DPosition().x + (goal.x - this->Get2DPosition().x) * stepSize;
+		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
+
+		this->Set2DPosition(newX, newY);
+	}
+	
 }

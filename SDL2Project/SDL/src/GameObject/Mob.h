@@ -1,12 +1,16 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include<random>
+#include <random>
 #include <chrono>
+#include <cmath>
+#include <cstdlib>
+#include <algorithm>
 
 #include"SpriteAnimation.h"
 #include"Define.h"
+#include"ParticleSwarmOptimization.h"
 
 const int LIVETIME = 600;
 const int MAX_MOB_WIDTH = 80;
@@ -22,6 +26,8 @@ class Mob : public SpriteAnimation
 public:
 	int maxHP;
 	int currentHP;
+	float attackCD = MOB_ATTACK_CD;
+	float moveDuration = MOB_MOVE_DURATION;
 
 	Vector2 tl, br;
 	bool active; // dead or alive
@@ -30,14 +36,16 @@ public:
 
 	float angleToPlayer;
 	float distanceToPlayer;
-	float MoveToX, MoveToY;
+	Vector2 moveGoal;
 
 	Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount, int numAction, float  frameTime);
 	void Spawn(SDL_Renderer* renderer);
 	void Init() override;
 	void AutoMove(float deltaTime);
+	void Attack(int targetHeath);
 	void OnHit();
 	void OnDead();
-	
+	Vector2 MakeDesicion();
+	void MoveToward(Vector2 goal, float deltaTime);
 };
 

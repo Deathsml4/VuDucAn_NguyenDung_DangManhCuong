@@ -17,6 +17,63 @@ std::string GSPlay::formatTime(int timeH, int timeM, int timeS, int timeMs) {
 	return ss.str();
 }
 
+std::string GSPlay::formatStatus(int HP, int Hunger, int Thirst) {
+	std::stringstream ss;
+	ss << std::setfill(' ');
+	ss << "   " << std::setw(3) << HP;
+	ss << "         " << std::setw(3) << Hunger;
+	ss << "         " << std::setw(3) << Thirst;
+
+	return ss.str();
+}
+
+void GSPlay::UpdatePlayerStatus()
+{
+	//update status
+	if (hungerDuration <= 0) {
+		character->status.currentFood--;
+		hungerDuration = HUNGER_DURATION;
+	}
+	if (thirstDuration <= 0) {
+		character->status.currentThirst--;
+		thirstDuration = THIRST_DURATION;
+	}
+
+	int charHP = (character->status.currentHP * 100 / character->status.maxHP);
+	int charHunger = (character->status.currentFood * 100 / character->status.maxFood);
+	int charThirst = (character->status.currentThirst * 100 / character->status.maxThirst);
+
+	//heal
+	if (healDuration <= 0 && charHP <= charHunger) {
+		character->status.currentHP ++;
+		character->status.currentFood--;
+		healDuration = HEAL_DURATION;
+	}
+
+	playerStatus->statusData = formatStatus(charHP, charHunger, charThirst);
+}
+
+void GSPlay::ConsumItem()
+{
+	if (character->status.inventory[holdingItem]->IsConsumable()) {
+		std::shared_ptr<Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
+		character->status.inventory[holdingItem] = newItem;
+		character->status.inventorySlot[holdingItem] = 0;
+		character->status.currentFood += 10;
+		switch (character->status.inventory[holdingItem]->itemType)
+		{
+		case ItemType::Item_FRUIT:
+			character->status.currentFood += 10;
+			break;
+		case ItemType::Item_BERRIES:
+			character->status.currentFood += 5;
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -34,19 +91,18 @@ GSPlay::~GSPlay()
 void GSPlay::Init()
 {
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	//auto texture = ResourceManagers::GetInstance()->GetTexture("Wood_panelling_texture.png");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("Wood_panelling_texture.png");
 
 	// background
 	
-	//m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
-	//m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	//m_background->Set2DPosition(0, 0);
-	m_background = std::make_shared<Map>(MapMode::MAP_OCEAN);
+	m_background = std::make_shared<Sprite2D>( texture, SDL_FLIP_NONE);
+	m_background->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	m_background->Set2DPosition(0, 0);
 	// map
 	map = std::make_shared<Map>(MapMode::MAP_VALLILA);
 	
 	// button close
-	auto texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>( texture, SDL_FLIP_NONE);
 	button->SetSize(50, 40);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
@@ -230,7 +286,8 @@ void GSPlay::Update(float deltaTime)
 	character->Update(deltaTime);
 	for (auto it : mobs)
 	{
-		it->AutoMove(deltaTime);
+		it->distanceToPlayer = GetDistance(it->Get2DPosition().x, it->Get2DPosition().y, charPos.x, charPos.y);
+		it->MoveToward(charPos, deltaTime);
 		it->Update(deltaTime);
 	}
 
@@ -247,6 +304,9 @@ void GSPlay::Update(float deltaTime)
 	// Cooldown
 	interactCD = interactCD <= 0 ? 0 : interactCD-1;
 	holdItemCD = holdItemCD <= 0 ? 0 : holdItemCD - 1;
+	hungerDuration = hungerDuration <= 0 ? 0 : hungerDuration - 1;
+	thirstDuration = thirstDuration <= 0 ? 0 : thirstDuration - 1;
+	healDuration = healDuration <= 0 ? 0 : healDuration - 1;
 
 	UpdateTime();
 
@@ -255,13 +315,14 @@ void GSPlay::Update(float deltaTime)
 	}
 
 	UpdateHoldingItem();
+	UpdatePlayerStatus();
+	playerStatus->Update();
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
 	map->Draw(renderer);
-	//map->DisplayHitboxs(renderer);
 	DisplayNearestObject(renderer);
 
 	for (auto it : mobs)
@@ -269,25 +330,26 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 		it->Draw(renderer);
 	}
 	
+	//character
 	character->Draw(renderer);
 	
-	
-	//testChar->Draw(renderer);
-	for (auto it : m_listButton)
-	{
-		it->Draw(renderer);
-	}
-//	obj->Draw(renderer);
+	//	draw object
 	for (auto it : m_listAnimation)
 	{
 		it->Draw(renderer);
 	}
-
+	// draw overlay
 	for (auto it : playerStatus->drawables) {
 		it->Draw(renderer);
 	}
 	
 	character->DisplayInventory(renderer);
+
+	//testChar->Draw(renderer);
+	for (auto it : m_listButton)
+	{
+		it->Draw(renderer);
+	}
 }
 
 void GSPlay::UpdateNearestObject()
@@ -448,6 +510,9 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			map->Init(MapMode::MAP_VALLILA);
 		}
 	}
+	if (keyBackspace) {
+		InteractToObject();
+	}
 	if (keyLeft) {
 		if (holdItemCD <= 0) {
 			holdingItem--;
@@ -467,6 +532,9 @@ void GSPlay::KeyStateHandler(float deltaTime)
 		if (holdingItem > 15) {
 			holdingItem = 0;
 		}
+	}
+	if (keyE) {
+		ConsumItem();
 	}
 }
 
