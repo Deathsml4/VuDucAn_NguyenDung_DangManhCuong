@@ -122,8 +122,8 @@ void GSPlay::Init()
 
 	Camera::GetInstance()->SetTarget(character);
 	for (int i = 0; i < MOB_DENSITY; i++) {
-		texture = ResourceManagers::GetInstance()->GetTexture("sprite/DST_Steam_Animated_Sticker_Chester.png");
-		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 10, 1, 0.05f);
+		texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.2f);
 		mob->SetFlip(SDL_FLIP_HORIZONTAL);
 		mob->Init();
 		mobs.push_back(mob);
