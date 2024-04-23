@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <algorithm>
 
+#include "ResourceManagers.h"
 #include"SpriteAnimation.h"
 #include"Define.h"
 #include"ParticleSwarmOptimization.h"

@@ -102,6 +102,8 @@ Vector2 Mob::MakeDesicion()
 void Mob::MoveToward(Vector2 goal, float deltaTime)
 {
 	if (this->distanceToPlayer < 3 * GRID_UNITS) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
+		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
 		float stepSize = 0.001; 
 
@@ -109,6 +111,10 @@ void Mob::MoveToward(Vector2 goal, float deltaTime)
 		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
 
 		this->Set2DPosition(newX, newY);
+	}
+	else {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+		this->SetTexture(texture);
 	}
 	
 }

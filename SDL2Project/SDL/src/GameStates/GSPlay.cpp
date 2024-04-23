@@ -113,7 +113,7 @@ void GSPlay::Init()
 
    // Animation 
 	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
-	character = std::make_shared<Character>(texture, 1, 15, 1, 0.2f);
+	character = std::make_shared<Character>(texture, 1, 15, 1, 0.1f);
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
