@@ -329,25 +329,26 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 		it->Draw(renderer);
 	}
 	
+	//character
 	character->Draw(renderer);
 	
-	
-	//testChar->Draw(renderer);
-	for (auto it : m_listButton)
-	{
-		it->Draw(renderer);
-	}
-//	obj->Draw(renderer);
+	//	draw object
 	for (auto it : m_listAnimation)
 	{
 		it->Draw(renderer);
 	}
-
+	// draw overlay
 	for (auto it : playerStatus->drawables) {
 		it->Draw(renderer);
 	}
 	
 	character->DisplayInventory(renderer);
+
+	//testChar->Draw(renderer);
+	for (auto it : m_listButton)
+	{
+		it->Draw(renderer);
+	}
 }
 
 void GSPlay::UpdateNearestObject()
