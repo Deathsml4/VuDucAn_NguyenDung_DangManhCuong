@@ -59,6 +59,7 @@ void GSPlay::ConsumItem()
 		std::shared_ptr<Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
 		character->status.inventory[holdingItem] = newItem;
 		character->status.inventorySlot[holdingItem] = 0;
+		character->status.currentFood += 10;
 		switch (character->status.inventory[holdingItem]->itemType)
 		{
 		case ItemType::Item_FRUIT:
@@ -321,7 +322,6 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 {
 	m_background->Draw(renderer);
 	map->Draw(renderer);
-	//map->DisplayHitboxs(renderer);
 	DisplayNearestObject(renderer);
 
 	for (auto it : mobs)
