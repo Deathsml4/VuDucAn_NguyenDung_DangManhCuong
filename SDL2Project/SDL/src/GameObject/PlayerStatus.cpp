@@ -13,6 +13,12 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	overlayA->SetSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	overlayA->Set2DPosition(0,0);
 	drawables.push_back(overlayA);
+	
+	overlayB = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	overlayB->SetSize(SCREEN_WIDTH, SCREEN_WIDTH);
+	overlayB->Set2DPosition(0, 0);
+	overlayB->SetRotation(90);
+	drawables.push_back(overlayB);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("Inventory_Empty.png");
 	craftColumn = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);

@@ -22,6 +22,7 @@ public:
 	std::shared_ptr<Character> m_Target;
 
 	std::shared_ptr<Sprite2D> overlayA;
+	std::shared_ptr<Sprite2D> overlayB;
 
 	std::shared_ptr<Sprite2D> craftColumn;
 	std::shared_ptr<Sprite2D> inventoryBar;
