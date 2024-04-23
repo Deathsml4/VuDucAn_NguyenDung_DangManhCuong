@@ -286,6 +286,7 @@ void GSPlay::Update(float deltaTime)
 	character->Update(deltaTime);
 	for (auto it : mobs)
 	{
+		it->distanceToPlayer = GetDistance(it->Get2DPosition().x, it->Get2DPosition().y, charPos.x, charPos.y);
 		it->MoveToward(charPos, deltaTime);
 		it->Update(deltaTime);
 	}
