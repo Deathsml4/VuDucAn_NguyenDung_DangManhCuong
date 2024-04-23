@@ -31,7 +31,7 @@ void GSCredit::Init()
 	// button close
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	button = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	button->SetSize(50, 50);
+	button->SetSize(50, 40);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
@@ -40,13 +40,13 @@ void GSCredit::Init()
 
 	texture = ResourceManagers::GetInstance()->GetTexture("Move.png");
 	Move_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	Move_button->SetSize(120, 120);
+	Move_button->SetSize(120, 100);
 	Move_button->Set2DPosition(200, 300);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("Attack.png");
-	Attack_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	Attack_button->SetSize(120, 120);
-	Attack_button->Set2DPosition(200, 550);
+	texture = ResourceManagers::GetInstance()->GetTexture("Interact.png");
+	Interact_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	Interact_button->SetSize(120, 100);
+	Interact_button->Set2DPosition(200, 500);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("W.png");
 	W_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
@@ -67,6 +67,11 @@ void GSCredit::Init()
 	D_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	D_button->SetSize(80, 80);
 	D_button->Set2DPosition(750, 350);
+
+	texture = ResourceManagers::GetInstance()->GetTexture("Space.png");
+	Space_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	Space_button->SetSize(120, 100);
+	Space_button->Set2DPosition(630, 500);
 
 	m_textColor = { 255, 255, 0 };
 	m_textStateName = std::make_shared<Text>("Data/MonsterGame-EjB9.ttf", m_textColor);
@@ -198,12 +203,14 @@ void GSCredit::Draw(SDL_Renderer* renderer)
 	m_background->Draw(renderer);
 
 	Move_button->Draw(renderer);
-	Attack_button->Draw(renderer);
+	Interact_button->Draw(renderer);
 	
 	W_button->Draw(renderer);
 	A_button->Draw(renderer);
 	S_button->Draw(renderer);
 	D_button->Draw(renderer);
+	Space_button->Draw(renderer);
+
 
 	//m_score->Draw();
 	for (auto it : m_listButton)

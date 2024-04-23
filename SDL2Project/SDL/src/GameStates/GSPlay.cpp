@@ -308,8 +308,11 @@ void GSPlay::Update(float deltaTime)
 	hungerDuration = hungerDuration <= 0 ? 0 : hungerDuration - 1;
 	thirstDuration = thirstDuration <= 0 ? 0 : thirstDuration - 1;
 	healDuration = healDuration <= 0 ? 0 : healDuration - 1;
+	//std::cout << healDuration << std::endl;
+	//std::cout << hungerDuration << std::endl;
 
 	UpdateTime();
+	UpdateStatus(deltaTime);
 
 	for (auto it : playerStatus->drawables) {
 		it->Update(deltaTime);
@@ -660,3 +663,85 @@ void GSPlay::UpdateHoldingItem()
 	}
 }
 
+void GSPlay::UpdateStatus(float time)
+{
+
+	std::map<int, std::string> HungerStatus = {
+		 {100, "sprite/Hunger/1.png"},
+		{96, "sprite/Hunger/2.png"},
+		{92, "sprite/Hunger/3.png"},
+		{88, "sprite/Hunger/4.png"},
+		{84, "sprite/Hunger/5.png"},
+		{80, "sprite/Hunger/6.png"},
+		{76, "sprite/Hunger/7.png"},
+		{72, "sprite/Hunger/8.png"},
+		{68, "sprite/Hunger/9.png"},
+		{64, "sprite/Hunger/10.png"},
+		{60, "sprite/Hunger/11.png"},
+		{56, "sprite/Hunger/12.png"},
+		{52, "sprite/Hunger/13.png"},
+		{48, "sprite/Hunger/14.png"},
+		{44, "sprite/Hunger/15.png"},
+		{40, "sprite/Hunger/16.png"},
+		{36, "sprite/Hunger/17.png"},
+		{32, "sprite/Hunger/18.png"},
+		{28, "sprite/Hunger/19.png"},
+		{24, "sprite/Hunger/20.png"},
+		{20, "sprite/Hunger/21.png"},
+		{16, "sprite/Hunger/22.png"},
+		{12, "sprite/Hunger/23.png"},
+		{8, "sprite/Hunger/24.png"},
+		{4, "sprite/Hunger/25.png"}
+
+	};
+	for (int i = 100; i >= 1; i--) {
+		if (character->status.currentFood < i) {
+			//std::cout << timeHunger << std::endl;
+			auto hunger = HungerStatus.find(i);
+			if (hunger != HungerStatus.end()) {
+				auto texture = ResourceManagers::GetInstance()->GetTexture(HungerStatus.find(i)->second);
+				playerStatus->hungerBar->SetTexture(texture);
+			}
+		}
+	}
+
+	std::map<int, std::string> HealthStatus = {
+		{100, "sprite/Health/1.png"},
+		{96, "sprite/Health/2.png"},
+		{92, "sprite/Health/3.png"},
+		{88, "sprite/Health/4.png"},
+		{84, "sprite/Health/5.png"},
+		{80, "sprite/Health/6.png"},
+		{76, "sprite/Health/7.png"},
+		{72, "sprite/Health/8.png"},
+		{68, "sprite/Health/9.png"},
+		{64, "sprite/Health/10.png"},
+		{60, "sprite/Health/11.png"},
+		{56, "sprite/Health/12.png"},
+		{52, "sprite/Health/13.png"},
+		{48, "sprite/Health/14.png"},
+		{44, "sprite/Health/15.png"},
+		{40, "sprite/Health/16.png"},
+		{36, "sprite/Health/17.png"},
+		{32, "sprite/Health/18.png"},
+		{28, "sprite/Health/19.png"},
+		{24, "sprite/Health/20.png"},
+		{20, "sprite/Health/21.png"},
+		{16, "sprite/Health/22.png"},
+		{12, "sprite/Health/23.png"},
+		{8, "sprite/Health/24.png"},
+		{4, "sprite/Health/25.png"}
+	};
+
+	for (int i = 100; i > 1; i--) {
+		if (character->status.currentHP <= i) {
+			//std::cout << healDuration << std::endl;
+			auto heart = HealthStatus.find(i);
+			if (heart != HealthStatus.end()) {
+				auto texture = ResourceManagers::GetInstance()->GetTexture(HealthStatus.find(i)->second);
+				playerStatus->healthBar->SetTexture(texture);
+			}
+		}
+	}
+
+}
