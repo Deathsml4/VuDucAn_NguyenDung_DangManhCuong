@@ -286,7 +286,7 @@ void GSPlay::Update(float deltaTime)
 	character->Update(deltaTime);
 	for (auto it : mobs)
 	{
-		it->AutoMove(deltaTime);
+		it->MoveToward(charPos, deltaTime);
 		it->Update(deltaTime);
 	}
 

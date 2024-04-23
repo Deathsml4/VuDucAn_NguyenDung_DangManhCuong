@@ -71,11 +71,11 @@ void Mob::Init()
 
 void Mob::AutoMove(float deltaTime)
 {
-	moveDuration = moveDuration <= 0 ? 0 : moveDuration - 1;
+	/*moveDuration = moveDuration <= 0 ? 0 : moveDuration - 1;
 	if (moveDuration <= 0) {
 		moveGoal = MakeDesicion();
 	}
-	MoveToward(moveGoal, deltaTime);
+	MoveToward(moveGoal, deltaTime);*/
 }
 
 void Mob::OnHit()
@@ -101,14 +101,14 @@ Vector2 Mob::MakeDesicion()
 
 void Mob::MoveToward(Vector2 goal, float deltaTime)
 {
-	double distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
-	double stepSize = MOVE_SPEED*deltaTime; 
+	if (this->distanceToPlayer < 3 * GRID_UNITS) {
+		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
+		float stepSize = 0.001; 
 
-	int newX = this->Get2DPosition().x + static_cast<int>((goal.x - this->Get2DPosition().x) * stepSize);
-	int newY = this->Get2DPosition().y + static_cast<int>((goal.y - this->Get2DPosition().y) * stepSize);
+		float newX = this->Get2DPosition().x + (goal.x - this->Get2DPosition().x) * stepSize;
+		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
 
-	newX = std::max(0, std::min(CHUNK_SIZE - 1, newX));
-	newY = std::max(0, std::min(CHUNK_SIZE - 1, newY));
-
-	this->Set2DPosition(newX, newY);
+		this->Set2DPosition(newX, newY);
+	}
+	
 }
