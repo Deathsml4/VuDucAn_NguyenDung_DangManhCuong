@@ -74,7 +74,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_CHESS:
-		texture = ResourceManagers::GetInstance()->GetTexture("40px-Booty_Bag.png");
+		texture = ResourceManagers::GetInstance()->GetTexture("Chest_Build.png");
 		this->tl.x = this->hitbox[0].x - (CHESS_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - CHESS_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
