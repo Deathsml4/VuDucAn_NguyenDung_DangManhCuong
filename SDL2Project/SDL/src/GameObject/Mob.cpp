@@ -78,6 +78,18 @@ void Mob::AutoMove(float deltaTime)
 	MoveToward(moveGoal, deltaTime);*/
 }
 
+void Mob::Attack(int targetHeath)
+{
+	if (this->distanceToPlayer < 0.5 * GRID_UNITS) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
+		this->SetTexture(texture);
+	}
+	else {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
+		this->SetTexture(texture);
+	}
+}
+
 void Mob::OnHit()
 {
 }
