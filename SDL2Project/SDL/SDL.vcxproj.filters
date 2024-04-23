@@ -120,6 +120,9 @@
     <ClCompile Include="src\GameObject\Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObject\ParticleSwarmOptimization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameObject\BaseObject.h">
@@ -225,6 +228,9 @@
       <Filter>Source Files\GameState</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObject\Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\ParticleSwarmOptimization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
