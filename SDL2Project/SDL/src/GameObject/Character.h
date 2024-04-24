@@ -53,9 +53,9 @@ struct CharacterStatus {
     int                     maxInventorySize = 0;
     int                     maxHandSize = 0;
 
-    int                     currentHP = 0;
-    int                     currentFood = 0;
-    int                     currentThirst = 0;
+    unsigned                     currentHP = 0;
+    unsigned                     currentFood = 0;
+    unsigned                     currentThirst = 0;
     int                     currentSpeed = 0;
     int                     currentAtk = 0;
     int                     currentInventorySpace = 0;

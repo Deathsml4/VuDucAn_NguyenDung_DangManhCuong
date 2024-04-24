@@ -31,7 +31,7 @@ void GSSetting::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
 	btnClose = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnClose->SetSize(50, 40);
-	btnClose->Set2DPosition(SCREEN_WIDTH - 50, 10);
+	btnClose->Set2DPosition(SCREEN_WIDTH - 60, 10);
 	btnClose->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
 		});

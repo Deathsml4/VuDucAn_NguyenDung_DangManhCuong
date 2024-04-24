@@ -40,6 +40,7 @@ public:
 	void	UpdateTime();
 	void	GatherItem(MObject killedObj);
 	void	UpdateHoldingItem();
+	void	UpdateStatus(float time);
 	std::string formatTime(int timeH, int timeM, int timeS, int timeMs);
 	float	GetDistance(float x1, float y1, float x2, float y2);
 	std::string formatStatus(int HP, int Hunger, int Thirst);
