@@ -31,25 +31,13 @@ Mob::Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount,
 	m_currentTicks = 0;
 	m_lastUpdate = SDL_GetTicks();
 	active = true;
+	
 	Init();
 }
 
 void Mob::Spawn(SDL_Renderer* renderer)
 {
-	//// random place
-	//br.x = getRand(0, CHUNK_UNITS)*GRID_UNITS;
-	//br.x = getRand(0, CHUNK_UNITS)*GRID_UNITS;
-	//
-	//// random size	
-	//int scale = getRand(1, 7);
-	//int width = MAX_MOB_WIDTH * scale;
-	//int height = MAX_MOB_HEIGHT * scale;
-	//this->SetSize(width, height);
-	//// draw
-	//tl.x = br.x - width;
-	//tl.y = br.y - height;
-	//this->Set2DPosition(tl.x, tl.y);
-	//this->Draw(renderer);
+
 }
 
 void Mob::Init()
@@ -63,6 +51,8 @@ void Mob::Init()
 	int width = MAX_MOB_WIDTH * scale/7;
 	int height = MAX_MOB_HEIGHT * scale/7;
 	this->SetSize(width, height);
+	this->maxHP = MOB_BASE_HP * scale / 7;
+	this->currentHP = maxHP/2;
 	// draw
 	tl.x = MAP_START_X + br.x - width;
 	tl.y = MAP_START_Y + br.y - height;
@@ -100,6 +90,20 @@ bool Mob::Attack()
 
 void Mob::OnHit()
 {
+}
+
+void Mob::DisplayHP(SDL_Renderer* renderer)
+{
+	int barWidth = this->currentHP * (this->GetWidth()) / MOB_BASE_HP;
+	// Set the draw color based on value
+	if (this->currentHP >= 7) {
+		SDL_SetRenderDrawColor(renderer, 0x00, 0xFF, 0x00, 0xFF); // Green
+	}
+	else {
+		SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
+	}
+	SDL_Rect hpBarRect = { this->GetPosition().x - Camera::GetInstance()->GetPosition().x, this->GetPosition().y - Camera::GetInstance()->GetPosition().y, barWidth, 5 };
+	SDL_RenderFillRect(renderer, &hpBarRect);
 }
 
 Vector2 Mob::MakeDesicion()

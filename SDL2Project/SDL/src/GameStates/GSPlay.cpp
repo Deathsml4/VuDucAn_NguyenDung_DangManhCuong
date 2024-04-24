@@ -336,6 +336,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	for (auto it : mobs)
 	{
 		it->Draw(renderer);
+		it->DisplayHP(renderer);
 	}
 	
 	//character

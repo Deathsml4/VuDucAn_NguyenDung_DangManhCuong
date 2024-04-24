@@ -10,6 +10,7 @@
 
 #include "ResourceManagers.h"
 #include"SpriteAnimation.h"
+#include "Camera.h"
 #include"Define.h"
 #include"ParticleSwarmOptimization.h"
 
@@ -45,6 +46,7 @@ public:
 	void AutoMove(float deltaTime);
 	bool Attack();
 	void OnHit();
+	void DisplayHP(SDL_Renderer* renderer);
 	void OnDead();
 	Vector2 MakeDesicion();
 	void MoveToward(Vector2 goal, float deltaTime);
