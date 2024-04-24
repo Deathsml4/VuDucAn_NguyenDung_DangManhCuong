@@ -82,9 +82,9 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_GATE:
-		texture = ResourceManagers::GetInstance()->GetTexture("Icefishing_Hole_Map_Icon.png");
-		this->tl.x = this->hitbox[0].x - (CHESS_WIDTH - GRID_UNITS) / 2;
-		this->tl.y = this->hitbox[0].y - CHESS_HEIGHT + GRID_UNITS;
+		texture = ResourceManagers::GetInstance()->GetTexture("Celestial_Portal_Build.png");
+		this->tl.x = this->hitbox[0].x - (ROCK_WIDTH - GRID_UNITS) / 2;
+		this->tl.y = this->hitbox[0].y - ROCK_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
 		this->br.y = this->hitbox[1].y;
 		this->hp = 10;
