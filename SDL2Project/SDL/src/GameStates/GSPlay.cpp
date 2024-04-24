@@ -284,12 +284,14 @@ void GSPlay::Update(float deltaTime)
 	KeyStateHandler(deltaTime);
 
 	character->Update(deltaTime);
+	int charHPClone = 50;
 	for (auto it : mobs)
 	{
 		it->distanceToPlayer = GetDistance(it->Get2DPosition().x, it->Get2DPosition().y, charPos.x, charPos.y);
 		it->MoveToward(charPos, deltaTime);
-		it->Attack(character->status.currentHP);
+		it->Attack(charHPClone);
 		it->Update(deltaTime);
+		character->status.currentHP = charHPClone;
 	}
 
 	//Update position of camera

@@ -81,6 +81,12 @@ void Mob::AutoMove(float deltaTime)
 void Mob::Attack(int targetHeath)
 {
 	if (this->distanceToPlayer < 0.5 * GRID_UNITS) {
+		if (attackCD <= 0) {
+			targetHeath -= 5;
+			float attackCD = MOB_ATTACK_CD;
+			std::cout << "Attack " << targetHeath << std::endl;
+		}
+		attackCD = attackCD <= 0 ? 0 : attackCD - 1;
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
 		this->SetTexture(texture);
 	}
