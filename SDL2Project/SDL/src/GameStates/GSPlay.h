@@ -47,8 +47,10 @@ public:
 	void	UpdatePlayerStatus();
 	void	PlayerAttack();
 	void	ConsumItem();
+	void	RespawnMob();
 
 	int m_KeyPress;
+	float mobSpawnTime = MOB_SPAWN_CD;
 	float interactCD = INTERACT_CD;
 	float holdItemCD = HOLD_ITEM_CD;
 	float attackCD = ATTACK_CD;

@@ -88,6 +88,21 @@ void GSPlay::ConsumItem()
 	}
 }
 
+void GSPlay::RespawnMob()
+{
+	if ( mobs.size() < MOB_DENSITY) {
+		mobSpawnTime = mobSpawnTime <= 0 ? 0 : mobSpawnTime - 1;
+		if (mobSpawnTime <= 0 ) {
+			auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+			std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.2f);
+			mob->SetFlip(SDL_FLIP_HORIZONTAL);
+			mob->Init();
+			mobs.push_back(mob);
+			mobSpawnTime = MOB_SPAWN_CD;
+		}
+	}
+}
+
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -333,6 +348,7 @@ void GSPlay::Update(float deltaTime)
 	thirstDuration = thirstDuration <= 0 ? 0 : thirstDuration - 1;
 	healDuration = healDuration <= 0 ? 0 : healDuration - 1;
 	attackCD = attackCD <= 0 ? 0 : attackCD - 1;
+
 	//std::cout << healDuration << std::endl;
 	//std::cout << hungerDuration << std::endl;
 
