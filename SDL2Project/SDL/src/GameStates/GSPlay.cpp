@@ -60,6 +60,11 @@ void GSPlay::PlayerAttack()
 			if (it->distanceToPlayer <= ATTACK_RANGE) {
 				it->currentHP -= 10;
 				it->BounceBack(charPos);
+				if (it->currentHP <= 0) {
+					it->active = false;
+					it->Set2DPosition(0, 0);
+					it->SetSize(0, 0);
+				}
 			}
 		}
 		attackCD = ATTACK_CD;
