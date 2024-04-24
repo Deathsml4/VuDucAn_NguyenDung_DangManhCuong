@@ -90,6 +90,7 @@ private:
 	std::shared_ptr<SpriteAnimation> testChar;
 	std::shared_ptr<PlayerStatus> playerStatus;
 	std::shared_ptr<MouseButton> button;
+	std::shared_ptr<MouseButton> btnTutorial;
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sound>		m_Sound;
 	std::shared_ptr<MouseButton> btnMusicOn;
