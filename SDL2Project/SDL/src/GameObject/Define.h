@@ -8,10 +8,10 @@
 #define SCREEN_HEIGHT 720
 #define LIMIT_FPS 60
 
-#define CHAR_W 40
-#define CHAR_H 50
+#define CHAR_W 70
+#define CHAR_H 80
 
-#define GRID_UNITS 70
+#define GRID_UNITS 90
 
 #define CHUNK_UNITS 21
 #define CHUNK_HEIGHT CHUNK_UNITS*GRID_UNITS

@@ -15,8 +15,8 @@
 #include"ParticleSwarmOptimization.h"
 
 const int LIVETIME = 600;
-const int MAX_MOB_WIDTH = 80;
-const int MAX_MOB_HEIGHT = 70;
+const int MAX_MOB_WIDTH = 150;
+const int MAX_MOB_HEIGHT = 120;
 
 
 enum class MopType {
