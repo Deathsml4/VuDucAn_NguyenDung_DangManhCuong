@@ -53,6 +53,19 @@ void GSPlay::UpdatePlayerStatus()
 	playerStatus->statusData = formatStatus(charHP, charHunger, charThirst);
 }
 
+void GSPlay::PlayerAttack()
+{
+	if (attackCD <= 0) {
+		for (auto it : mobs) {
+			if (it->distanceToPlayer <= ATTACK_RANGE) {
+				it->currentHP -= 10;
+			}
+		}
+		attackCD = ATTACK_CD;
+	}
+	
+}
+
 void GSPlay::ConsumItem()
 {
 	if (character->status.inventory[holdingItem]->IsConsumable()) {
@@ -196,6 +209,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_e:
 			keyE = true;
 			break;
+		case SDLK_f:
+			keyF = true;
+			break;
 		case SDLK_BACKSPACE:
 			keyBackspace = true;
 			break;
@@ -231,6 +247,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 			break;
 		case SDLK_e:
 			keyE = false;
+			break;
+		case SDLK_f:
+			keyF = false;
 			break;
 		case SDLK_BACKSPACE:
 			keyBackspace = false;
@@ -312,6 +331,7 @@ void GSPlay::Update(float deltaTime)
 	hungerDuration = hungerDuration <= 0 ? 0 : hungerDuration - 1;
 	thirstDuration = thirstDuration <= 0 ? 0 : thirstDuration - 1;
 	healDuration = healDuration <= 0 ? 0 : healDuration - 1;
+	attackCD = attackCD <= 0 ? 0 : attackCD - 1;
 	//std::cout << healDuration << std::endl;
 	//std::cout << hungerDuration << std::endl;
 
@@ -511,6 +531,9 @@ void GSPlay::KeyStateHandler(float deltaTime)
 		//Prevent player fall out of the map
 		if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
 			character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
+	}
+	if (keyF) {
+		PlayerAttack();
 	}
 	if (keyEnter) {
 

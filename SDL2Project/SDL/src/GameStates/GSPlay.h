@@ -45,11 +45,13 @@ public:
 	float	GetDistance(float x1, float y1, float x2, float y2);
 	std::string formatStatus(int HP, int Hunger, int Thirst);
 	void	UpdatePlayerStatus();
+	void	PlayerAttack();
 	void	ConsumItem();
 
 	int m_KeyPress;
 	float interactCD = INTERACT_CD;
 	float holdItemCD = HOLD_ITEM_CD;
+	float attackCD = ATTACK_CD;
 	float hungerDuration = HUNGER_DURATION;
 	float thirstDuration = THIRST_DURATION;
 	float healDuration = HEAL_DURATION;
@@ -68,6 +70,7 @@ private:
 	bool keyD = false;
 	bool keyShift = false;
 	bool keyE = false;
+	bool keyF = false;
 	bool keyBackspace = false;
 	bool keyEnter = false;
 	bool keyLeft = false;
