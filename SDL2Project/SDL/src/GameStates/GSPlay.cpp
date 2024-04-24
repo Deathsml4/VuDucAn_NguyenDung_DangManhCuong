@@ -540,6 +540,7 @@ void GSPlay::KeyStateHandler(float deltaTime)
 		if (map->isOnTheCheckPoint(charPos)) {
 			map->chunks.clear();
 			map->Init(MapMode::MAP_VALLILA);
+			character->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 		}
 	}
 	if (keyBackspace) {
