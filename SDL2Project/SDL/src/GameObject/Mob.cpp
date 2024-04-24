@@ -78,21 +78,23 @@ void Mob::AutoMove(float deltaTime)
 	MoveToward(moveGoal, deltaTime);*/
 }
 
-void Mob::Attack(int targetHeath)
+bool Mob::Attack()
 {
 	if (this->distanceToPlayer < 0.5 * GRID_UNITS) {
-		if (attackCD <= 0) {
-			targetHeath -= 5;
-			float attackCD = MOB_ATTACK_CD;
-			std::cout << "Attack " << targetHeath << std::endl;
+		this->attackCD = this->attackCD <= 0 ? 0 : this->attackCD - 1;
+		if (this->attackCD <= 0) {
+			this->attackCD = MOB_ATTACK_CD;
+			return true;
 		}
-		attackCD = attackCD <= 0 ? 0 : attackCD - 1;
+		
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
 		this->SetTexture(texture);
+		return false;
 	}
 	else {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
 		this->SetTexture(texture);
+		return false;
 	}
 }
 

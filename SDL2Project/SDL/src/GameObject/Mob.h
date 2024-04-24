@@ -43,7 +43,7 @@ public:
 	void Spawn(SDL_Renderer* renderer);
 	void Init() override;
 	void AutoMove(float deltaTime);
-	void Attack(int targetHeath);
+	bool Attack();
 	void OnHit();
 	void OnDead();
 	Vector2 MakeDesicion();
