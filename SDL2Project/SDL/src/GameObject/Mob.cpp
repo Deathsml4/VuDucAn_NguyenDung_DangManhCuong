@@ -123,7 +123,7 @@ Vector2 Mob::MakeDesicion()
 	return Vector2(newX, newY);
 }
 
-void Mob::MoveToward(Vector2 goal, float deltaTime)
+void Mob::MoveToward(Vector2 goal)
 {
 	if (this->distanceToPlayer < 3 * GRID_UNITS) {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
@@ -141,4 +141,23 @@ void Mob::MoveToward(Vector2 goal, float deltaTime)
 		this->SetTexture(texture);
 	}
 	
+}
+
+void Mob::BounceBack(Vector2 goal)
+{
+	if (this->distanceToPlayer < 3 * GRID_UNITS) {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
+		this->SetTexture(texture);
+		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
+		float stepSize = -2;
+
+		float newX = this->Get2DPosition().x + (goal.x - this->Get2DPosition().x) * stepSize;
+		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
+
+		this->Set2DPosition(newX, newY);
+	}
+	else {
+		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+		this->SetTexture(texture);
+	}
 }

@@ -59,6 +59,7 @@ void GSPlay::PlayerAttack()
 		for (auto it : mobs) {
 			if (it->distanceToPlayer <= ATTACK_RANGE) {
 				it->currentHP -= 10;
+				it->BounceBack(charPos);
 			}
 		}
 		attackCD = ATTACK_CD;
@@ -307,7 +308,7 @@ void GSPlay::Update(float deltaTime)
 	for (auto it : mobs)
 	{
 		it->distanceToPlayer = GetDistance(it->Get2DPosition().x, it->Get2DPosition().y, charPos.x, charPos.y);
-		it->MoveToward(charPos, deltaTime);
+		it->MoveToward(charPos);
 		if (it->Attack()) {
 			character->status.currentHP -= 5;
 		}

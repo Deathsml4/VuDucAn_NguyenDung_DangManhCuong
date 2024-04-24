@@ -49,6 +49,7 @@ public:
 	void DisplayHP(SDL_Renderer* renderer);
 	void OnDead();
 	Vector2 MakeDesicion();
-	void MoveToward(Vector2 goal, float deltaTime);
+	void MoveToward(Vector2 goal);
+	void BounceBack(Vector2 goal);
 };
 
