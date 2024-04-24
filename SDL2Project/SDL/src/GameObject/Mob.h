@@ -51,5 +51,6 @@ public:
 	Vector2 MakeDesicion();
 	void MoveToward(Vector2 goal);
 	void BounceBack(Vector2 goal);
+	void UpdateTexture(Vector2 playerPos);
 };
 

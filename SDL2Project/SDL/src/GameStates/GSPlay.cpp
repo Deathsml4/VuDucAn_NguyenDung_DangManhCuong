@@ -335,6 +335,7 @@ void GSPlay::Update(float deltaTime)
 		if (it->Attack()) {
 			character->status.currentHP -= 5;
 		}
+		it->UpdateTexture(charPos);
 		it->Update(deltaTime);
 		
 	}

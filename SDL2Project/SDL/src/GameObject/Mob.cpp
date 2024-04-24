@@ -160,3 +160,13 @@ void Mob::BounceBack(Vector2 goal)
 		this->SetTexture(texture);
 	}
 }
+
+void Mob::UpdateTexture(Vector2 playerPos)
+{
+	if (playerPos.x > this->Get2DPosition().x) {
+		this->SetFlip(SDL_FLIP_NONE);
+	}
+	else {
+		this->SetFlip(SDL_FLIP_HORIZONTAL);
+	}
+}
