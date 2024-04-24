@@ -82,8 +82,7 @@ bool Mob::Attack()
 		return false;
 	}
 	else {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
-		this->SetTexture(texture);
+		
 		return false;
 	}
 }
