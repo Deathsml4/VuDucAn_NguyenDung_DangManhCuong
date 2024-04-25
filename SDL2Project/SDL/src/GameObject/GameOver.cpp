@@ -29,9 +29,27 @@ GameOver::GameOver(std::string time, std::string layer)
 
 	finishLayer = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
 	finishLayer->SetSize(90, 20);
-	finishLayer->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishLayer->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 210);
+	finishLayer->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishLayer->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 150);
 	finishLayer->LoadFromRenderText("Passed " + layer + " pages");
 	drawables.push_back(finishLayer);
+
+	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
+	restartBtm = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	restartBtm->SetSize(150, 40);
+	restartBtm->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - restartBtm->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 200);
+	restartBtm->SetOnClick([]() {
+		std::cout << "Restart" << std::endl;
+		});
+	drawables.push_back(restartBtm);
+
+	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
+	exitBtn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	exitBtn->SetSize(150, 40);
+	exitBtn->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - exitBtn->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 250);
+	exitBtn->SetOnClick([]() {
+		std::cout << "Exit" << std::endl;
+		});
+	drawables.push_back(exitBtn);
 }
 
 GameOver::~GameOver()

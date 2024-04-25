@@ -25,8 +25,8 @@ public:
 	std::shared_ptr<Text> message;
 	std::shared_ptr<Text> finishTime;
 	std::shared_ptr<Text> finishLayer;
-	std::shared_ptr<MouseButton> RestartBtm;
-	std::shared_ptr<MouseButton> ExitBtn;
+	std::shared_ptr<MouseButton> restartBtm;
+	std::shared_ptr<MouseButton> exitBtn;
 	std::list< std::shared_ptr<BaseObject>> drawables;
 
 	GameOver(std::string time, std::string layer);

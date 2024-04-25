@@ -188,6 +188,7 @@ void GSPlay::Init()
 	swiftAttack->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
 	playerStatus = std::make_shared<PlayerStatus>(character);
+	gameOver = std::make_shared<GameOver>("0", "0");
 
 	Camera::GetInstance()->SetTarget(character);
 	for (int i = 0; i < MOB_DENSITY; i++) {
@@ -346,6 +347,8 @@ void GSPlay::HandleTouchEvents(SDL_Event& e)
 			break;
 		}
 	}
+	gameOver->exitBtn->HandleTouchEvent(&e);
+	gameOver->restartBtm->HandleTouchEvent(&e);
 }
 
 void GSPlay::HandleMouseMoveEvents(int x, int y)
@@ -455,7 +458,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	}
 
 	if (isGameover) {
-		gameOver = std::make_shared<GameOver>("000", "0");
+		gameOver = std::make_shared<GameOver>(playerStatus->time, "0");
 		for (auto it : gameOver->drawables) {
 			it->Draw(renderer);
 		}
