@@ -170,6 +170,7 @@ xcopy /y /d "$(SolutionDir)SDL\Data\*" "$(SolutionDir)$(Platform)\$(Configuratio
   <ItemGroup>
     <ClCompile Include="src\GameObject\Animal.cpp" />
     <ClCompile Include="src\GameObject\Character.cpp" />
+    <ClCompile Include="src\GameObject\GameOver.cpp" />
     <ClCompile Include="src\GameObject\Item.cpp" />
     <ClCompile Include="src\GameObject\Light.cpp" />
     <ClCompile Include="src\GameObject\MapObject.cpp" />
@@ -205,6 +206,7 @@ xcopy /y /d "$(SolutionDir)SDL\Data\*" "$(SolutionDir)$(Platform)\$(Configuratio
   <ItemGroup>
     <ClInclude Include="src\GameObject\Animal.h" />
     <ClInclude Include="src\GameObject\Character.h" />
+    <ClInclude Include="src\GameObject\GameOver.h" />
     <ClInclude Include="src\GameObject\Item.h" />
     <ClInclude Include="src\GameObject\Light.h" />
     <ClInclude Include="src\GameObject\MapObject.h" />
