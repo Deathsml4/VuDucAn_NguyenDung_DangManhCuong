@@ -808,4 +808,14 @@ void GSPlay::UpdateStatus(float time)
 		}
 	}
 
+	for (int i = 100; i >= 1; i--) {
+		if (character->status.currentThirst < i) {
+			//std::cout << timeHunger << std::endl;
+			auto hunger = HungerStatus.find(i);
+			if (hunger != HungerStatus.end()) {
+				auto texture = ResourceManagers::GetInstance()->GetTexture(HungerStatus.find(i)->second);
+				playerStatus->thirstBar->SetTexture(texture);
+			}
+		}
+	}
 }
