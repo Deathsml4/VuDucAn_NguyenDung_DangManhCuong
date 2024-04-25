@@ -48,8 +48,11 @@ public:
 	void	PlayerAttack();
 	void	ConsumItem();
 	void	RespawnMob();
+	void	AttackAnimate();
 
 	int m_KeyPress;
+	bool playerHeadRight = false;
+	float attackAnimation = 0;
 	float mobSpawnTime = MOB_SPAWN_CD;
 	float interactCD = INTERACT_CD;
 	float holdItemCD = HOLD_ITEM_CD;
@@ -87,7 +90,7 @@ private:
 	std::list<std::shared_ptr<Mob>> mobs; // list the mobs
 	std::shared_ptr<Character> character;
 	std::shared_ptr<MapObject> nearestObject;
-	std::shared_ptr<SpriteAnimation> testChar;
+	std::shared_ptr<SpriteAnimation> swiftAttack;
 	std::shared_ptr<PlayerStatus> playerStatus;
 	std::shared_ptr<MouseButton> button;
 	std::shared_ptr<MouseButton> btnTutorial;

@@ -56,6 +56,7 @@ void GSPlay::UpdatePlayerStatus()
 void GSPlay::PlayerAttack()
 {
 	if (attackCD <= 0) {
+		AttackAnimate();
 		for (auto it : mobs) {
 			if (it->distanceToPlayer <= ATTACK_RANGE) {
 				it->currentHP -= 10;
@@ -111,6 +112,12 @@ void GSPlay::RespawnMob()
 	
 }
 
+void GSPlay::AttackAnimate()
+{
+	swiftAttack->SetSize(CHAR_W * 2, CHAR_H * 2);
+	attackAnimation = ATTACK_ANIMATION_DURATION;
+}
+
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -154,6 +161,12 @@ void GSPlay::Init()
 	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	// Attack 
+	texture = ResourceManagers::GetInstance()->GetTexture("fire-sword-attack.png");
+	swiftAttack = std::make_shared<Character>(texture, 1, 3, 1, 0.1f);
+	swiftAttack->SetFlip(SDL_FLIP_HORIZONTAL);
+	swiftAttack->SetSize(CHAR_W * 2, CHAR_H * 2);
+	swiftAttack->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
 	playerStatus = std::make_shared<PlayerStatus>(character);
 
@@ -336,7 +349,7 @@ void GSPlay::Update(float deltaTime)
 	KeyStateHandler(deltaTime);
 
 	character->Update(deltaTime);
-	
+	swiftAttack->Update(deltaTime);
 	for (auto it : mobs)
 	{
 		it->distanceToPlayer = GetDistance(it->Get2DPosition().x, it->Get2DPosition().y, charPos.x, charPos.y);
@@ -366,6 +379,7 @@ void GSPlay::Update(float deltaTime)
 	thirstDuration = thirstDuration <= 0 ? 0 : thirstDuration - 1;
 	healDuration = healDuration <= 0 ? 0 : healDuration - 1;
 	attackCD = attackCD <= 0 ? 0 : attackCD - 1;
+	attackAnimation = attackAnimation <= 0 ? 0 : attackAnimation - 1;
 
 	//std::cout << healDuration << std::endl;
 	//std::cout << hungerDuration << std::endl;
@@ -396,6 +410,11 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	
 	//character
 	character->Draw(renderer);
+	swiftAttack->Draw(renderer);
+	swiftAttack->Set2DPosition(charPos.x - CHAR_W, charPos.y - CHAR_H/2);
+	if (attackAnimation <= 0) {
+		swiftAttack->SetSize(0, 0);
+	}
 	
 	//	draw object
 	for (auto it : m_listAnimation)
