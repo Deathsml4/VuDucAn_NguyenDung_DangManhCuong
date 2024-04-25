@@ -1,11 +1,12 @@
 #pragma once
 #include "BaseObject.h"
+#include "Define.h"
 #include <SDL_render.h>
 class TextureManager;
 class SpriteAnimation : public BaseObject{
 protected:
-	const float RUN_SPEED = 50;
-	const float MOVE_SPEED = 20;
+	const float RUN_SPEED = GRID_UNITS;
+	const float MOVE_SPEED = GRID_UNITS*2/3;
 	Vector2			m_Vec2DPos;
 	int			m_iHeight;
 	int			m_iWidth;
