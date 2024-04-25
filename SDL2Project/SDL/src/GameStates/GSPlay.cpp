@@ -116,6 +116,14 @@ void GSPlay::AttackAnimate()
 {
 	swiftAttack->SetSize(CHAR_W * 2, CHAR_H * 2);
 	attackAnimation = ATTACK_ANIMATION_DURATION;
+	if (playerHeadRight) {
+		swiftAttack->SetFlip(SDL_FLIP_NONE);
+		swiftAttack->SetFlip(SDL_FLIP_VERTICAL);
+		swiftAttack->Set2DPosition(charPos.x + CHAR_W / 2, charPos.y - CHAR_H / 2);
+	}
+	else {
+		swiftAttack->SetFlip(SDL_FLIP_HORIZONTAL);
+	}
 }
 
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
@@ -158,7 +166,6 @@ void GSPlay::Init()
    // Animation 
 	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
 	character = std::make_shared<Character>(texture, 1, 15, 1, 0.1f);
-	character->SetFlip(SDL_FLIP_HORIZONTAL);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	// Attack 
@@ -410,10 +417,11 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	
 	//character
 	character->Draw(renderer);
+	//player attack
 	swiftAttack->Draw(renderer);
-	swiftAttack->Set2DPosition(charPos.x - CHAR_W, charPos.y - CHAR_H/2);
 	if (attackAnimation <= 0) {
 		swiftAttack->SetSize(0, 0);
+		swiftAttack->Set2DPosition(charPos.x - CHAR_W, charPos.y - CHAR_H / 2);
 	}
 	
 	//	draw object
@@ -543,6 +551,7 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			character->Set2DPosition(charPos.x, MAP_START_Y - 20);
 	}
 	if (keyA) {
+		playerHeadRight = false;
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
 		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_HORIZONTAL);
@@ -572,6 +581,7 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			character->Set2DPosition(charPos.x, MAP_START_Y + CHUNK_HEIGHT - CHAR_H - 1);
 	}
 	if (keyD) {
+		playerHeadRight = true;
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
 		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_NONE);
