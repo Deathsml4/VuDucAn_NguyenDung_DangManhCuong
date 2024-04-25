@@ -29,6 +29,7 @@ public:
 	std::shared_ptr<Sprite2D> healthBar;
 	std::shared_ptr<Sprite2D> hungerBar;
 	std::shared_ptr<Sprite2D> thirstBar;
+	std::shared_ptr<Sprite2D> waterConsumption;
 
 	SDL_Color textColorWhite = { 255, 255, 255 };
 	SDL_Color textColorRed = { 255, 0, 0 };

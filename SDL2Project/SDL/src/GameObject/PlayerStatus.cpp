@@ -53,6 +53,13 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	thirstBar->Set2DPosition(SCREEN_WIDTH - 75, SCREEN_HEIGHT - 52);
 	drawables.push_back(thirstBar);
 
+	texture = ResourceManagers::GetInstance()->GetTexture("Magic_Water.png");
+	//thirstBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
+	waterConsumption = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	waterConsumption->SetSize(30, 30);
+	waterConsumption->Set2DPosition(SCREEN_WIDTH - 75 + 10, SCREEN_HEIGHT - 52 + 10);
+	drawables.push_back(waterConsumption);
+
 	///Set Font
 	formattedTime = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorBlack);
 	formattedTime->SetSize(120, 40);
