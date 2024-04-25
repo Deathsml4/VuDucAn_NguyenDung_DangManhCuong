@@ -1,20 +1,72 @@
 ﻿cl : command line  warning D9035: option 'Zc:forScope-' has been deprecated and will be removed in a future release
-  MapObject.cpp
+  PlayerStatus.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(19,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(20,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(21,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(22,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(98,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(99,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(100,26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.cpp(100,20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\PlayerStatus.cpp(66,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GSCredit.cpp
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSCredit.cpp(140,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSCredit.cpp(240,2): warning C4065: switch statement contains 'default' but no 'case' labels
+  GSPlay.cpp
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(191,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(200,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(472,120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(472,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(472,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(472,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(473,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(473,133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(473,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(473,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(475,152): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(475,141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(475,99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(475,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(477,206): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(477,143): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(477,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(477,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(481,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(489,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(489,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(489,74): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(489,74): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  GameStateBase.cpp
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating code
-  1 of 2657 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  3 of 2657 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    51 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SDL.vcxproj -> C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\x64\Release\SDL.exe
   0 File(s) copied
-  0 File(s) copied
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Magic_Water.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Space.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Water_Consumption.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\1.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\10.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\11.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\12.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\13.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\14.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\15.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\16.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\17.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\18.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\19.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\2.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\20.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\21.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\22.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\23.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\3.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\4.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\5.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\6.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\7.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\8.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\9.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\sprite\Thirst\Hunger_Badge2.png
+  27 File(s) copied
