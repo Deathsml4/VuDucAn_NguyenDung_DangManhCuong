@@ -268,7 +268,7 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_BACKSPACE:
 			keyBackspace = true;
 			break;
-		case SDLK_KP_ENTER:
+		case SDLK_RETURN:
 			keyEnter = true;
 			break;
 		case SDLK_LEFT:
@@ -307,7 +307,7 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_BACKSPACE:
 			keyBackspace = false;
 			break;
-		case SDLK_KP_ENTER:
+		case SDLK_RETURN:
 			keyEnter = false;
 			break;
 		case SDLK_LEFT:
