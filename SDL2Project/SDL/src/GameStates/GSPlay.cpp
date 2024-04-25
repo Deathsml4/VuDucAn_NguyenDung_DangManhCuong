@@ -255,8 +255,8 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_e:
 			keyE = true;
 			break;
-		case SDLK_f:
-			keyF = true;
+		case SDLK_SPACE:
+			keySpace = true;
 			break;
 		case SDLK_BACKSPACE:
 			keyBackspace = true;
@@ -294,8 +294,8 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_e:
 			keyE = false;
 			break;
-		case SDLK_f:
-			keyF = false;
+		case SDLK_SPACE:
+			keySpace = false;
 			break;
 		case SDLK_BACKSPACE:
 			keyBackspace = false;
@@ -586,7 +586,7 @@ void GSPlay::KeyStateHandler(float deltaTime)
 		if (charPos.x >= MAP_START_X + CHUNK_HEIGHT - CHAR_W)
 			character->Set2DPosition(MAP_START_X + CHUNK_HEIGHT - CHAR_W - 1, charPos.y);
 	}
-	if (keyF) {
+	if (keySpace) {
 		PlayerAttack();
 	}
 	if (keyEnter) {

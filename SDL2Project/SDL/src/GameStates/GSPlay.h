@@ -75,7 +75,7 @@ private:
 	bool keyD = false;
 	bool keyShift = false;
 	bool keyE = false;
-	bool keyF = false;
+	bool keySpace = false;
 	bool keyBackspace = false;
 	bool keyEnter = false;
 	bool keyLeft = false;
