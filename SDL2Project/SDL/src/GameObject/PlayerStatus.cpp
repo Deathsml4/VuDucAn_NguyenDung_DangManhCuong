@@ -46,19 +46,19 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	hungerBar->Set2DPosition(SCREEN_WIDTH - 125, SCREEN_HEIGHT - 52);
 	drawables.push_back(hungerBar);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Hunger_Badge.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("sprite/Thirst/1.png");
 	//thirstBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
 	thirstBar = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	thirstBar->SetSize(50, 50);
 	thirstBar->Set2DPosition(SCREEN_WIDTH - 75, SCREEN_HEIGHT - 52);
 	drawables.push_back(thirstBar);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("Magic_Water.png");
-	//thirstBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
-	waterConsumption = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	waterConsumption->SetSize(30, 30);
-	waterConsumption->Set2DPosition(SCREEN_WIDTH - 75 + 10, SCREEN_HEIGHT - 52 + 10);
-	drawables.push_back(waterConsumption);
+	//texture = ResourceManagers::GetInstance()->GetTexture("Magic_Water.png");
+	////thirstBar = std::make_shared<SpriteSheet>(texture, 1, 1, 24, 0.2f);
+	//waterConsumption = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	//waterConsumption->SetSize(30, 30);
+	//waterConsumption->Set2DPosition(SCREEN_WIDTH - 75 + 10, SCREEN_HEIGHT - 52 + 10);
+	//drawables.push_back(waterConsumption);
 
 	///Set Font
 	formattedTime = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorBlack);

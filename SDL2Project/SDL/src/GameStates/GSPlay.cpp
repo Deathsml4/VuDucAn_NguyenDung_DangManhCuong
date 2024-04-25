@@ -826,8 +826,8 @@ void GSPlay::UpdateStatus(float time)
 		{4, "sprite/Health/25.png"}
 	};
 
-	for (int i = 100; i > 1; i--) {
-		if (character->status.currentHP <= i) {
+	for (int i = 100; i >= 1; i--) {
+		if (character->status.currentHP < i) {
 			//std::cout << healDuration << std::endl;
 			auto heart = HealthStatus.find(i);
 			if (heart != HealthStatus.end()) {
@@ -837,12 +837,40 @@ void GSPlay::UpdateStatus(float time)
 		}
 	}
 
+	std::map<int, std::string> ThirstStatus = {
+		{100, "sprite/Thirst/1.png"},
+		{ 96, "sprite/Thirst/2.png" },
+		{ 92, "sprite/Thirst/3.png" },
+		{ 88, "sprite/Thirst/4.png" },
+		{ 84, "sprite/Thirst/5.png" },
+		{ 80, "sprite/Thirst/6.png" },
+		{ 76, "sprite/Thirst/7.png" },
+		{ 72, "sprite/Thirst/8.png" },
+		{ 68, "sprite/Thirst/9.png" },
+		{ 64, "sprite/Thirst/10.png" },
+		{ 60, "sprite/Thirst/11.png" },
+		{ 56, "sprite/Thirst/12.png" },
+		{ 52, "sprite/Thirst/13.png" },
+		{ 48, "sprite/Thirst/14.png" },
+		{ 44, "sprite/Thirst/15.png" },
+		{ 40, "sprite/Thirst/16.png" },
+		{ 36, "sprite/Thirst/17.png" },
+		{ 32, "sprite/Thirst/18.png" },
+		{ 28, "sprite/Thirst/19.png" },
+		{ 24, "sprite/Thirst/20.png" },
+		{ 20, "sprite/Thirst/21.png" },
+		{ 16, "sprite/Thirst/22.png" },
+		{ 12, "sprite/Thirst/23.png" },
+		{ 8, "sprite/Thirst/24.png" },
+		{ 4, "sprite/Thirst/25.png" }
+	};
+
 	for (int i = 100; i >= 1; i--) {
 		if (character->status.currentThirst < i) {
 			//std::cout << timeHunger << std::endl;
-			auto hunger = HungerStatus.find(i);
-			if (hunger != HungerStatus.end()) {
-				auto texture = ResourceManagers::GetInstance()->GetTexture(HungerStatus.find(i)->second);
+			auto thirst = ThirstStatus.find(i);
+			if (thirst != ThirstStatus.end()) {
+				auto texture = ResourceManagers::GetInstance()->GetTexture(ThirstStatus.find(i)->second);
 				playerStatus->thirstBar->SetTexture(texture);
 			}
 		}

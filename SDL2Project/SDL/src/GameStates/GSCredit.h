@@ -41,7 +41,7 @@ private:
 	std::shared_ptr<Sprite2D>	S_button;
 	std::shared_ptr<Sprite2D>	D_button;
 	std::shared_ptr<Sprite2D>	E_button;
-	std::shared_ptr<Sprite2D>	F_button;
+	std::shared_ptr<Sprite2D>	Space_button;
 	std::shared_ptr<Sprite2D>	Arrow_left_button;
 	std::shared_ptr<Sprite2D>	Arrow_right_button;
 	std::shared_ptr<Sprite2D>	L_Shift_button;

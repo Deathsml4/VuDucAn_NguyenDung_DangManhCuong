@@ -71,13 +71,13 @@ void GSCredit::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("Destroy.png");
 	Destroy_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	Destroy_button->SetSize(120, 70);
-	Destroy_button->Set2DPosition(SCREEN_WIDTH / 5 + 10, SCREEN_HEIGHT * 3 / 8 - 30);
+	Destroy_button->Set2DPosition(SCREEN_WIDTH / 5 + 10, SCREEN_HEIGHT * 3 / 8 - 20);
 	m_listButton_Map_1.push_back(Destroy_button);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("Backspace.png");
 	Backspace_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	Backspace_button->SetSize(120, 70);
-	Backspace_button->Set2DPosition(SCREEN_WIDTH * 7 / 10 - 30, SCREEN_HEIGHT * 3 / 8 - 30);
+	Backspace_button->Set2DPosition(SCREEN_WIDTH * 7 / 10 - 30, SCREEN_HEIGHT * 3 / 8 - 20);
 	m_listButton_Map_1.push_back(Backspace_button);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("Eat.png");
@@ -116,11 +116,11 @@ void GSCredit::Init()
 	Attack_button->Set2DPosition(SCREEN_WIDTH / 5 + 10, SCREEN_HEIGHT * 6 / 8 - 20);
 	m_listButton_Map_1.push_back(Attack_button);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("F.png");
-	F_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
-	F_button->SetSize(60, 60);
-	F_button->Set2DPosition(SCREEN_WIDTH * 7 / 10, SCREEN_HEIGHT * 6 / 8 - 20);
-	m_listButton_Map_1.push_back(F_button);
+	texture = ResourceManagers::GetInstance()->GetTexture("Space.png");
+	Space_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	Space_button->SetSize(120, 70);
+	Space_button->Set2DPosition(SCREEN_WIDTH * 7 / 10 - 30, SCREEN_HEIGHT * 6 / 8 - 20);
+	m_listButton_Map_1.push_back(Space_button);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("Run.png");
 	Run_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
