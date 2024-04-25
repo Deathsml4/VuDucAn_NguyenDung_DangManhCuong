@@ -5,7 +5,7 @@ GameOver::GameOver(std::string time, std::string layout)
 	auto texture = ResourceManagers::GetInstance()->GetTexture("imgpsh_fullsize_anim.png");
 	textBox = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	textBox->SetSize(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-	textBox->Set2DPosition(0, 0);
+	textBox->Set2DPosition(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4);
 	drawables.push_back(textBox);
 }
 

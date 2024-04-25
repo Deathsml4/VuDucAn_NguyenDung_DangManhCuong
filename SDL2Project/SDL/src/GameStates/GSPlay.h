@@ -8,6 +8,7 @@
 #include "Sound.h"
 #include"Character.h"
 #include "PlayerStatus.h"
+#include "GameOver.h"
 
 class Sprite2D;
 class SpriteAnimation;
@@ -52,6 +53,8 @@ public:
 
 	int m_KeyPress;
 	bool playerHeadRight = false;
+	bool isGameover = false;
+	bool gameoverShowed = false;
 	float attackAnimation = 0;
 	float mobSpawnTime = MOB_SPAWN_CD;
 	float interactCD = INTERACT_CD;
@@ -97,6 +100,7 @@ private:
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sound>		m_Sound;
 	std::shared_ptr<MouseButton> btnMusicOn;
+	std::shared_ptr<GameOver> gameOver;
 	
 	float time = 0.0f;
 	float m_Velocity = 10.0f;

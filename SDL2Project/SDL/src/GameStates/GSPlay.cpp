@@ -50,6 +50,18 @@ void GSPlay::UpdatePlayerStatus()
 		healDuration = HEAL_DURATION;
 	}
 
+	if (charHP <= 0) {
+		
+		if (!isGameover) {
+			std::cout << "GameOver" << std::endl;
+			isGameover = true;
+			for (auto it : playerStatus->drawables) {
+				it->SetPosition(Vector3(-SCREEN_WIDTH, -SCREEN_HEIGHT, -SCREEN_HEIGHT));
+			}
+			m_Sound->PauseSound();
+		}	
+	}
+
 	playerStatus->statusData = formatStatus(charHP, charHunger, charThirst);
 }
 
@@ -440,6 +452,13 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	for (auto it : m_listButton)
 	{
 		it->Draw(renderer);
+	}
+
+	if (isGameover) {
+		gameOver = std::make_shared<GameOver>("000", "0");
+		for (auto it : gameOver->drawables) {
+			it->Draw(renderer);
+		}
 	}
 }
 
