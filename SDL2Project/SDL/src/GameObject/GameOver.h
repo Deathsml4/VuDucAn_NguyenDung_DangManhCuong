@@ -10,6 +10,7 @@
 #include "SpriteAnimation.h"
 #include "Define.h"
 #include "Character.h"
+#include "GameStateMachine.h"
 #include "ResourceManagers.h"
 #include "Text.h"
 class GameOver

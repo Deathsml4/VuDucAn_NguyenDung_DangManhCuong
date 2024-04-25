@@ -54,6 +54,7 @@ void GSPlay::UpdatePlayerStatus()
 		
 		if (!isGameover) {
 			std::cout << "GameOver" << std::endl;
+			finishedTime = playerStatus->time;
 			isGameover = true;
 			for (auto it : playerStatus->drawables) {
 				it->SetPosition(Vector3(-SCREEN_WIDTH, -SCREEN_HEIGHT, -SCREEN_HEIGHT));
@@ -458,7 +459,7 @@ void GSPlay::Draw(SDL_Renderer* renderer)
 	}
 
 	if (isGameover) {
-		gameOver = std::make_shared<GameOver>(playerStatus->time, "0");
+		gameOver = std::make_shared<GameOver>(finishedTime, finishedPage);
 		for (auto it : gameOver->drawables) {
 			it->Draw(renderer);
 		}
@@ -627,6 +628,7 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			map->chunks.clear();
 			map->Init(MapMode::MAP_VALLILA);
 			character->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+			finishedPage[0]++;
 		}
 	}
 	if (keyBackspace) {

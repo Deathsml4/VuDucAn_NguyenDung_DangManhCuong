@@ -22,13 +22,13 @@ GameOver::GameOver(std::string time, std::string layer)
 	drawables.push_back(message);
 
 	finishTime = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
-	finishTime->SetSize(90, 20);
+	finishTime->SetSize(120, 30);
 	finishTime->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishTime->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 130);
 	finishTime->LoadFromRenderText("Survived " + time);
 	drawables.push_back(finishTime);
 
 	finishLayer = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
-	finishLayer->SetSize(90, 20);
+	finishLayer->SetSize(110, 30);
 	finishLayer->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishLayer->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 150);
 	finishLayer->LoadFromRenderText("Passed " + layer + " pages");
 	drawables.push_back(finishLayer);
@@ -38,7 +38,7 @@ GameOver::GameOver(std::string time, std::string layer)
 	restartBtm->SetSize(150, 40);
 	restartBtm->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - restartBtm->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 200);
 	restartBtm->SetOnClick([]() {
-		std::cout << "Restart" << std::endl;
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
 		});
 	drawables.push_back(restartBtm);
 
@@ -47,7 +47,7 @@ GameOver::GameOver(std::string time, std::string layer)
 	exitBtn->SetSize(150, 40);
 	exitBtn->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - exitBtn->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 250);
 	exitBtn->SetOnClick([]() {
-		std::cout << "Exit" << std::endl;
+		GameStateMachine::GetInstance()->PopState();
 		});
 	drawables.push_back(exitBtn);
 }

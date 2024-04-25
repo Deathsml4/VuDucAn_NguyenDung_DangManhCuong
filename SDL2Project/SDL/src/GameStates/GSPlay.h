@@ -51,6 +51,8 @@ public:
 	void	RespawnMob();
 	void	AttackAnimate();
 
+	std::string finishedTime = "";
+	std::string finishedPage = "0";
 	int m_KeyPress;
 	bool playerHeadRight = false;
 	bool isGameover = false;
