@@ -128,7 +128,7 @@ void Mob::MoveToward(Vector2 goal)
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
 		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
-		float stepSize = 0.001; 
+		float stepSize = 0.005; 
 
 		float newX = this->Get2DPosition().x + (goal.x - this->Get2DPosition().x) * stepSize;
 		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
