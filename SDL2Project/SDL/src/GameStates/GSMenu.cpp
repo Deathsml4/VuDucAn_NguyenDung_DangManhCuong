@@ -24,21 +24,21 @@ void GSMenu::Init()
 	m_background->Set2DPosition(0, 0);
 
 	// play button
-	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
-	std::shared_ptr<MouseButton> btnPlay = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	texture = ResourceManagers::GetInstance()->GetTexture("Adventure.png");
+	std::shared_ptr<MouseButton> btnAdventure = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 
-	btnPlay->SetSize(359 / 2, 130 / 2);
-	btnPlay->Set2DPosition((SCREEN_WIDTH - btnPlay->GetWidth()) / 2, (SCREEN_HEIGHT - btnPlay->GetHeight() - 140) / 2);
-	btnPlay->SetOnClick([]() {
+	btnAdventure->SetSize(400 / 2, 150 / 2);
+	btnAdventure->Set2DPosition((SCREEN_WIDTH - btnAdventure->GetWidth()) / 2, (SCREEN_HEIGHT - btnAdventure->GetHeight() - 140) / 2 - 10);
+	btnAdventure->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
 		});
-	m_listButton.push_back(btnPlay);
+	m_listButton.push_back(btnAdventure);
 
 	// play button
-	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("Maze.png");
 	std::shared_ptr<MouseButton> btnMaze = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 
-	btnMaze->SetSize(359 / 2, 130 / 2);
+	btnMaze->SetSize(400 / 2, 150 / 2);
 	btnMaze->Set2DPosition((SCREEN_WIDTH - btnMaze->GetWidth()) / 2, (SCREEN_HEIGHT - btnMaze->GetHeight()) / 2);
 	btnMaze->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MAZE);
@@ -57,14 +57,14 @@ void GSMenu::Init()
 	m_listButton.push_back(btnClose);
 
 	//Options game
-	/*texture = ResourceManagers::GetInstance()->GetTexture("btn-options.png");
-	std::shared_ptr<MouseButton> btnOption = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnOption->SetSize(366 / 2, 136 / 2);
-	btnOption->Set2DPosition((SCREEN_WIDTH - btnOption->GetWidth()) / 2, SCREEN_HEIGHT / 2 + 40);
-	btnOption->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_OPTION);
+	texture = ResourceManagers::GetInstance()->GetTexture("btn-options.png");
+	std::shared_ptr<MouseButton> btnTutorial = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnTutorial->SetSize(400 / 2, 150 / 2);
+	btnTutorial->Set2DPosition((SCREEN_WIDTH - btnTutorial->GetWidth()) / 2, SCREEN_HEIGHT / 2 + 40);
+	btnTutorial->SetOnClick([]() {
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_CREDIT);
 		});
-	m_listButton.push_back(btnOption);*/
+	m_listButton.push_back(btnTutorial);
 
 	//CREDIT game
 	
@@ -95,11 +95,12 @@ void GSMenu::Init()
 
 	// game title
 	///Set Font
-	m_textColor = { 255, 255, 0 };
+	m_textColor = { 255, 255, 255 };
 	m_textGameName = std::make_shared<Text>("Data/Text/PlayTheGameBold-G9pm.ttf", m_textColor);
 	m_textGameName->SetSize(400, 100);
 	m_textGameName->Set2DPosition((SCREEN_WIDTH - m_textGameName->GetWidth()) / 2, SCREEN_HEIGHT / 2 - 300);
-	m_textGameName->LoadFromRenderText("Don't Starve");
+	m_textGameName->LoadFromRenderText("Dig It Up");
+
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/01_Main.wav");
 	m_Sound->PlaySound();

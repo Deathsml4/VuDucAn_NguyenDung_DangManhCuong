@@ -35,26 +35,34 @@ private:
 	std::shared_ptr<Sprite2D>	Choose_item_button;
 	std::shared_ptr<Sprite2D>	Attack_button;
 	std::shared_ptr<Sprite2D>	Run_button;
+	std::shared_ptr<Sprite2D>	Pass_over_gate_button;
 
 	std::shared_ptr<Sprite2D>	W_button;
 	std::shared_ptr<Sprite2D>	A_button;
 	std::shared_ptr<Sprite2D>	S_button;
 	std::shared_ptr<Sprite2D>	D_button;
+	std::shared_ptr<Sprite2D>	Backspace_button;
 	std::shared_ptr<Sprite2D>	E_button;
 	std::shared_ptr<Sprite2D>	Space_button;
 	std::shared_ptr<Sprite2D>	Arrow_left_button;
 	std::shared_ptr<Sprite2D>	Arrow_right_button;
 	std::shared_ptr<Sprite2D>	L_Shift_button;
-	//std::shared_ptr<Sprite2D>	Enter_button;
-	std::shared_ptr<Sprite2D>	Backspace_button;
+	std::shared_ptr<Sprite2D>	Enter_button;
 	
+	std::shared_ptr<Sprite2D>	W_button_1;
+	std::shared_ptr<Sprite2D>	A_button_1;
+	std::shared_ptr<Sprite2D>	S_button_1;
+	std::shared_ptr<Sprite2D>	D_button_1;
+	std::shared_ptr<Sprite2D>	Enter_button_1;
+
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;
 	std::list<std::shared_ptr<Sprite2D>>	m_listButton_Map_1;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
 	std::shared_ptr<SpriteAnimation> obj;
 	std::shared_ptr<MouseButton> button;
-	std::shared_ptr<Text>					m_textStateName;
+	std::shared_ptr<Text>					m_Adventure;
+	std::shared_ptr<Text>					m_Maze;
 	SDL_Color m_textColor;
 	TTF_Font* m_Font;
 
