@@ -639,7 +639,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 
 		if (map->isOnTheCheckPoint(charPos)) {
 			map->chunks.clear();
-			map->Init(MapMode::MAP_VALLILA);
+			map->Init(MapMode::MAP_MAZE);
 			character->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 			finishedPage[0]++;
 		}
