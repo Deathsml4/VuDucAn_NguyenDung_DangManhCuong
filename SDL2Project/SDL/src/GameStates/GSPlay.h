@@ -48,6 +48,7 @@ public:
 	void	UpdatePlayerStatus();
 	void	PlayerAttack();
 	void	ConsumItem();
+	void	DropItem();
 	void	RespawnMob();
 	void	AttackAnimate();
 
@@ -85,6 +86,7 @@ private:
 	bool keyEnter = false;
 	bool keyLeft = false;
 	bool keyRight = false;
+	bool keyDown = false;
 
 	Vector2 charPos;
 

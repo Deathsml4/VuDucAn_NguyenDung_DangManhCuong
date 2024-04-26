@@ -107,6 +107,13 @@ void GSPlay::ConsumItem()
 	}
 }
 
+void GSPlay::DropItem()
+{
+	std::shared_ptr<Item> newItem = std::make_shared<Item>(ItemType::Item_INVALID);
+	character->status.inventory[holdingItem] = newItem;
+	character->status.inventorySlot[holdingItem] = 0;
+}
+
 void GSPlay::RespawnMob()
 {
 	for (auto it : mobs) {
@@ -291,6 +298,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 		case SDLK_RIGHT:
 			keyRight = true;
 			break;
+		case SDLK_DOWN:
+			keyDown = true;
+			break;
 		default:
 			break;
 		}
@@ -329,6 +339,9 @@ void GSPlay::HandleKeyEvents(SDL_Event& e)
 			break;
 		case SDLK_RIGHT:
 			keyRight = false;
+			break;
+		case SDLK_DOWN:
+			keyDown = false;
 			break;
 		default:
 			break;
@@ -641,7 +654,7 @@ void GSPlay::KeyStateHandler(float deltaTime)
 		}
 		
 		if (holdingItem < 0) {
-			holdingItem = 15;
+			holdingItem = 14;
 		}
 	}
 	if (keyRight) {
@@ -650,9 +663,12 @@ void GSPlay::KeyStateHandler(float deltaTime)
 			holdItemCD = HOLD_ITEM_CD;
 		}
 
-		if (holdingItem > 15) {
+		if (holdingItem > 14) {
 			holdingItem = 0;
 		}
+	}
+	if (keyDown) {
+		DropItem();
 	}
 	if (keyE) {
 		ConsumItem();
