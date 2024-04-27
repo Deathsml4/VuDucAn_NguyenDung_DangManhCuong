@@ -103,10 +103,11 @@ private:
 	std::shared_ptr<MouseButton> btnTutorial;
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sound>		m_Sound;
-	std::shared_ptr<MouseButton> btnMusicOn;
+	std::shared_ptr<MouseButton> btnMusic;
 	std::shared_ptr<GameOver> gameOver;
 
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
+	bool checkMusic = true;
 };
 
