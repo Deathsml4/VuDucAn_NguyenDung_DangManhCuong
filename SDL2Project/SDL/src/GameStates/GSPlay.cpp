@@ -59,7 +59,9 @@ void GSPlay::UpdatePlayerStatus()
 			for (auto it : playerStatus->drawables) {
 				it->SetPosition(Vector3(-SCREEN_WIDTH, -SCREEN_HEIGHT, -SCREEN_HEIGHT));
 			}
-			m_Sound->PauseSound();
+			m_Sound->CleanUp();
+			m_Sound->LoadSound(S_GAMEOVER);
+			m_Sound->PlaySound();
 		}	
 	}
 
@@ -228,7 +230,7 @@ void GSPlay::Init()
 	m_listButton.push_back(btnMusicOn);
 
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
+	m_Sound->LoadSound(S_BG_SOUND);
 	m_Sound->PlaySound();
 
 	m_KeyPress = 0;

@@ -40,3 +40,6 @@
 #define MOB_ATTACK_CD 100
 #define MOB_MOVE_DURATION 100
 #define MOB_VISION 500
+
+#define S_BG_SOUND "Data/Sounds/Swstyletheme.wav"
+#define S_GAMEOVER "Data/Sounds/Werepig_of_London.wav"
