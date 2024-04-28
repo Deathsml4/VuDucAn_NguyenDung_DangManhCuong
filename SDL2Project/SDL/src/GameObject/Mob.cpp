@@ -77,15 +77,19 @@ bool Mob::Attack()
 		this->attackCD = this->attackCD <= 0 ? 0 : this->attackCD - 1;
 		if (this->attackCD <= 0) {
 			this->attackCD = MOB_ATTACK_CD;
+			Mix_FreeChunk(sound);
+			Mix_HaltChannel(audioChannel);
+			sound = Mix_LoadWAV(S_MOB_ATTACK);
+			audioChannel = Mix_PlayChannel(-1, sound, -1);
+			makingSound = false;
 			return true;
 		}
-		
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
 		this->SetTexture(texture);
+
 		return false;
 	}
 	else {
-		
 		return false;
 	}
 }
@@ -137,6 +141,14 @@ void Mob::MoveToward(Vector2 goal)
 		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
 
 		this->Set2DPosition(newX, newY);
+
+		if(!makingSound){
+			Mix_FreeChunk(sound);
+			Mix_HaltChannel(audioChannel);
+			sound = Mix_LoadWAV(S_MOB_SLEEP);
+			audioChannel = Mix_PlayChannel(-1, sound, -1);
+			makingSound = true;
+		}
 	}
 	else {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
