@@ -43,3 +43,11 @@
 
 #define S_BG_SOUND "Data/Sounds/Swstyletheme.wav"
 #define S_GAMEOVER "Data/Sounds/Werepig_of_London.wav"
+
+#define S_PLAYER_WALK "Data/Sounds/Deerclops_Footstep.wav"
+#define S_PLAYER_BREAK_ROCK "Data/Sounds/Deerclops_Ice_Big.wav"
+
+#define S_OBJECT_FALL "Data/Sounds/Deerclops_Fall_Snow.wav"
+
+#define S_MOB_ATTACK "Data/Sounds/Deerclops_Attack_Voice.wav"
+#define	S_MOB_DEATH "Data/Sounds/Deerclops_Death_Voice.wav"

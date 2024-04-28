@@ -33,6 +33,14 @@ void Character::Init()
 		status.inventorySlot[i] = 0;
 	}
 	
+	walkSound = std::make_shared<Sound>();
+	walkSound->LoadSound(S_PLAYER_WALK);
+
+	wolkingSound = std::make_shared<Sound>();
+	wolkingSound->LoadSound(S_PLAYER_BREAK_ROCK);
+
+	walkingSound = Mix_LoadWAV(S_PLAYER_WALK);
+
 	//status.inventory[0] = std::make_shared<Item>(ItemType::Item_FRUIT);
 	//status.inventory[1] = std::make_shared<Item>(ItemType::Item_BERRIES);
 	//status.inventory[6] = std::make_shared<Item>(ItemType::Item_LOG);

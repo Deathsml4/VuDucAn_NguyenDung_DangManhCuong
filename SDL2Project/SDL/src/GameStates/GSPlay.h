@@ -51,6 +51,7 @@ public:
 	void	DropItem();
 	void	RespawnMob();
 	void	AttackAnimate();
+	void	HandlePlayerSoundEffect();
 
 	std::string finishedTime = "";
 	std::string finishedPage = "0";
@@ -87,6 +88,7 @@ private:
 	bool keyLeft = false;
 	bool keyRight = false;
 	bool keyDown = false;
+	bool isPlayerWalking = false;
 
 	Vector2 charPos;
 

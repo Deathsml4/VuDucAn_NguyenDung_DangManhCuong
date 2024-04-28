@@ -148,6 +148,21 @@ void GSPlay::AttackAnimate()
 	}
 }
 
+void GSPlay::HandlePlayerSoundEffect()
+{
+	//Walk
+	if (keyA || keyS || keyD || keyW) {
+		if (!isPlayerWalking) {
+			isPlayerWalking = true;
+			Mix_PlayChannel(2, character->walkingSound, -1);
+		}
+	}
+	else {
+		Mix_Pause(2);
+		isPlayerWalking = false;
+	}
+}
+
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -428,10 +443,12 @@ void GSPlay::Update(float deltaTime)
 	for (auto it : playerStatus->drawables) {
 		it->Update(deltaTime);
 	}
-
+	
 	UpdateHoldingItem();
 	UpdatePlayerStatus();
 	playerStatus->Update();
+
+	HandlePlayerSoundEffect();
 }
 
 void GSPlay::Draw(SDL_Renderer* renderer)

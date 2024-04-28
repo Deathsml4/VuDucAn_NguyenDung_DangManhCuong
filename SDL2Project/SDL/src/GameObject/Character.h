@@ -9,6 +9,7 @@
 #include "MapObject.h"
 #include "Mob.h"
 #include "Item.h"
+#include "Sound.h"
 
 struct PlayerInput
 {
@@ -69,6 +70,11 @@ public:
     std::map<int, char*>    m_nearbyEntity;
     SavePoint               m_playerLastSavePoint;
     std::map<int, char*>    m_inventory;
+    std::shared_ptr<Sound>		walkSound;
+    std::shared_ptr<Sound>      attackSound;
+    std::shared_ptr<Sound>      wolkingSound;
+
+    Mix_Chunk *walkingSound;
 
     //std::list<std::shared_ptr<MapObject> >    m_nearbyObjects;
     //std::list<std::shared_ptr<Mob> >          m_nearbyMobs;
