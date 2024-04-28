@@ -13,6 +13,7 @@
 #include "Camera.h"
 #include"Define.h"
 #include"ParticleSwarmOptimization.h"
+#include"Sound.h"
 
 const int LIVETIME = 600;
 const int MAX_MOB_WIDTH = 150;
@@ -21,6 +22,13 @@ const int MAX_MOB_HEIGHT = 120;
 
 enum class MopType {
 	HOUND
+};
+
+enum class MobStatus {
+	IDLE,
+	CHASE,
+	ATTACK,
+	DEATH
 };
 
 class Mob : public SpriteAnimation
@@ -35,6 +43,12 @@ public:
 	bool active; // dead or alive
 	MopType type;
 	bool killed; 
+
+	MobStatus status;
+
+	bool makingSound = false;
+	int audioChannel;
+	Mix_Chunk* sound;
 
 	float angleToPlayer;
 	float distanceToPlayer;
@@ -52,5 +66,6 @@ public:
 	void MoveToward(Vector2 goal);
 	void BounceBack(Vector2 goal);
 	void UpdateTexture(Vector2 playerPos);
+	void MakeSound();
 };
 

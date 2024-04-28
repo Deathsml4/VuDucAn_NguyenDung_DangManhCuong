@@ -235,6 +235,8 @@ void GSPlay::Init()
 		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.1f);
 		mob->SetFlip(SDL_FLIP_HORIZONTAL);
 		mob->Init();
+		mob->audioChannel = Mix_PlayChannel(-1, mob->sound, -1);
+		Mix_Volume(mob->audioChannel, 0);
 		mobs.push_back(mob);
 	}
 
@@ -436,7 +438,7 @@ void GSPlay::Update(float deltaTime)
 		}
 		it->UpdateTexture(charPos);
 		it->Update(deltaTime);
-		
+		it->MakeSound();
 	}
 
 	//Update position of camera

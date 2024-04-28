@@ -31,6 +31,9 @@ Mob::Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount,
 	m_currentTicks = 0;
 	m_lastUpdate = SDL_GetTicks();
 	active = true;
+
+	status = MobStatus::IDLE;
+	sound = Mix_LoadWAV(S_MOB_SLEEP);
 	
 	Init();
 }
@@ -169,4 +172,36 @@ void Mob::UpdateTexture(Vector2 playerPos)
 	else {
 		this->SetFlip(SDL_FLIP_HORIZONTAL);
 	}
+}
+
+void Mob::MakeSound()
+{
+	/*switch (this->status)
+	{
+	case MobStatus::IDLE:
+		break;
+	case MobStatus::CHASE:
+		break;
+	case MobStatus::ATTACK:
+		break;
+	case MobStatus::DEATH:
+		break;
+	default:
+		break;
+	}*/
+
+	int volumn = distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / distanceToPlayer : 0;
+
+	if (distanceToPlayer <= SCREEN_WIDTH / 2) {
+		if (!makingSound) {
+			Mix_Volume(audioChannel, volumn);
+			makingSound = true;
+		}	
+	}
+	else {
+		//int volumn = 0;
+		//Mix_Volume(audioChannel, volumn);
+		makingSound = false;
+	}
+	
 }
