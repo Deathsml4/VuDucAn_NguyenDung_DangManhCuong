@@ -22,32 +22,33 @@ GameOver::GameOver(std::string time, std::string layer)
 	drawables.push_back(message);
 
 	finishTime = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
-	finishTime->SetSize(120, 30);
-	finishTime->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishTime->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 130);
+	finishTime->SetSize(170, 35);
+	finishTime->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishTime->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 120);
 	finishTime->LoadFromRenderText("Survived " + time);
 	drawables.push_back(finishTime);
 
 	finishLayer = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
-	finishLayer->SetSize(110, 30);
+	finishLayer->SetSize(110, 35);
 	finishLayer->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - finishLayer->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 150);
 	finishLayer->LoadFromRenderText("Passed " + layer + " pages");
 	drawables.push_back(finishLayer);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("Try_again.png");
 	restartBtm = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	restartBtm->SetSize(150, 40);
-	restartBtm->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - restartBtm->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 200);
+	restartBtm->SetSize(180, 60);
+	restartBtm->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - restartBtm->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 180);
 	restartBtm->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
 		});
 	drawables.push_back(restartBtm);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("btn-play.png");
+	texture = ResourceManagers::GetInstance()->GetTexture("Back_to_menu.png");
 	exitBtn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	exitBtn->SetSize(150, 40);
-	exitBtn->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - exitBtn->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 250);
+	exitBtn->SetSize(180, 60);
+	exitBtn->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - exitBtn->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 240);
 	exitBtn->SetOnClick([]() {
-		GameStateMachine::GetInstance()->PopState();
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MENU);
+		//GameStateMachine::GetInstance()->PopState();
 		});
 	drawables.push_back(exitBtn);
 }

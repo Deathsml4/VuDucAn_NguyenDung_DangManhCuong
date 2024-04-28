@@ -70,16 +70,26 @@ void GSMenu::Init()
 	
 
 	// Music On
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.png");
-	btnMusicOn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnMusicOn->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10 - 60, 10);
-	btnMusicOn->SetSize(50, 40);
-	btnMusicOn->SetOnClick([]() {
-		std::shared_ptr<Sound> i = std::make_shared<Sound>();
-		i->LoadSound("Data/Sounds/01_Main.wav");
-		i->PlaySound();
+	texture = ResourceManagers::GetInstance()->GetTexture("Music_on.png");
+	btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusic->Set2DPosition(SCREEN_WIDTH - btnClose->GetWidth() - 10 - 60, 10);
+	btnMusic->SetSize(50, 40);
+	btnMusic->SetOnClick([this]() {
+		if (checkMusic) {
+			auto texture = ResourceManagers::GetInstance()->GetTexture("Music_off.png");
+			btnMusic->SetTexture(texture);
+			checkMusic = false;
+			m_Sound->PauseSound();
+		}
+		else
+		{
+			auto texture = ResourceManagers::GetInstance()->GetTexture("Music_on.png");
+			btnMusic->SetTexture(texture);
+			checkMusic = true;
+			m_Sound->ResumeSound();
+		}
 		});
-	m_listButton.push_back(btnMusicOn);
+	m_listButton.push_back(btnMusic);
 
 	// Music Off
 	/*texture = ResourceManagers::GetInstance()->GetTexture("btn_music.tga");

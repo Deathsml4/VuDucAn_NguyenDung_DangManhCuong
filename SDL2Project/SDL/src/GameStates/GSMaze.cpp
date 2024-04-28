@@ -179,7 +179,8 @@ void GSMaze::Init()
 	button->SetSize(50, 40);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
-		GameStateMachine::GetInstance()->PopState();
+		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MENU);
+		//GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
 
@@ -216,16 +217,26 @@ void GSMaze::Init()
 		});
 	m_listButton.push_back(btnTutorial);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_music.png");
-	btnMusicOn = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
-	btnMusicOn->Set2DPosition(SCREEN_WIDTH - button->GetWidth() - 10 - 120, 10);
-	btnMusicOn->SetSize(50, 40);
-	btnMusicOn->SetOnClick([]() {
-		std::shared_ptr<Sound> i = std::make_shared<Sound>();
-		i->LoadSound("Data/Sounds/01_Main.wav");
-		i->PlaySound();
+	texture = ResourceManagers::GetInstance()->GetTexture("Music_on.png");
+	btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
+	btnMusic->Set2DPosition(SCREEN_WIDTH - button->GetWidth() - 10 - 120, 10);
+	btnMusic->SetSize(50, 40);
+	btnMusic->SetOnClick([this]() {
+		if (checkMusic) {
+			auto texture = ResourceManagers::GetInstance()->GetTexture("Music_off.png");
+			btnMusic->SetTexture(texture);
+			checkMusic = false;
+			m_Sound->PauseSound();
+		}
+		else
+		{
+			auto texture = ResourceManagers::GetInstance()->GetTexture("Music_on.png");
+			btnMusic->SetTexture(texture);
+			checkMusic = true;
+			m_Sound->ResumeSound();
+		}
 		});
-	m_listButton.push_back(btnMusicOn);
+	m_listButton.push_back(btnMusic);
 
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
