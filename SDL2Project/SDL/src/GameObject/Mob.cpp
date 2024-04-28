@@ -81,6 +81,7 @@ bool Mob::Attack()
 			Mix_HaltChannel(audioChannel);
 			sound = Mix_LoadWAV(S_MOB_ATTACK);
 			audioChannel = Mix_PlayChannel(-1, sound, -1);
+			Mix_Volume(audioChannel, volumn);
 			makingSound = false;
 			return true;
 		}
@@ -146,7 +147,8 @@ void Mob::MoveToward(Vector2 goal)
 			Mix_FreeChunk(sound);
 			Mix_HaltChannel(audioChannel);
 			sound = Mix_LoadWAV(S_MOB_SLEEP);
-			audioChannel = Mix_PlayChannel(-1, sound, -1);
+			audioChannel = Mix_PlayChannel(audioChannel, sound, -1);
+			Mix_Volume(audioChannel, volumn);
 			makingSound = true;
 		}
 	}
@@ -160,6 +162,14 @@ void Mob::MoveToward(Vector2 goal)
 void Mob::BounceBack(Vector2 goal)
 {
 	if (this->distanceToPlayer < 3 * GRID_UNITS) {
+		if(!makingSound){
+			Mix_FreeChunk(sound);
+			Mix_HaltChannel(audioChannel);
+			sound = Mix_LoadWAV(S_MOB_SLEEP);
+			audioChannel = Mix_PlayChannel(audioChannel, sound, -1);
+			Mix_Volume(audioChannel, volumn);
+			makingSound = true;
+		}
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
 		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
@@ -202,7 +212,7 @@ void Mob::MakeSound()
 		break;
 	}*/
 
-	int volumn = distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / distanceToPlayer : 0;
+	volumn = distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / distanceToPlayer : 0;
 
 	if (distanceToPlayer <= SCREEN_WIDTH / 2) {
 		if (!makingSound) {

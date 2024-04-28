@@ -61,8 +61,17 @@ void GSPlay::UpdatePlayerStatus()
 				it->SetPosition(Vector3(-SCREEN_WIDTH, -SCREEN_HEIGHT, -SCREEN_HEIGHT));
 			}
 			m_Sound->CleanUp();
-			m_Sound->LoadSound(S_GAMEOVER);
-			m_Sound->PlaySound();
+			/*Mix_HaltChannel(-1);
+			Mix_CloseAudio();*/
+			/*m_Sound->LoadSound(S_GAMEOVER);
+			m_Sound->PlaySound();*/
+			
+			for (auto it : mobs) {
+				it->Set2DPosition(-SCREEN_WIDTH, -SCREEN_HEIGHT);
+				Mix_Volume(it->audioChannel, 0);
+			}
+			Mix_PlayChannel(1, Mix_LoadWAV(S_GAMEOVER), 1);
+			Mix_Volume(1, 30);
 		}	
 	}
 
@@ -159,7 +168,8 @@ void GSPlay::HandlePlayerSoundEffect()
 		}
 	}
 	else {
-		Mix_Pause(2);
+		if(Mix_Playing(2))
+			Mix_Pause(2);
 		isPlayerWalking = false;
 	}
 	//working
@@ -167,6 +177,7 @@ void GSPlay::HandlePlayerSoundEffect()
 		if (!isPlayerBreakingStuff) {
 			isPlayerBreakingStuff = true;
 			Mix_PlayChannel(3, character->workingSound, -1);
+			Mix_Volume(3, 20);
 		}
 	}
 	else {
@@ -235,7 +246,7 @@ void GSPlay::Init()
 		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.1f);
 		mob->SetFlip(SDL_FLIP_HORIZONTAL);
 		mob->Init();
-		mob->audioChannel = Mix_PlayChannel(-1, mob->sound, -1);
+		mob->audioChannel = Mix_PlayChannel(i+5, mob->sound, -1);
 		Mix_Volume(mob->audioChannel, 0);
 		mobs.push_back(mob);
 	}

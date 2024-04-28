@@ -47,6 +47,7 @@ public:
 	MobStatus status;
 
 	bool makingSound = false;
+	int volumn = 0;
 	int audioChannel;
 	Mix_Chunk* sound;
 
