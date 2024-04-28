@@ -162,6 +162,17 @@ void GSPlay::HandlePlayerSoundEffect()
 		Mix_Pause(2);
 		isPlayerWalking = false;
 	}
+	//working
+	if (keyBackspace) {
+		if (!isPlayerBreakingStuff) {
+			isPlayerBreakingStuff = true;
+			Mix_PlayChannel(3, character->workingSound, -1);
+		}
+	}
+	else {
+		Mix_Pause(3);
+		isPlayerBreakingStuff = false;
+	}
 }
 
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
