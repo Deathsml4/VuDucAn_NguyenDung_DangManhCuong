@@ -196,6 +196,62 @@ void GSPlay::HandlePlayerSoundEffect()
 		Mix_Pause(4);
 		isPlayerAttacking = false;
 	}
+	// mob sound
+	int mobChannelA = 5;
+	int mobChannelB = 6;
+
+	if (nearestMob->distanceToPlayer < SCREEN_WIDTH / 2) {
+		if (!isMobNearby) {
+			isMobNearby = true;
+			Mix_PlayChannel(mobChannelA, mobSleepSound, -1);
+			Mix_Volume(mobChannelA, 12);
+		}
+	}
+	else {
+		Mix_Pause(mobChannelA);
+		isMobNearby = false;
+	}
+
+	if (nearestMob->distanceToPlayer <= GRID_UNITS) {
+		if (!isMobAttacking) {
+			isMobAttacking = true;
+			Mix_PlayChannel(mobChannelB, mobAttackSound, -1);
+			Mix_Volume(mobChannelB, 12);
+		}
+	}
+	else {
+		isMobAttacking = false;
+		Mix_Pause(mobChannelB);
+
+	}
+	
+	/*for (auto it : mobs) {*/
+		/*it->volumn = it->distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / it->distanceToPlayer : 0;
+		if (it->distanceToPlayer <= SCREEN_WIDTH / 4) {
+			if (!it->isMobNearby) {
+				it->isMobNearby = true;
+				Mix_PlayChannel(mobChannelA, it->sleepSound, -1);
+			}
+			mobChannelA++;
+		}
+		else {
+
+		}*/
+
+		/*if (it->distanceToPlayer <= mobToMakeSound->distanceToPlayer) {
+			mobToMakeSound = it;
+		}
+		else {
+			if (it->isMobNearby) {
+				it->isMobNearby = false;
+			}
+		}
+		
+	}
+	if (!mobToMakeSound->isMobNearby) {
+		mobToMakeSound->isMobNearby = true;
+		Mix_PlayChannel(mobChannelA, mobToMakeSound->sleepSound, -1);
+	}*/
 }
 
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
@@ -296,6 +352,10 @@ void GSPlay::Init()
 	m_Sound = std::make_shared<Sound>();
 	m_Sound->LoadSound(S_BG_SOUND);
 	m_Sound->PlaySound();
+
+	mobSleepSound = Mix_LoadWAV(S_MOB_SLEEP);
+	mobAttackSound = Mix_LoadWAV(S_MOB_ATTACK);
+	mobDeathSound = Mix_LoadWAV(S_MOB_DEATH);
 
 	m_KeyPress = 0;
 	
@@ -558,6 +618,13 @@ void GSPlay::UpdateNearestObject()
 			nearestObject = obj;
 			nearestDistance = distanceToObject;
 
+		}
+	}
+	float nearestMobDistance = (float)INT_MAX;
+	for (auto mob : mobs) {
+		if (mob->distanceToPlayer < nearestMobDistance) {
+			nearestMob = mob;
+			nearestMobDistance = mob->distanceToPlayer;
 		}
 	}
 }

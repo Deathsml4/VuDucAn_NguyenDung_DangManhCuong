@@ -33,7 +33,6 @@ Mob::Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount,
 	active = true;
 
 	status = MobStatus::IDLE;
-	//sound = Mix_LoadWAV(S_MOB_SLEEP);
 	
 	Init();
 }

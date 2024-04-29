@@ -49,7 +49,13 @@ public:
 	bool makingSound = false;
 	int volumn = 0;
 	int audioChannel;
-	Mix_Chunk* sound;
+
+	Mix_Chunk* sleepSound;
+	Mix_Chunk* attackSound;
+	Mix_Chunk* deathSound;
+
+	bool isMobNearby = false;
+	bool isMobAttacking = false;
 
 	float angleToPlayer;
 	float distanceToPlayer;
