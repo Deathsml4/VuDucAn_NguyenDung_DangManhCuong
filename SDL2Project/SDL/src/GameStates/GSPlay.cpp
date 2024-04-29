@@ -90,6 +90,9 @@ void GSPlay::PlayerAttack()
 					it->active = false;
 					it->Set2DPosition(0, 0);
 					it->SetSize(0, 0);
+
+					Mix_PlayChannel(7, mobDeathSound, 0);
+					Mix_Volume(7, 22);
 				}
 			}
 		}
@@ -199,7 +202,7 @@ void GSPlay::HandlePlayerSoundEffect()
 	// mob sound
 	int mobChannelA = 5;
 	int mobChannelB = 6;
-	nearestMob->volumn = nearestMob->distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / nearestMob->distanceToPlayer : 0;
+	nearestMob->volumn = nearestMob->distanceToPlayer <= GRID_UNITS * 3 ? (12) * (GRID_UNITS * 3 / 2) / nearestMob->distanceToPlayer : 0;
 
 	if (nearestMob->distanceToPlayer < GRID_UNITS*3) {
 		if (!isMobNearby) {
