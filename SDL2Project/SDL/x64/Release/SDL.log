@@ -9,7 +9,7 @@ C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Pr
   Character.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Character.cpp(78,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Character.cpp(82,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   GameOver.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
@@ -60,24 +60,25 @@ C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Pr
           [
               _Rep=__int64
           ]
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(46,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(47,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(104,47): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(104,47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(104,111): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(104,111): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(111,8): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(48,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(49,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(111,47): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(111,47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(111,111): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(111,111): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(118,8): warning C4244: 'argument': conversion from '_Rep' to 'unsigned int', possible loss of data
           with
           [
               _Rep=__int64
           ]
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(116,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(117,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(122,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(122,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(130,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(131,18): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(150,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(123,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(124,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(129,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(129,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(137,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(138,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(174,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\Mob.cpp(214,28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   PlayerStatus.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
@@ -139,29 +140,29 @@ C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Pr
   GSMaze.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(212,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(221,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(508,120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(508,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(508,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(508,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(509,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(509,133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(509,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(509,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(511,152): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(511,141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(511,99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(511,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(513,210): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(513,145): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(513,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(513,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(517,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(525,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(525,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(525,74): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(525,74): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(213,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(222,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(519,120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(519,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(519,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(519,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(520,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(520,133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(520,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(520,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(522,152): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(522,141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(522,99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(522,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(524,210): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(524,145): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(524,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(524,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(528,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(536,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(536,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(536,74): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMaze.cpp(536,74): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   GSMenu.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(31,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(31,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -169,37 +170,38 @@ C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Pr
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(42,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(53,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(63,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(75,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(101,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(75,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSMenu.cpp(111,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   GSOptions.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSOptions.cpp(44,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSOptions.cpp(144,2): warning C4065: switch statement contains 'default' but no 'case' labels
   GSPlay.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(15,30): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(212,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(221,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(508,120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(508,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(508,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(508,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(509,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(509,133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(509,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(509,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(511,152): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(511,141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(511,99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(511,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(513,206): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(513,143): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(513,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(513,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(517,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(525,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(525,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(525,74): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(525,74): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(207,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(330,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(339,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(651,120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(651,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(651,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(651,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(652,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(652,133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(652,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(652,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(654,152): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(654,141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(654,99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(654,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(656,206): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(656,143): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(656,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(656,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(660,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(668,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(668,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(668,74): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSPlay.cpp(668,74): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   GSSetting.cpp
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSSetting.cpp(44,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameStates\GSSetting.cpp(51,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -210,24 +212,28 @@ C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Pr
 C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\src\GameObject\MapObject.h(19,31): warning C4305: 'initializing': truncation from 'double' to 'float'
   Compiling...
   GameStateMachine.cpp
-GameOver.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-Item.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-MapObject.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-Mob.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-Game.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-Camera.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-Map.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-PlayerStatus.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSSetting.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-Renderer.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-SpriteAnimation.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-TextureManager.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSCredit.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSOptions.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GameStateBase.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GameStateMachine.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSIntro.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSMenu.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSPlay.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-GSMaze.obj : error LNK2005: "char const * const f_gameover" (?f_gameover@@3PEBDEB) already defined in Character.obj
-C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\x64\Release\SDL.exe : fatal error LNK1169: one or more multiply defined symbols found
+  Generating code
+  206 of 2802 functions ( 7.4%) were compiled, the rest were copied from previous compilation.
+    115 functions were new in current compilation
+    60 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  SDL.vcxproj -> C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\x64\Release\SDL.exe
+  0 File(s) copied
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Attack_Voice.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Death_Voice.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Distant_Voice.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Fall_Snow.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Footstep.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Ice_Big.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Swipe.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Deerclops_Walk_Voice.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\nom-nom-nom.mp3
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\nom-nom-nom.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Swstyletheme.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Sounds\Werepig_of_London.wav
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Back_to_menu.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\btn-play.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Music_off.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Music_on.png
+  C:\Users\vuduc\OneDrive\Documents\GitHub\VuDucAn_NguyenDung_DangManhCuong\SDL2Project\SDL\Data\Textures\Try_again.png
+  17 File(s) copied
