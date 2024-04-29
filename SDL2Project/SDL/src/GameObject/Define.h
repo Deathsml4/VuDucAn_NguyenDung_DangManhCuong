@@ -64,6 +64,9 @@
 #define T_CHARACTER_WEBBER_DOWN "sprite/351px-Frog_Webber_jump_down.png"
 #define T_CHARACTER_WEBBER_UP "sprite/342px-Frog_Webber_jump_up2.png"
 #define T_CHARACTER_WEBBER_SIDE "sprite/357px-Frog_Webber_jump_side2.png"
+#define T_CHARACTER_WILSON_DOWN "sprite/375px-Player_Sneaky-down.png"
+#define T_CHARACTER_WILSON_UP "sprite/375px-Player_Sneaky-up.png"
+#define T_CHARACTER_WILSON_SIDE "sprite/375px-Player_Sneaky-side.png"
 
 #define T_CHARACTER_ATTACK "fire-sword-attack.png"
 

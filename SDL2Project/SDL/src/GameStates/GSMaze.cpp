@@ -59,7 +59,18 @@ void GSMaze::UpdatePlayerStatus()
 			for (auto it : playerStatus->drawables) {
 				it->SetPosition(Vector3(-SCREEN_WIDTH, -SCREEN_HEIGHT, -SCREEN_HEIGHT));
 			}
-			m_Sound->PauseSound();
+			m_Sound->CleanUp();
+			/*Mix_HaltChannel(-1);
+			Mix_CloseAudio();*/
+			/*m_Sound->LoadSound(S_GAMEOVER);
+			m_Sound->PlaySound();*/
+
+			for (auto it : mobs) {
+				it->Set2DPosition(-SCREEN_WIDTH, -SCREEN_HEIGHT);
+				Mix_Volume(it->audioChannel, 0);
+			}
+			Mix_PlayChannel(1, Mix_LoadWAV(S_GAMEOVER), 1);
+			Mix_Volume(1, 30);
 		}
 	}
 
@@ -78,6 +89,9 @@ void GSMaze::PlayerAttack()
 					it->active = false;
 					it->Set2DPosition(0, 0);
 					it->SetSize(0, 0);
+
+					Mix_PlayChannel(7, mobDeathSound, 0);
+					Mix_Volume(7, 22);
 				}
 			}
 		}
@@ -93,6 +107,8 @@ void GSMaze::ConsumItem()
 		character->status.inventory[holdingItem] = newItem;
 		character->status.inventorySlot[holdingItem] = 0;
 		character->status.currentFood += 10;
+		Mix_PlayChannel(7, eatingSound, 0);
+		Mix_Volume(7, 22);
 		switch (character->status.inventory[holdingItem]->itemType)
 		{
 		case ItemType::Item_FRUIT:
@@ -146,6 +162,103 @@ void GSMaze::AttackAnimate()
 	}
 }
 
+void GSMaze::HandlePlayerSoundEffect()
+{
+	//Walk
+	if (keyA || keyS || keyD || keyW) {
+		if (!isPlayerWalking) {
+			isPlayerWalking = true;
+			Mix_PlayChannel(2, character->walkingSound, -1);
+		}
+	}
+	else {
+		if (Mix_Playing(2))
+			Mix_Pause(2);
+		isPlayerWalking = false;
+	}
+	//working
+	if (keyBackspace) {
+		if (!isPlayerBreakingStuff) {
+			isPlayerBreakingStuff = true;
+			Mix_PlayChannel(3, character->workingSound, -1);
+			Mix_Volume(3, 20);
+		}
+	}
+	else {
+		Mix_Pause(3);
+		isPlayerBreakingStuff = false;
+	}
+	//attacking
+	if (keySpace) {
+		if (!isPlayerAttacking) {
+			isPlayerAttacking = true;
+			Mix_PlayChannel(4, character->attackingSound, -1);
+
+		}
+	}
+	else {
+		Mix_Pause(4);
+		isPlayerAttacking = false;
+	}
+	// mob sound
+	int mobChannelA = 5;
+	int mobChannelB = 6;
+	nearestMob->volumn = nearestMob->distanceToPlayer <= GRID_UNITS * 3 ? (12) * (GRID_UNITS * 3 / 2) / nearestMob->distanceToPlayer : 0;
+
+	if (nearestMob->distanceToPlayer < GRID_UNITS * 3) {
+		if (!isMobNearby) {
+			isMobNearby = true;
+			Mix_PlayChannel(mobChannelA, mobSleepSound, -1);
+			Mix_Volume(mobChannelA, nearestMob->volumn);
+		}
+	}
+	else {
+		Mix_Pause(mobChannelA);
+		isMobNearby = false;
+	}
+
+	if (nearestMob->distanceToPlayer <= GRID_UNITS) {
+		if (!isMobAttacking) {
+			isMobAttacking = true;
+			Mix_PlayChannel(mobChannelB, mobAttackSound, -1);
+			Mix_Volume(mobChannelB, 12);
+		}
+	}
+	else {
+		isMobAttacking = false;
+		Mix_Pause(mobChannelB);
+
+	}
+
+	/*for (auto nearestMob : mobs) {*/
+		/*nearestMob->volumn = it->distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / it->distanceToPlayer : 0;
+		if (it->distanceToPlayer <= SCREEN_WIDTH / 4) {
+			if (!it->isMobNearby) {
+				it->isMobNearby = true;
+				Mix_PlayChannel(mobChannelA, it->sleepSound, -1);
+			}
+			mobChannelA++;
+		}
+		else {
+
+		}*/
+
+		/*if (it->distanceToPlayer <= mobToMakeSound->distanceToPlayer) {
+			mobToMakeSound = it;
+		}
+		else {
+			if (it->isMobNearby) {
+				it->isMobNearby = false;
+			}
+		}
+
+	}
+	if (!mobToMakeSound->isMobNearby) {
+		mobToMakeSound->isMobNearby = true;
+		Mix_PlayChannel(mobChannelA, mobToMakeSound->sleepSound, -1);
+	}*/
+}
+
 float GSMaze::GetDistance(float x1, float y1, float x2, float y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
@@ -163,7 +276,7 @@ GSMaze::~GSMaze()
 void GSMaze::Init()
 {
 	//auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("Wood_panelling_texture.png");
+	auto texture = ResourceManagers::GetInstance()->GetTexture(T_BACKGROUND_1);
 
 	// background
 
@@ -174,12 +287,13 @@ void GSMaze::Init()
 	map = std::make_shared<Map>(MapMode::MAP_MAZE);
 
 	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.png");
+	texture = ResourceManagers::GetInstance()->GetTexture(T_BUTTON_CLOSE);
 	button = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	button->SetSize(50, 40);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MENU);
+
 		//GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
@@ -205,6 +319,8 @@ void GSMaze::Init()
 		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.1f);
 		mob->SetFlip(SDL_FLIP_HORIZONTAL);
 		mob->Init();
+		/*mob->audioChannel = Mix_PlayChannel(-1, mob->sound, -1);
+		Mix_Volume(mob->audioChannel, 0);*/
 		mobs.push_back(mob);
 	}
 
@@ -239,8 +355,14 @@ void GSMaze::Init()
 	m_listButton.push_back(btnMusic);
 
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound(S_BACKGROUND_MUSIC_1);
+	m_Sound->LoadSound(S_BG_SOUND);
 	m_Sound->PlaySound();
+
+	mobSleepSound = Mix_LoadWAV(S_MOB_SLEEP);
+	mobAttackSound = Mix_LoadWAV(S_MOB_ATTACK);
+	mobDeathSound = Mix_LoadWAV(S_MOB_DEATH);
+	objectFallSound = Mix_LoadWAV(S_OBJECT_FALL);
+	eatingSound = Mix_LoadWAV(S_PLAYER_EAT);
 
 	m_KeyPress = 0;
 
@@ -406,7 +528,7 @@ void GSMaze::Update(float deltaTime)
 		}
 		it->UpdateTexture(charPos);
 		it->Update(deltaTime);
-
+		//it->MakeSound();
 	}
 
 	//Update position of camera
@@ -441,6 +563,8 @@ void GSMaze::Update(float deltaTime)
 	UpdateHoldingItem();
 	UpdatePlayerStatus();
 	playerStatus->Update();
+
+	HandlePlayerSoundEffect();
 }
 
 void GSMaze::Draw(SDL_Renderer* renderer)
@@ -501,6 +625,13 @@ void GSMaze::UpdateNearestObject()
 			nearestObject = obj;
 			nearestDistance = distanceToObject;
 
+		}
+	}
+	float nearestMobDistance = (float)INT_MAX;
+	for (auto mob : mobs) {
+		if (mob->distanceToPlayer < nearestMobDistance) {
+			nearestMob = mob;
+			nearestMobDistance = mob->distanceToPlayer;
 		}
 	}
 }
@@ -698,11 +829,14 @@ void GSMaze::InteractToObject()
 				map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
 				map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0, 0);
 				map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
+				Mix_PlayChannel(7, objectFallSound, 0);
+				Mix_Volume(7, 42);
 			}
 			else {
 				map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
 			}
 			interactCD = INTERACT_CD;
+
 		}
 		else {
 		}

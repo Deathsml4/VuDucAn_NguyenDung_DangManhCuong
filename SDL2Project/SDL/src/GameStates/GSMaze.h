@@ -51,6 +51,7 @@ public:
 	void	DropItem();
 	void	RespawnMob();
 	void	AttackAnimate();
+	void	HandlePlayerSoundEffect();
 
 	std::string finishedTime = "";
 	std::string finishedPage = "0";
@@ -87,6 +88,11 @@ private:
 	bool keyLeft = false;
 	bool keyRight = false;
 	bool keyDown = false;
+	bool isPlayerWalking = false;
+	bool isPlayerBreakingStuff = false;
+	bool isPlayerAttacking = false;
+	bool isMobNearby = false;
+	bool isMobAttacking = false;
 
 	Vector2 charPos;
 
@@ -97,6 +103,7 @@ private:
 	std::list<std::shared_ptr<Mob>> mobs; // list the mobs
 	std::shared_ptr<Character> character;
 	std::shared_ptr<MapObject> nearestObject;
+	std::shared_ptr<Mob> nearestMob;
 	std::shared_ptr<SpriteAnimation> swiftAttack;
 	std::shared_ptr<PlayerStatus> playerStatus;
 	std::shared_ptr<MouseButton> button;
@@ -106,8 +113,13 @@ private:
 	std::shared_ptr<MouseButton> btnMusic;
 	std::shared_ptr<GameOver> gameOver;
 
+	Mix_Chunk* mobAttackSound;
+	Mix_Chunk* mobSleepSound;
+	Mix_Chunk* mobDeathSound;
+	Mix_Chunk* objectFallSound;
+	Mix_Chunk* eatingSound;
+
 	float time = 0.0f;
 	float m_Velocity = 10.0f;
 	bool checkMusic = true;
 };
-
