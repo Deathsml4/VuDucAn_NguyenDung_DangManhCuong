@@ -108,6 +108,8 @@ void GSPlay::ConsumItem()
 		character->status.inventory[holdingItem] = newItem;
 		character->status.inventorySlot[holdingItem] = 0;
 		character->status.currentFood += 10;
+		Mix_PlayChannel(7, eatingSound, 0);
+		Mix_Volume(7, 22);
 		switch (character->status.inventory[holdingItem]->itemType)
 		{
 		case ItemType::Item_FRUIT:
@@ -360,6 +362,8 @@ void GSPlay::Init()
 	mobSleepSound = Mix_LoadWAV(S_MOB_SLEEP);
 	mobAttackSound = Mix_LoadWAV(S_MOB_ATTACK);
 	mobDeathSound = Mix_LoadWAV(S_MOB_DEATH);
+
+	eatingSound = Mix_LoadWAV(S_PLAYER_EAT);
 
 	m_KeyPress = 0;
 	

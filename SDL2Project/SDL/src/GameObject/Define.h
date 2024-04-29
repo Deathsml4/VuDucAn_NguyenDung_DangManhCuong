@@ -47,6 +47,7 @@
 #define S_PLAYER_WALK "Data/Sounds/Deerclops_Footstep.wav"
 #define S_PLAYER_ATTACK "Data/Sounds/Deerclops_Swipe.wav"
 #define S_PLAYER_BREAK_ROCK "Data/Sounds/Deerclops_Ice_Big.wav"
+#define S_PLAYER_EAT "Data/Sounds/nom-nom-nom.wav"
 
 #define S_OBJECT_FALL "Data/Sounds/Deerclops_Fall_Snow.wav"
 
