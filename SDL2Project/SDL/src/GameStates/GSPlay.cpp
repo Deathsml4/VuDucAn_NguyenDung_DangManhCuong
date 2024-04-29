@@ -362,7 +362,7 @@ void GSPlay::Init()
 	mobSleepSound = Mix_LoadWAV(S_MOB_SLEEP);
 	mobAttackSound = Mix_LoadWAV(S_MOB_ATTACK);
 	mobDeathSound = Mix_LoadWAV(S_MOB_DEATH);
-
+	objectFallSound = Mix_LoadWAV(S_OBJECT_FALL);
 	eatingSound = Mix_LoadWAV(S_PLAYER_EAT);
 
 	m_KeyPress = 0;
@@ -830,11 +830,14 @@ void GSPlay::InteractToObject()
 				map->chunks[0]->objects[nearestObject->gridNumber]->objectType = MObject::MOBJECT_INVALID;
 				map->chunks[0]->objects[nearestObject->gridNumber]->tl = Vector2(0, 0);
 				map->chunks[0]->objects[nearestObject->gridNumber]->br = Vector2(0, 0);
+				Mix_PlayChannel(7, objectFallSound, 0);
+				Mix_Volume(7, 42);
 			}
 			else {
 				map->chunks[0]->objects[nearestObject->gridNumber]->hp--;
 			}
 			interactCD = INTERACT_CD;
+			
 		}
 		else {
 		}

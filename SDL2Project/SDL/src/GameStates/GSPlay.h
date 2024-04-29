@@ -116,7 +116,7 @@ private:
 	Mix_Chunk* mobAttackSound;
 	Mix_Chunk* mobSleepSound;
 	Mix_Chunk* mobDeathSound;
-
+	Mix_Chunk* objectFallSound;
 	Mix_Chunk* eatingSound;
 	
 	float time = 0.0f;
