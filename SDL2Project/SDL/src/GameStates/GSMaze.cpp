@@ -299,8 +299,8 @@ void GSMaze::Init()
 	m_listButton.push_back(button);
 
 	// Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_DOWN);
-	character = std::make_shared<Character>(texture, 1, 15, 1, 0.1f);
+	texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WILSON_DOWN);
+	character = std::make_shared<Character>(texture, 1, 13, 1, 0.1f);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	// Attack 
@@ -714,7 +714,7 @@ void GSMaze::UpdateObstacle()
 void GSMaze::KeyStateHandler(float deltaTime)
 {
 	if (keyW) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_UP);
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WILSON_UP);
 		character->SetTexture(texture);
 		if (keyShift) {
 
@@ -730,7 +730,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 	}
 	if (keyA) {
 		playerHeadRight = false;
-		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_SIDE);
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WILSON_SIDE);
 		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_HORIZONTAL);
 		if (keyShift) {
@@ -745,7 +745,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 			character->Set2DPosition(MAP_START_X - 10, charPos.y);
 	}
 	if (keyS) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_DOWN);
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WILSON_DOWN);
 		character->SetTexture(texture);
 		if (keyShift) {
 			character->RunDown(deltaTime);
@@ -760,7 +760,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 	}
 	if (keyD) {
 		playerHeadRight = true;
-		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_SIDE);
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WILSON_SIDE);
 		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_NONE);
 		if (keyShift) {
