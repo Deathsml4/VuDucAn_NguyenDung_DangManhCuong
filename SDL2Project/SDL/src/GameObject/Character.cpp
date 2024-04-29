@@ -34,7 +34,7 @@ void Character::Init()
 	}
 
 	walkingSound = Mix_LoadWAV(S_PLAYER_WALK);
-	attackingSound = Mix_LoadWAV(S_PLAYER_BREAK_ROCK);
+	attackingSound = Mix_LoadWAV(S_PLAYER_ATTACK);
 	workingSound = Mix_LoadWAV(S_PLAYER_BREAK_ROCK);
 
 	//status.inventory[0] = std::make_shared<Item>(ItemType::Item_FRUIT);

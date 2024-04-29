@@ -90,6 +90,7 @@ private:
 	bool keyDown = false;
 	bool isPlayerWalking = false;
 	bool isPlayerBreakingStuff = false;
+	bool isPlayerAttacking = false;
 
 	Vector2 charPos;
 

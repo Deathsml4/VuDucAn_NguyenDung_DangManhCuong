@@ -184,6 +184,18 @@ void GSPlay::HandlePlayerSoundEffect()
 		Mix_Pause(3);
 		isPlayerBreakingStuff = false;
 	}
+	//attacking
+	if (keySpace) {
+		if (!isPlayerAttacking) {
+			isPlayerAttacking = true;
+			Mix_PlayChannel(4, character->attackingSound, -1);
+
+		}
+	}
+	else {
+		Mix_Pause(4);
+		isPlayerAttacking = false;
+	}
 }
 
 float GSPlay::GetDistance(float x1, float y1, float x2, float y2) {
