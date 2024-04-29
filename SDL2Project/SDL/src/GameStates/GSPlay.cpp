@@ -199,12 +199,13 @@ void GSPlay::HandlePlayerSoundEffect()
 	// mob sound
 	int mobChannelA = 5;
 	int mobChannelB = 6;
+	nearestMob->volumn = nearestMob->distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / nearestMob->distanceToPlayer : 0;
 
-	if (nearestMob->distanceToPlayer < SCREEN_WIDTH / 2) {
+	if (nearestMob->distanceToPlayer < GRID_UNITS*3) {
 		if (!isMobNearby) {
 			isMobNearby = true;
 			Mix_PlayChannel(mobChannelA, mobSleepSound, -1);
-			Mix_Volume(mobChannelA, 12);
+			Mix_Volume(mobChannelA, nearestMob->volumn);
 		}
 	}
 	else {
@@ -224,9 +225,9 @@ void GSPlay::HandlePlayerSoundEffect()
 		Mix_Pause(mobChannelB);
 
 	}
-	
-	/*for (auto it : mobs) {*/
-		/*it->volumn = it->distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / it->distanceToPlayer : 0;
+
+	/*for (auto nearestMob : mobs) {*/
+		/*nearestMob->volumn = it->distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / it->distanceToPlayer : 0;
 		if (it->distanceToPlayer <= SCREEN_WIDTH / 4) {
 			if (!it->isMobNearby) {
 				it->isMobNearby = true;
