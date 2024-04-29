@@ -40,3 +40,39 @@
 #define MOB_ATTACK_CD 100
 #define MOB_MOVE_DURATION 100
 #define MOB_VISION 500
+
+#define S_BG_SOUND "Data/Sounds/Swstyletheme.wav"
+#define S_GAMEOVER "Data/Sounds/Werepig_of_London.wav"
+
+#define S_PLAYER_WALK "Data/Sounds/Deerclops_Footstep.wav"
+#define S_PLAYER_ATTACK "Data/Sounds/Deerclops_Swipe.wav"
+#define S_PLAYER_BREAK_ROCK "Data/Sounds/Deerclops_Ice_Big.wav"
+#define S_PLAYER_EAT "Data/Sounds/nom-nom-nom.wav"
+
+#define S_OBJECT_FALL "Data/Sounds/Deerclops_Fall_Snow.wav"
+
+#define S_MOB_SLEEP "Data/Sounds/Deerclops_Distant_Voice.wav"
+#define S_MOB_ATTACK "Data/Sounds/Deerclops_Attack_Voice.wav"
+#define	S_MOB_DEATH "Data/Sounds/Deerclops_Death_Voice.wav"
+
+#define S_BACKGROUND_MUSIC_1 "Data/Sounds/17_Working_Through_Winter.wav"
+
+#define T_BACKGROUND_1 "Wood_panelling_texture.png"
+
+#define T_MOB_SLEEP_TEXTURE "sprite/Splumonkey_Sleep.png"
+
+#define T_CHARACTER_WEBBER_DOWN "sprite/351px-Frog_Webber_jump_down.png"
+#define T_CHARACTER_WEBBER_UP "sprite/342px-Frog_Webber_jump_up2.png"
+#define T_CHARACTER_WEBBER_SIDE "sprite/357px-Frog_Webber_jump_side2.png"
+#define T_CHARACTER_WILSON_DOWN "sprite/375px-Player_Sneaky-down.png"
+#define T_CHARACTER_WILSON_UP "sprite/375px-Player_Sneaky-up.png"
+#define T_CHARACTER_WILSON_SIDE "sprite/375px-Player_Sneaky-side.png"
+
+#define T_CHARACTER_ATTACK "fire-sword-attack.png"
+
+#define T_BUTTON_CLOSE "btn_close.png"
+#define T_BUTTON_HELP "btn_help.png"
+#define T_BUTTON_MUSIC_ON "Music_on.png"
+#define T_BUTTON_MUSIC_OFF "Music_off.png"
+#define T_HITBOX_CORNER "l.png"
+#define T_HITBOX_TARGET "star.png"

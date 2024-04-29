@@ -31,6 +31,8 @@ Mob::Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount,
 	m_currentTicks = 0;
 	m_lastUpdate = SDL_GetTicks();
 	active = true;
+
+	status = MobStatus::IDLE;
 	
 	Init();
 }
@@ -74,15 +76,20 @@ bool Mob::Attack()
 		this->attackCD = this->attackCD <= 0 ? 0 : this->attackCD - 1;
 		if (this->attackCD <= 0) {
 			this->attackCD = MOB_ATTACK_CD;
+			/*Mix_FreeChunk(sound);
+			Mix_HaltChannel(audioChannel);
+			sound = Mix_LoadWAV(S_MOB_ATTACK);
+			audioChannel = Mix_PlayChannel(-1, sound, -1);
+			Mix_Volume(audioChannel, volumn);
+			makingSound = false;*/
 			return true;
 		}
-		
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
 		this->SetTexture(texture);
+
 		return false;
 	}
 	else {
-		
 		return false;
 	}
 }
@@ -134,6 +141,15 @@ void Mob::MoveToward(Vector2 goal)
 		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
 
 		this->Set2DPosition(newX, newY);
+
+		/*if(!makingSound){
+			Mix_FreeChunk(sound);
+			Mix_HaltChannel(audioChannel);
+			sound = Mix_LoadWAV(S_MOB_SLEEP);
+			audioChannel = Mix_PlayChannel(audioChannel, sound, -1);
+			Mix_Volume(audioChannel, volumn);
+			makingSound = true;
+		}*/
 	}
 	else {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
@@ -145,6 +161,14 @@ void Mob::MoveToward(Vector2 goal)
 void Mob::BounceBack(Vector2 goal)
 {
 	if (this->distanceToPlayer < 3 * GRID_UNITS) {
+		/*if(!makingSound){
+			Mix_FreeChunk(sound);
+			Mix_HaltChannel(audioChannel);
+			sound = Mix_LoadWAV(S_MOB_SLEEP);
+			audioChannel = Mix_PlayChannel(audioChannel, sound, -1);
+			Mix_Volume(audioChannel, volumn);
+			makingSound = true;
+		}*/
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
 		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
@@ -169,4 +193,36 @@ void Mob::UpdateTexture(Vector2 playerPos)
 	else {
 		this->SetFlip(SDL_FLIP_HORIZONTAL);
 	}
+}
+
+void Mob::MakeSound()
+{
+	/*switch (this->status)
+	{
+	case MobStatus::IDLE:
+		break;
+	case MobStatus::CHASE:
+		break;
+	case MobStatus::ATTACK:
+		break;
+	case MobStatus::DEATH:
+		break;
+	default:
+		break;
+	}*/
+
+	volumn = distanceToPlayer <= SCREEN_WIDTH / 2 ? (12) * (SCREEN_WIDTH / 2) / distanceToPlayer : 0;
+
+	if (distanceToPlayer <= SCREEN_WIDTH / 2) {
+		if (!makingSound) {
+			Mix_Volume(audioChannel, volumn);
+			makingSound = true;
+		}	
+	}
+	else {
+		//int volumn = 0;
+		//Mix_Volume(audioChannel, volumn);
+		makingSound = false;
+	}
+	
 }
