@@ -120,7 +120,7 @@ void GSMaze::RespawnMob()
 		if (it->active = false) {
 			mobSpawnTime = mobSpawnTime <= 0 ? 0 : mobSpawnTime - 1;
 			if (mobSpawnTime <= 0) {
-				auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+				auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_SLEEP_TEXTURE);
 				std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.2f);
 				mob->SetFlip(SDL_FLIP_HORIZONTAL);
 				mob->Init();
@@ -185,12 +185,12 @@ void GSMaze::Init()
 	m_listButton.push_back(button);
 
 	// Animation 
-	texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
+	texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_DOWN);
 	character = std::make_shared<Character>(texture, 1, 15, 1, 0.1f);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	// Attack 
-	texture = ResourceManagers::GetInstance()->GetTexture("fire-sword-attack.png");
+	texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_ATTACK);
 	swiftAttack = std::make_shared<Character>(texture, 1, 3, 1, 0.1f);
 	swiftAttack->SetFlip(SDL_FLIP_HORIZONTAL);
 	swiftAttack->SetSize(CHAR_W * 2, CHAR_H * 2);
@@ -201,14 +201,14 @@ void GSMaze::Init()
 
 	Camera::GetInstance()->SetTarget(character);
 	for (int i = 0; i < MOB_DENSITY; i++) {
-		texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_SLEEP_TEXTURE);
 		std::shared_ptr<Mob> mob = std::make_shared<Mob>(texture, 1, 11, 1, 0.1f);
 		mob->SetFlip(SDL_FLIP_HORIZONTAL);
 		mob->Init();
 		mobs.push_back(mob);
 	}
 
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_help.png");
+	texture = ResourceManagers::GetInstance()->GetTexture(T_BUTTON_HELP);
 	btnTutorial = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnTutorial->Set2DPosition(SCREEN_WIDTH - button->GetWidth() - 10 - 60, 10);
 	btnTutorial->SetSize(50, 40);
@@ -217,20 +217,20 @@ void GSMaze::Init()
 		});
 	m_listButton.push_back(btnTutorial);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("Music_on.png");
+	texture = ResourceManagers::GetInstance()->GetTexture(T_BUTTON_MUSIC_ON);
 	btnMusic = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	btnMusic->Set2DPosition(SCREEN_WIDTH - button->GetWidth() - 10 - 120, 10);
 	btnMusic->SetSize(50, 40);
 	btnMusic->SetOnClick([this]() {
 		if (checkMusic) {
-			auto texture = ResourceManagers::GetInstance()->GetTexture("Music_off.png");
+			auto texture = ResourceManagers::GetInstance()->GetTexture(T_BUTTON_MUSIC_OFF);
 			btnMusic->SetTexture(texture);
 			checkMusic = false;
 			m_Sound->PauseSound();
 		}
 		else
 		{
-			auto texture = ResourceManagers::GetInstance()->GetTexture("Music_on.png");
+			auto texture = ResourceManagers::GetInstance()->GetTexture(T_BUTTON_MUSIC_ON);
 			btnMusic->SetTexture(texture);
 			checkMusic = true;
 			m_Sound->ResumeSound();
@@ -239,7 +239,7 @@ void GSMaze::Init()
 	m_listButton.push_back(btnMusic);
 
 	m_Sound = std::make_shared<Sound>();
-	m_Sound->LoadSound("Data/Sounds/17_Working_Through_Winter.wav");
+	m_Sound->LoadSound(S_BACKGROUND_MUSIC_1);
 	m_Sound->PlaySound();
 
 	m_KeyPress = 0;
@@ -515,10 +515,10 @@ void GSMaze::DisplayNearestObject(SDL_Renderer* renderer)
 		float y2 = nearestObject->hitbox[1].y;
 		float x3 = nearestObject->target.x;
 		float y3 = nearestObject->target.y;
-		auto texture = ResourceManagers::GetInstance()->GetTexture("l.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_HITBOX_CORNER);
 		texture->Render(x1 - Camera::GetInstance()->GetPosition().x, y1 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
 		texture->Render(x2 - dimension - Camera::GetInstance()->GetPosition().x, y2 - dimension - Camera::GetInstance()->GetPosition().y, dimension, dimension, 180, SDL_FLIP_NONE);
-		texture = ResourceManagers::GetInstance()->GetTexture("star.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_HITBOX_TARGET);
 		texture->Render(x3 - dimension / 2 - Camera::GetInstance()->GetPosition().x, y3 - dimension / 2 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
 		SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xFF);
 		SDL_RenderDrawLine(renderer, x3 - Camera::GetInstance()->GetPosition().x, y3 - Camera::GetInstance()->GetPosition().y, charPos.x + CHAR_W / 2 - Camera::GetInstance()->GetPosition().x, charPos.y + CHAR_H / 2 - Camera::GetInstance()->GetPosition().y);
@@ -583,7 +583,7 @@ void GSMaze::UpdateObstacle()
 void GSMaze::KeyStateHandler(float deltaTime)
 {
 	if (keyW) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/342px-Frog_Webber_jump_up2.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_UP);
 		character->SetTexture(texture);
 		if (keyShift) {
 
@@ -599,7 +599,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 	}
 	if (keyA) {
 		playerHeadRight = false;
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_SIDE);
 		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_HORIZONTAL);
 		if (keyShift) {
@@ -614,7 +614,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 			character->Set2DPosition(MAP_START_X - 10, charPos.y);
 	}
 	if (keyS) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/351px-Frog_Webber_jump_down.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_DOWN);
 		character->SetTexture(texture);
 		if (keyShift) {
 			character->RunDown(deltaTime);
@@ -629,7 +629,7 @@ void GSMaze::KeyStateHandler(float deltaTime)
 	}
 	if (keyD) {
 		playerHeadRight = true;
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/357px-Frog_Webber_jump_side2.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_SIDE);
 		character->SetTexture(texture);
 		character->SetFlip(SDL_FLIP_NONE);
 		if (keyShift) {
