@@ -33,7 +33,7 @@ Mob::Mob(std::shared_ptr<TextureManager> texture, int spriteRow, int frameCount,
 	active = true;
 
 	status = MobStatus::IDLE;
-	sound = Mix_LoadWAV(S_MOB_SLEEP);
+	//sound = Mix_LoadWAV(S_MOB_SLEEP);
 	
 	Init();
 }
@@ -77,12 +77,12 @@ bool Mob::Attack()
 		this->attackCD = this->attackCD <= 0 ? 0 : this->attackCD - 1;
 		if (this->attackCD <= 0) {
 			this->attackCD = MOB_ATTACK_CD;
-			Mix_FreeChunk(sound);
+			/*Mix_FreeChunk(sound);
 			Mix_HaltChannel(audioChannel);
 			sound = Mix_LoadWAV(S_MOB_ATTACK);
 			audioChannel = Mix_PlayChannel(-1, sound, -1);
 			Mix_Volume(audioChannel, volumn);
-			makingSound = false;
+			makingSound = false;*/
 			return true;
 		}
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
@@ -143,14 +143,14 @@ void Mob::MoveToward(Vector2 goal)
 
 		this->Set2DPosition(newX, newY);
 
-		if(!makingSound){
+		/*if(!makingSound){
 			Mix_FreeChunk(sound);
 			Mix_HaltChannel(audioChannel);
 			sound = Mix_LoadWAV(S_MOB_SLEEP);
 			audioChannel = Mix_PlayChannel(audioChannel, sound, -1);
 			Mix_Volume(audioChannel, volumn);
 			makingSound = true;
-		}
+		}*/
 	}
 	else {
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
@@ -162,14 +162,14 @@ void Mob::MoveToward(Vector2 goal)
 void Mob::BounceBack(Vector2 goal)
 {
 	if (this->distanceToPlayer < 3 * GRID_UNITS) {
-		if(!makingSound){
+		/*if(!makingSound){
 			Mix_FreeChunk(sound);
 			Mix_HaltChannel(audioChannel);
 			sound = Mix_LoadWAV(S_MOB_SLEEP);
 			audioChannel = Mix_PlayChannel(audioChannel, sound, -1);
 			Mix_Volume(audioChannel, volumn);
 			makingSound = true;
-		}
+		}*/
 		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
 		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
