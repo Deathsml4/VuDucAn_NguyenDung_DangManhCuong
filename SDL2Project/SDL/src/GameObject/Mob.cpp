@@ -84,7 +84,7 @@ bool Mob::Attack()
 			makingSound = false;*/
 			return true;
 		}
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Attack.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_ATTACK_TEXTURE);
 		this->SetTexture(texture);
 
 		return false;
@@ -132,10 +132,10 @@ Vector2 Mob::MakeDesicion()
 void Mob::MoveToward(Vector2 goal)
 {
 	if (this->distanceToPlayer < 3 * GRID_UNITS) {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_CHASE_TEXTURE);
 		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
-		float stepSize = 0.005; 
+		float stepSize = 0.005;
 
 		float newX = this->Get2DPosition().x + (goal.x - this->Get2DPosition().x) * stepSize;
 		float newY = this->Get2DPosition().y + (goal.y - this->Get2DPosition().y) * stepSize;
@@ -152,10 +152,10 @@ void Mob::MoveToward(Vector2 goal)
 		}*/
 	}
 	else {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_SLEEP_TEXTURE);
 		this->SetTexture(texture);
 	}
-	
+
 }
 
 void Mob::BounceBack(Vector2 goal)
@@ -169,7 +169,7 @@ void Mob::BounceBack(Vector2 goal)
 			Mix_Volume(audioChannel, volumn);
 			makingSound = true;
 		}*/
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Run.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_CHASE_TEXTURE);
 		this->SetTexture(texture);
 		float distance = sqrt(pow(goal.x - this->Get2DPosition().x, 2) + pow(goal.y - this->Get2DPosition().y, 2));
 		float stepSize = -2;
@@ -180,7 +180,7 @@ void Mob::BounceBack(Vector2 goal)
 		this->Set2DPosition(newX, newY);
 	}
 	else {
-		auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/Splumonkey_Sleep.png");
+		auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_SLEEP_TEXTURE);
 		this->SetTexture(texture);
 	}
 }

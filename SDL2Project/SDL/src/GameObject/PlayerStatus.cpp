@@ -61,19 +61,19 @@ PlayerStatus::PlayerStatus(std::shared_ptr<Character> character)
 	//drawables.push_back(waterConsumption);
 
 	///Set Font
-	formattedTime = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorBlack);
+	formattedTime = std::make_shared<Text>(F_CONSOLAS, textColorBlack);
 	formattedTime->SetSize(120, 40);
 	formattedTime->Set2DPosition(SCREEN_WIDTH - formattedTime->GetWidth() - 190, 10);
 	formattedTime->LoadFromRenderText(time);
 	drawables.push_back(formattedTime);
 
-	playerStatusLabel = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorBlack);
+	playerStatusLabel = std::make_shared<Text>(F_CONSOLAS, textColorBlack);
 	playerStatusLabel->SetSize(250, 20);
 	playerStatusLabel->Set2DPosition(100, 10);
 	playerStatusLabel->LoadFromRenderText(statusLabel);
 	drawables.push_back(playerStatusLabel);
 
-	playerStatusData = std::make_shared<Text>("Data/Text/Consolas.ttf", textColorRed);
+	playerStatusData = std::make_shared<Text>(F_CONSOLAS, textColorRed);
 	playerStatusData->SetSize(250, 20);
 	playerStatusData->Set2DPosition(100, 10);
 	playerStatusData->LoadFromRenderText(statusData);

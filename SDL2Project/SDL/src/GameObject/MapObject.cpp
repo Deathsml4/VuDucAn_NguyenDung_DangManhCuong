@@ -26,7 +26,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 	case MObject::MOBJECT_INVALID:
 		break;
 	case MObject::MOBJECT_TREE: 
-		texture = ResourceManagers::GetInstance()->GetTexture("300px-A_Lumpy_Evergreen.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_TREE);
 		this->tl.x = this->hitbox[0].x - (TREE_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - TREE_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -34,7 +34,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_BUSH:
-		texture = ResourceManagers::GetInstance()->GetTexture("300px-Berry_Bush_Build.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_BUSH);
 		this->tl.x = this->hitbox[0].x - (BUSH_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -42,7 +42,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_GRASS:
-		texture = ResourceManagers::GetInstance()->GetTexture("300px-Tall_Grass.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_GRASS);
 		this->tl.x = this->hitbox[0].x - (BUSH_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -50,7 +50,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_CROP:
-		texture = ResourceManagers::GetInstance()->GetTexture("Grass_Tuft.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_CROP);
 		this->tl.x = this->hitbox[0].x - (BUSH_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -58,7 +58,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_DEADBUSH:
-		texture = ResourceManagers::GetInstance()->GetTexture("300px-Sapling.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_DEATHBUSH);
 		this->tl.x = this->hitbox[0].x - (BUSH_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - BUSH_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -66,7 +66,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_ROCK:
-		texture = ResourceManagers::GetInstance()->GetTexture("Boulder.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_ROCK);
 		this->tl.x = this->hitbox[0].x - (ROCK_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - ROCK_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -74,7 +74,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_CHESS:
-		texture = ResourceManagers::GetInstance()->GetTexture("Chest_Build.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_CHESS);
 		this->tl.x = this->hitbox[0].x - (CHESS_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - CHESS_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;
@@ -82,7 +82,7 @@ void MapObject::Draw(SDL_Renderer* renderer)
 		break;
 
 	case MObject::MOBJECT_GATE:
-		texture = ResourceManagers::GetInstance()->GetTexture("Celestial_Portal_Build.png");
+		texture = ResourceManagers::GetInstance()->GetTexture(T_OBJECT_GATE);
 		this->tl.x = this->hitbox[0].x - (ROCK_WIDTH - GRID_UNITS) / 2;
 		this->tl.y = this->hitbox[0].y - ROCK_HEIGHT + GRID_UNITS;
 		this->br.x = this->hitbox[1].x;

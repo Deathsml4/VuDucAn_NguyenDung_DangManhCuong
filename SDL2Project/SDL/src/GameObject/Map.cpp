@@ -129,15 +129,15 @@ MapChunk::MapChunk(MapMode mode)
     }
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
-        auto texture = ResourceManagers::GetInstance()->GetTexture("Forest_Turf_Texture.png");
+        auto texture = ResourceManagers::GetInstance()->GetTexture(T_MAP_INVALID);
         plainTerrain = std::make_shared<GridPoint>(texture);
         plainTerrain->terrain = MTerrain::MTERRAIN_PLAIN;
         
-        texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
+        texture = ResourceManagers::GetInstance()->GetTexture(T_MAP_INVALID);
         riverTerrain = std::make_shared<GridPoint>(texture);
         riverTerrain->terrain = MTerrain::MTERRAIN_RIVER;
 
-        texture = ResourceManagers::GetInstance()->GetTexture("Blue_Fungus_Turf_Texture.png");
+        texture = ResourceManagers::GetInstance()->GetTexture(T_MAP_INVALID);
         mObject = std::make_shared<MapObject>(texture);
         mObject->objectType = MObject::MOBJECT_INVALID;
 
@@ -167,7 +167,7 @@ MapChunk::MapChunk(MapMode mode)
         
     }
     for (int i = 0; i < MAX_CREATURES; i++) {
-        auto texture = ResourceManagers::GetInstance()->GetTexture("sprite/DST_Steam_Animated_Sticker_Chester.png");
+        auto texture = ResourceManagers::GetInstance()->GetTexture(T_MOB_INVALID);
         std::shared_ptr<Mob> newMob;
         newMob = std::make_shared<Mob>(texture, 1, 10, 1, 0.2f);
 
@@ -233,10 +233,10 @@ void Map::DisplayHitboxs(SDL_Renderer* renderer)
                 float y2 = mObj->hitbox[1].y;
                 float x3 = mObj->target.x;
                 float y3 = mObj->target.y;
-                auto texture = ResourceManagers::GetInstance()->GetTexture("l.png");
+                auto texture = ResourceManagers::GetInstance()->GetTexture(T_HITBOX_CORNER);
                 texture->Render(x1 - Camera::GetInstance()->GetPosition().x, y1 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
                 texture->Render(x2 - dimension - Camera::GetInstance()->GetPosition().x, y2 - dimension - Camera::GetInstance()->GetPosition().y, dimension, dimension, 180, SDL_FLIP_NONE);
-                texture = ResourceManagers::GetInstance()->GetTexture("star.png");
+                texture = ResourceManagers::GetInstance()->GetTexture(T_HITBOX_TARGET);
                 texture->Render(x3 - dimension/2 - Camera::GetInstance()->GetPosition().x, y3 - dimension / 2 - Camera::GetInstance()->GetPosition().y, dimension, dimension, 0, SDL_FLIP_NONE);
             }
         }
@@ -297,8 +297,8 @@ void GridPoint::Draw(SDL_Renderer* renderer)
 {
     float x = MAP_START_X + GRID_UNITS * (gridNumber % CHUNK_UNITS);
     float y = MAP_START_Y + GRID_UNITS * (gridNumber / CHUNK_UNITS);
-    if(terrain == MTerrain::MTERRAIN_PLAIN) texture = ResourceManagers::GetInstance()->GetTexture("Wild_Plains_Turf_Texture.png");
-    else texture = ResourceManagers::GetInstance()->GetTexture("Ship_Graveyard_Terrain_Texture.png");
+    if(terrain == MTerrain::MTERRAIN_PLAIN) texture = ResourceManagers::GetInstance()->GetTexture(T_MAP_PLAIN);
+    else texture = ResourceManagers::GetInstance()->GetTexture(T_MAP_WATER);
     if (texture != nullptr)
     {
         texture->Render(x - Camera::GetInstance()->GetPosition().x, y - Camera::GetInstance()->GetPosition().y, GRID_UNITS, GRID_UNITS, 0, m_flip);
