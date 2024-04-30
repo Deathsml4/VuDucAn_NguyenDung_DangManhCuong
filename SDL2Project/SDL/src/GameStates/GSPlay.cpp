@@ -68,7 +68,7 @@ void GSPlay::UpdatePlayerStatus()
 			
 			for (auto it : mobs) {
 				it->Set2DPosition(-SCREEN_WIDTH, -SCREEN_HEIGHT);
-				Mix_Volume(it->audioChannel, 0);
+				//Mix_Volume(it->audioChannel, 0);
 			}
 			Mix_PlayChannel(1, Mix_LoadWAV(S_GAMEOVER), 1);
 			Mix_Volume(1, 30);
@@ -92,7 +92,7 @@ void GSPlay::PlayerAttack()
 					it->SetSize(0, 0);
 
 					Mix_PlayChannel(7, mobDeathSound, 0);
-					Mix_Volume(7, 22);
+					Mix_Volume(7, 50);
 				}
 			}
 		}
@@ -204,7 +204,7 @@ void GSPlay::HandlePlayerSoundEffect()
 	// mob sound
 	int mobChannelA = 5;
 	int mobChannelB = 6;
-	nearestMob->volumn = nearestMob->distanceToPlayer <= GRID_UNITS * 3 ? (12) * (GRID_UNITS * 3 / 2) / nearestMob->distanceToPlayer : 0;
+	nearestMob->volumn = nearestMob->distanceToPlayer <= GRID_UNITS * 3 ? (50) * (GRID_UNITS * 3 / 2) / nearestMob->distanceToPlayer : 0;
 
 	if (nearestMob->distanceToPlayer < GRID_UNITS*3) {
 		if (!isMobNearby) {
@@ -218,11 +218,11 @@ void GSPlay::HandlePlayerSoundEffect()
 		isMobNearby = false;
 	}
 
-	if (nearestMob->distanceToPlayer <= GRID_UNITS) {
+	if (nearestMob->distanceToPlayer <= GRID_UNITS/2) {
 		if (!isMobAttacking) {
 			isMobAttacking = true;
 			Mix_PlayChannel(mobChannelB, mobAttackSound, -1);
-			Mix_Volume(mobChannelB, 12);
+			Mix_Volume(mobChannelB, 45);
 		}
 	}
 	else {
