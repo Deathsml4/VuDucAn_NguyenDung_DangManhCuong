@@ -57,7 +57,7 @@
 
 #define S_BACKGROUND_MUSIC_1 "Data/Sounds/17_Working_Through_Winter.wav"
 
-#define T_BACKGROUND_1 "Wood_panelling_texture.png"
+#define T_BACKGROUND_1 "Ship_Graveyard_Terrain_Texture.png"
 
 #define T_MOB_INVALID "sprite/DST_Steam_Animated_Sticker_Chester.png"
 #define T_MOB_SLEEP_TEXTURE "sprite/Splumonkey_Sleep.png"
