@@ -109,7 +109,7 @@ void GSPlay::ConsumItem()
 		character->status.inventorySlot[holdingItem] = 0;
 		character->status.currentFood += 10;
 		Mix_PlayChannel(7, eatingSound, 0);
-		Mix_Volume(7, 22);
+		Mix_Volume(7, 50);
 		switch (character->status.inventory[holdingItem]->itemType)
 		{
 		case ItemType::Item_FRUIT:
