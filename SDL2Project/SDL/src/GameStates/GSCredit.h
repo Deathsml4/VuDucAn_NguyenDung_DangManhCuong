@@ -43,6 +43,7 @@ private:
 	std::shared_ptr<Sprite2D>	D_button;
 	std::shared_ptr<Sprite2D>	Backspace_button;
 	std::shared_ptr<Sprite2D>	E_button;
+	std::shared_ptr<Sprite2D>	Arrow_down_button;
 	std::shared_ptr<Sprite2D>	Space_button;
 	std::shared_ptr<Sprite2D>	Arrow_left_button;
 	std::shared_ptr<Sprite2D>	Arrow_right_button;
@@ -54,6 +55,8 @@ private:
 	std::shared_ptr<Sprite2D>	S_button_1;
 	std::shared_ptr<Sprite2D>	D_button_1;
 	std::shared_ptr<Sprite2D>	Enter_button_1;
+	std::shared_ptr<Sprite2D>	Space_button_1;
+	std::shared_ptr<Sprite2D>	L_Shift_button_1;
 
 	//std::shared_ptr<Text>		m_score;
 	std::list<std::shared_ptr<MouseButton>>	m_listButton;

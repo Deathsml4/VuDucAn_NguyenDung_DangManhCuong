@@ -100,7 +100,7 @@ void GSCredit::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("Eat.png");
 	Eat_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	Eat_button->SetSize(button_width * 2, button_height + 10);
-	Eat_button->Set2DPosition(position_width, position_height * 4.5 - 15	);
+	Eat_button->Set2DPosition(position_width, position_height * 4.5 - 15);
 	m_listButton_Map_1.push_back(Eat_button);
 
 	int distance_y = Eat_button->Get2DPosition().y - Destroy_button->Get2DPosition().y;
@@ -108,8 +108,14 @@ void GSCredit::Init()
 	texture = ResourceManagers::GetInstance()->GetTexture("E.png");
 	E_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	E_button->SetSize(button_width, button_height);
-	E_button->Set2DPosition(position_width * 4 + 20, position_height * 4.5 - 10);
+	E_button->Set2DPosition(position_width * 4 - 15, position_height * 4.5 - 10);
 	m_listButton_Map_1.push_back(E_button);
+	
+	texture = ResourceManagers::GetInstance()->GetTexture("Arrow-down.png");
+	Arrow_down_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	Arrow_down_button->SetSize(button_width, button_height);
+	Arrow_down_button->Set2DPosition(position_width * 4 + 55, position_height * 4.5 - 10);
+	m_listButton_Map_1.push_back(Arrow_down_button);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("Choose-item.png");
 	Choose_item_button = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
@@ -194,6 +200,18 @@ void GSCredit::Init()
 	Enter_button_1->SetSize(button_width * 2, button_height + 10);
 	Enter_button_1->Set2DPosition(position_width * 4 + distance_x - 5, Eat_button->Get2DPosition().y + distance_y * 4);
 	m_listButton_Map_1.push_back(Enter_button_1);
+	
+	texture = ResourceManagers::GetInstance()->GetTexture("Space.png");
+	Space_button_1 = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	Space_button_1->SetSize(button_width * 2, button_height + 10);
+	Space_button_1->Set2DPosition(position_width * 4 + distance_x - 5, Eat_button->Get2DPosition().y + distance_y * 2);
+	m_listButton_Map_1.push_back(Space_button_1);
+	
+	texture = ResourceManagers::GetInstance()->GetTexture("Left-shift.png");
+	L_Shift_button_1 = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
+	L_Shift_button_1->SetSize(button_width * 2, button_height + 10);
+	L_Shift_button_1->Set2DPosition(position_width * 4 + distance_x - 5, Eat_button->Get2DPosition().y + distance_y * 3);
+	m_listButton_Map_1.push_back(L_Shift_button_1);
 
 	m_KeyPress = 0;
 
