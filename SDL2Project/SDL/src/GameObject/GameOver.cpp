@@ -1,7 +1,8 @@
 #include "GameOver.h"
 
-GameOver::GameOver(std::string time, std::string layer)
+GameOver::GameOver(std::string time, std::string layer, int checkState)
 {
+	m_checkState = checkState;
 	auto texture = ResourceManagers::GetInstance()->GetTexture("imgpsh_fullsize_anim.png");
 	textBox = std::make_shared<Sprite2D>(texture, SDL_FLIP_NONE);
 	textBox->SetSize(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
@@ -37,8 +38,14 @@ GameOver::GameOver(std::string time, std::string layer)
 	restartBtm = std::make_shared<MouseButton>(texture, SDL_FLIP_NONE);
 	restartBtm->SetSize(180, 60);
 	restartBtm->Set2DPosition(SCREEN_WIDTH / 4 + (SCREEN_WIDTH / 2 - restartBtm->GetWidth()) / 2, SCREEN_HEIGHT / 4 + 180);
-	restartBtm->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
+	restartBtm->SetOnClick([this]() {
+		restartBtm->Set2DPosition(SCREEN_WIDTH, SCREEN_HEIGHT);
+		if (m_checkState == 1) {
+			GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
+		}
+		if (m_checkState == 2) {
+			GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MAZE);
+		}
 		});
 	drawables.push_back(restartBtm);
 

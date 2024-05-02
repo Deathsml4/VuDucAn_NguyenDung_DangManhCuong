@@ -49,6 +49,15 @@ void GSMaze::UpdatePlayerStatus()
 		character->status.currentFood--;
 		healDuration = HEAL_DURATION;
 	}
+	if (charHP > 100) {
+		charHP = 100;
+	}
+	if (charHunger > 100) {
+		charHunger = 100;
+	}
+	if (charThirst > 100) {
+		charThirst = 100;
+	}
 
 	if (charHP <= 0) {
 
@@ -60,17 +69,17 @@ void GSMaze::UpdatePlayerStatus()
 				it->SetPosition(Vector3(-SCREEN_WIDTH, -SCREEN_HEIGHT, -SCREEN_HEIGHT));
 			}
 			m_Sound->CleanUp();
-			/*Mix_HaltChannel(-1);
-			Mix_CloseAudio();*/
-			/*m_Sound->LoadSound(S_GAMEOVER);
-			m_Sound->PlaySound();*/
+			//Mix_HaltChannel(-1);
+			//Mix_CloseAudio();
+			m_Sound->LoadSound(S_GAMEOVER);
+			m_Sound->PlaySound();
 
 			for (auto it : mobs) {
 				it->Set2DPosition(-SCREEN_WIDTH, -SCREEN_HEIGHT);
-				Mix_Volume(it->audioChannel, 0);
+				//Mix_Volume(it->audioChannel, 0);
 			}
-			Mix_PlayChannel(1, Mix_LoadWAV(S_GAMEOVER), 1);
-			Mix_Volume(1, 30);
+			//Mix_PlayChannel(-1, Mix_LoadWAV(S_BG_SOUND), 1);
+			//Mix_Volume(1, 30);
 		}
 	}
 
@@ -292,8 +301,10 @@ void GSMaze::Init()
 	button->SetSize(50, 40);
 	button->Set2DPosition(SCREEN_WIDTH - 50 - 10, 10);
 	button->SetOnClick([this]() {
+		Mix_Pause(5);
+		Mix_Pause(6);
+		m_Sound->CleanUp();
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_MENU);
-
 		//GameStateMachine::GetInstance()->PopState();
 		});
 	m_listButton.push_back(button);
@@ -311,7 +322,7 @@ void GSMaze::Init()
 	swiftAttack->Set2DPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
 	playerStatus = std::make_shared<PlayerStatus>(character);
-	gameOver = std::make_shared<GameOver>("0", "0");
+	gameOver = std::make_shared<GameOver>("0", "0", 2);
 
 	Camera::GetInstance()->SetTarget(character);
 	for (int i = 0; i < MOB_DENSITY; i++) {
@@ -607,7 +618,7 @@ void GSMaze::Draw(SDL_Renderer* renderer)
 	}
 
 	if (isGameover) {
-		gameOver = std::make_shared<GameOver>(finishedTime, finishedPage);
+		gameOver = std::make_shared<GameOver>(finishedTime, finishedPage, 2);
 		for (auto it : gameOver->drawables) {
 			it->Draw(renderer);
 		}
