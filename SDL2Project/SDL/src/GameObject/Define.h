@@ -5,7 +5,7 @@
 #define MAX_ENTITIES 30
 
 #define SCREEN_WIDTH 1000
-#define SCREEN_HEIGHT 720
+#define SCREEN_HEIGHT 700
 #define LIMIT_FPS 60
 
 #define CHAR_W 70
