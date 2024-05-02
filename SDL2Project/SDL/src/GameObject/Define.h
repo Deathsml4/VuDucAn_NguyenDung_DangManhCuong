@@ -1,5 +1,6 @@
 #pragma once
 
+#define GAME_TITLE "Dig It Up"
 
 #define MAX_CREATURES 20
 #define MAX_ENTITIES 30
