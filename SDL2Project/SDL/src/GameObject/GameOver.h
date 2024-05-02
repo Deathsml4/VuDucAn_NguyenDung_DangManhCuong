@@ -29,8 +29,9 @@ public:
 	std::shared_ptr<MouseButton> restartBtm;
 	std::shared_ptr<MouseButton> exitBtn;
 	std::list< std::shared_ptr<BaseObject>> drawables;
+	int m_checkState;
 
-	GameOver(std::string time, std::string layer);
+	GameOver(std::string time, std::string layer, int checkState);
 	~GameOver();
 
 	void Init();
