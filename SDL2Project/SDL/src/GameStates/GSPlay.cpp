@@ -328,7 +328,7 @@ void GSPlay::Init()
 
    // Animation 
 	texture = ResourceManagers::GetInstance()->GetTexture(T_CHARACTER_WEBBER_DOWN);
-	character = std::make_shared<Character>(texture, 1, 15, 1, 0.1f);
+	character = std::make_shared<Character>(texture, 1, 15, 1, 0.05f);
 	character->SetSize(CHAR_W, CHAR_H);
 	character->Set2DPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	// Attack 
