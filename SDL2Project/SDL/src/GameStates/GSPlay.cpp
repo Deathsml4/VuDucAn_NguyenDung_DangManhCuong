@@ -32,11 +32,24 @@ void GSPlay::UpdatePlayerStatus()
 {
 	//update status
 	if (hungerDuration <= 0) {
-		character->status.currentFood--;
+		if (character->status.currentFood <= 0) {
+			character->status.currentHP--;
+		}
+		else {
+			character->status.currentFood--;
+		}
+		
 		hungerDuration = HUNGER_DURATION;
+		
 	}
 	if (thirstDuration <= 0) {
-		character->status.currentThirst--;
+		if (character->status.currentThirst <= 0) {
+			character->status.currentHP--;
+		}
+		else {
+			character->status.currentThirst--;
+		}
+		
 		thirstDuration = THIRST_DURATION;
 	}
 
@@ -51,13 +64,13 @@ void GSPlay::UpdatePlayerStatus()
 		healDuration = HEAL_DURATION;
 	}
 
-	if (charHP > 100) {
+	if (charHP >= 100) {
 		charHP = 100;
 	}
-	if (charHunger > 100) {
+	if (charHunger >= 100) {
 		charHunger = 100;
 	}
-	if (charThirst > 100) {
+	if (charThirst >= 100) {
 		charThirst = 100;
 	}
 
