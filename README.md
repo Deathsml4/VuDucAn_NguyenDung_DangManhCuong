@@ -2,6 +2,7 @@
 ## Tool:
 - Visual Studio 2022
 - Spriter
+![Untitled (1)](https://github.com/da0ran9e/Dig-It-Up-2D-Topdown/assets/98570451/ffd89725-044c-40d2-8297-8c4c2db9931b)
 
 ## Idea:
 Lấy Ý tưởng theo prototype của tựa game Don’t Starve.
